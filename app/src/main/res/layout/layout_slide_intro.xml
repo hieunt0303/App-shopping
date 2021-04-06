@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView_intro"
+        android:layout_width="236dp"
+        android:layout_height="222dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_intro_heading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.631"
+        app:srcCompat="@drawable/welcome1" />
+
+    <TextView
+        android:id="@+id/textView_intro_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Explore Best Product"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="423dp" />
+
+    <TextView
+        android:id="@+id/textView_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find your desire product"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_intro_heading" />
+
+    <Button
+        android:id="@+id/button_startshopping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_botron4goc"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="START SHOPPING"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:backgroundTint="#79CEED"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/button_circle1"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_intro"
+        app:srcCompat="@drawable/selected" />
+
+    <ImageView
+        android:id="@+id/button_circle3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginRight="168dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_circle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_circle2"
+        app:srcCompat="@drawable/selected" />
+
+    <ImageView
+        android:id="@+id/button_circle2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_circle1"
+        app:layout_constraintEnd_toStartOf="@+id/button_circle3"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toEndOf="@+id/button_circle1"
+        app:layout_constraintTop_toTopOf="@+id/button_circle1"
+        app:srcCompat="@drawable/selected" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
