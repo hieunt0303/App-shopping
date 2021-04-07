@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Manhinh_Home">
+    tools:context=".Manhinh_Home"
+    android:background="#FFFF">
     <View
         android:id="@+id/view2"
         android:layout_width="wrap_content"
@@ -16,7 +17,7 @@
         tools:layout_editor_absoluteX="-2dp" />
 
     <ImageButton
-        android:id="@+id/btngh"
+        android:id="@+id/button_Cart"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="62dp"
         android:layout_height="53dp"
@@ -29,7 +30,7 @@
         app:srcCompat="@drawable/cart" />
 
     <ImageButton
-        android:id="@+id/btntb"
+        android:id="@+id/button_Nof"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="62dp"
         android:layout_height="53dp"
@@ -42,7 +43,7 @@
         app:srcCompat="@drawable/nofitication" />
 
     <ImageButton
-        android:id="@+id/btnchat"
+        android:id="@+id/button_Mes"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="62dp"
         android:layout_height="53dp"
@@ -55,7 +56,7 @@
         app:srcCompat="@drawable/message" />
 
     <ImageButton
-        android:id="@+id/btnacc"
+        android:id="@+id/button_Per"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="62dp"
         android:layout_height="53dp"
@@ -68,7 +69,7 @@
         app:srcCompat="@drawable/personal" />
 
     <ImageButton
-        android:id="@+id/btnhome"
+        android:id="@+id/button_Home"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="62dp"
         android:layout_height="53dp"
