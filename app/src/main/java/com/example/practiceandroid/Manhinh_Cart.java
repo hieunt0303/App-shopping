@@ -13,7 +13,7 @@ public class Manhinh_Cart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manhinh__home);
+        setContentView(R.layout.activity_manhinh__cart);
         btnhome =  (ImageButton) findViewById(R.id.button_Home);
         btntb =  (ImageButton) findViewById(R.id.button_Nof);
         btnchat =  (ImageButton) findViewById(R.id.button_Mes);
