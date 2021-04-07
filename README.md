@@ -74,6 +74,7 @@ d. Database
 		* Tên user ( vừa là tên shop đại diện bán hàng )
 		* Địa chỉ 
 		* Sđt
+		* Avatar
 
 	- Hóa đơn
 		* Số hóa đơn
