@@ -51,39 +51,39 @@ d. Database
 	- Search ( tìm kiếm trước đó, tìm kiếm nhiều (trending), tìm kiếm tên sản phẩm )
 	- Thông tin từng sản phẩm
 		* id sản phẩm  : từng sản phẩm có id khác nhau
-		* id của shop bán sản phẩm đó
-		* Hình của sản phẩm
+		* id của shop bán sản phẩm đó ( ID user )
 		* Tên sản phẩm
+		* Hình sản phẩm ( 1 hình )
 		* Giá sản phẩm ( đơn vị $ hết cho đồng bộ )
 		* Số sao ( rating bar )
 		* Số người đã mua
 		* Nơi bán 
 		* Thông tin chi tiết, mô tả sản phẩm
-		* Số sản phẩm còn trong kho
-		* Size
 		* Đánh giá của người dùng (* làm sau cùng )
 		* Mã giảm giá (* làm sau cùng )
 		* Sản phẩm tương tự ( * làm sau cùng )
-	- Thông tin shop bán sản phẩm
-		* id : từng shop có id khác nhau 
-		* Tên shop
-		* Địa chỉ shop
-		* Số người đã mua tất cả sản phẩm
-		* Số sản phẩm ( list hết sản phẩm bằng *id )
-	- Thông tin người mua
-		* id người mua
-		* Tên người mua
-		* Địa chỉ
+		* Nước sản xuất
+	- Thông tin chi tiết sản phẩm
+		* ID sản phẩm
+		* Size
+		* Color
+		* Số sản phẩm còn trong kho
+		* Số sản phẩm đã bán
+	- User
+		* ID user
+		* Tên user ( vừa là tên shop đại diện bán hàng )
+		* Địa chỉ 
 		* Sđt
-		* Ngày sinh
 
 	- Hóa đơn
 		* Số hóa đơn
 		* Ngày hóa đơn
-		* Mã khách hàng
+		* Mã khách hàng( ID user )
 		* Giá
 	- CTHD 
 		* Số hóa đơn
 		* id sản phẩm
 		* Số lượng
+		
+![image](https://user-images.githubusercontent.com/66076345/113800883-eeecbe00-9781-11eb-8c52-be82df64b034.png)
 		
