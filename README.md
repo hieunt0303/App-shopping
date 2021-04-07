@@ -3,7 +3,24 @@ PHÂN CÔNG NHIỆM VỤ
 - Lưu ý : làm bất cứ thành phần nào có thể click đc vd như button, các item trong list view, ...
 nói chung thành phần nào có thể setOnClick thì làm lun cái hàm đó, chỉ cẩn làm click vào nó hiện ra cái thông báo gì đó là đc
 ( vd dùng hàm touch ) để sau này làm backend cho dễ 
+- Cách đặt tên : (tên thuộc tính)_(tên chức năng)
 
+![image](https://user-images.githubusercontent.com/66076345/113801245-a255b280-9782-11eb-9293-af0deb567a43.png)
+![image](https://user-images.githubusercontent.com/66076345/113801258-a97cc080-9782-11eb-8697-2752efe42e47.png)
+
+
+		
+		
+- Cách đặt tên các thuộc tính ( text, list view) 
+	* Trong XML : đặt nguyên cái tên đó cộng với chức năng --> (tên thuộc tính)_(tên chức năng hiển thị viết hoa chữ đầu)
+		textview_Name
+		
+		button_GetStarted
+	* Khi ánh xạ trong file activity : (tên thuộc tính)(tên chức năng viết hoa chữ đầu )
+	
+		textviewName
+		
+		buttonGetStarted
 
 1. DATABASE ( Hiếu)
 2. Chuyển giữa các giao diện với nhau trong menu dưới ( Long )
