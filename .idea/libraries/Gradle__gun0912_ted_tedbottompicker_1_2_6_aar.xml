@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: gun0912.ted:tedbottompicker:1.2.6@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb86044e7f208dec811ee54cef468978/jetified-tedbottompicker-1.2.6/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb86044e7f208dec811ee54cef468978/jetified-tedbottompicker-1.2.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb86044e7f208dec811ee54cef468978/jetified-tedbottompicker-1.2.6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bb86044e7f208dec811ee54cef468978/jetified-tedbottompicker-1.2.6/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/gun0912.ted/tedbottompicker/1.2.6/ed606ea63767c0d8bdc46d042e4ddfaf8f9d2aa7/tedbottompicker-1.2.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/gun0912.ted/tedbottompicker/1.2.6/44a64ba54c9d3ed80ce79186ae7a0f374d7b02e2/tedbottompicker-1.2.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
