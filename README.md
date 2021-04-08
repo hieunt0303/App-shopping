@@ -102,6 +102,7 @@ d. Database
 		* Số hóa đơn
 		* id sản phẩm
 		* Số lượng
-		
-![image](https://user-images.githubusercontent.com/66076345/113800883-eeecbe00-9781-11eb-8c52-be82df64b034.png)
-		
+
+
+![image](https://user-images.githubusercontent.com/66076345/114004825-36aa3d00-9889-11eb-8979-222e48451193.png)
+
