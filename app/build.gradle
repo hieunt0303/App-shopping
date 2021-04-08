@@ -36,4 +36,12 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // thư viện láy ảnh từ điện thoại
+    implementation 'gun0912.ted:tedbottompicker:1.2.6'
+    //thư viện cho phép truy cập cào tài nguyên của điẹn thoại
+    implementation 'gun0912.ted:tedpermission:2.2.3'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
