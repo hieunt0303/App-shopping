@@ -33,22 +33,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextuser"
         android:layout_width="302dp"
         android:layout_height="58dp"
         android:layout_marginStart="68dp"
         android:layout_marginLeft="68dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_email"
-
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/email"
+        android:hint="@string/email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="@string/email" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPass"
         android:layout_width="302dp"
         android:layout_height="58dp"
         android:layout_marginStart="68dp"
@@ -56,10 +55,9 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/shape_email"
         android:ems="10"
-        android:inputType="textPassword"
-        android:text="@string/password"
+        android:hint="@string/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextuser" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -70,7 +68,7 @@
         android:layout_marginTop="80dp"
         android:background="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass"
         app:srcCompat="@drawable/shape_login" />
 
     <TextView
@@ -83,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imageButton2"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/imageButton2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass"
         tools:visibility="visible" />
 
     <TextView
@@ -100,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
 
     <ImageButton
         android:id="@+id/imageButton"
