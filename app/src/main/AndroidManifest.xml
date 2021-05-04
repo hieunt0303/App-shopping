@@ -20,13 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Manhinh_Per" />
-        <activity android:name=".Manhinh_Nof" />
-        <activity android:name=".Manhinh_Mes" />
-        <activity android:name=".Manhinh_Cart" />
-        <activity android:name=".Manhinh_Home">
-
-        </activity>
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
     </application>
