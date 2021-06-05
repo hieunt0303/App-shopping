@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -65,6 +66,8 @@ public class Manhinh_DK extends AppCompatActivity {
                 {
                     User user = new User("0","0",email.getText().toString(),"0",name.getText().toString(),pass.getText().toString());
                     mData.push().setValue(user);
+                    Intent mh = new Intent(Manhinh_DK.this,Manhinh_Login.class);
+                    startActivity(mh);
                 }
             }
         });

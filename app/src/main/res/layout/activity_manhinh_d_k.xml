@@ -6,14 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".Manhinh_DK"
     android:background="#FFFF">
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="301dp"
+        android:layout_height="270dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_login" />
+
+    <TextView
+        android:id="@+id/DK"
+        android:layout_width="182dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Dang Ky"
+        android:textAppearance="@style/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="302dp"
         android:layout_height="58dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="384dp"
         android:background="@drawable/shape_email"
         android:ems="10"
         android:hint="User"
@@ -30,10 +55,10 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/shape_email"
         android:ems="10"
-        android:hint="@string/email"
+        android:hint="UserName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
-        tools:text="@string/email" />
+         />
 
     <EditText
         android:id="@+id/editTextPass1"
@@ -48,13 +73,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextuser1"
     />
+
     <Button
         android:id="@+id/button9"
-        android:layout_width="194dp"
-        android:layout_height="122dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="92dp"
+        android:layout_width="197dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/shape_login"
         android:text="DK"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPass1" />

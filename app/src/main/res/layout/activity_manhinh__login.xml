@@ -93,7 +93,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="177dp"
         android:layout_marginRight="177dp"
-        android:text="@string/forgot_pass"
+        android:text="chua co tai khoan ?"
         android:textAppearance="@style/forgot_pass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"

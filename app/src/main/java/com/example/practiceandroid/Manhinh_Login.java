@@ -19,6 +19,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -26,6 +29,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
     EditText editTextEmail;
     EditText editTextPassword;
+    TextView dk;
     List<User> DS = new ArrayList<>();
 
 
@@ -44,6 +48,7 @@ public class Manhinh_Login extends AppCompatActivity {
         btnLogin = (ImageButton) findViewById(R.id.imageButton2);
         editTextEmail=(EditText) findViewById(R.id.editTextuser);
         editTextPassword=(EditText) findViewById(R.id.editTextPass);
+        dk = (TextView) findViewById(R.id.textView_description);
         mData.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -80,6 +85,13 @@ public class Manhinh_Login extends AppCompatActivity {
                     Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
                     startActivity(mh);
                 }
+            }
+        });
+        dk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mh = new Intent(Manhinh_Login.this,Manhinh_DK.class);
+                startActivity(mh);
             }
         });
     }
