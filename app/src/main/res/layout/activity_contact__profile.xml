@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile"
@@ -71,9 +72,8 @@
         android:text="Change profile photo"
         android:textColor="#79CEED"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.426"
         app:layout_constraintStart_toEndOf="@+id/profile_avatar"
+        app:layout_constraintStart_toStartOf="@+id/profile_name"
         app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
 
@@ -81,7 +81,7 @@
         android:id="@+id/button_submit"
         android:layout_width="330dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_submit"
         android:text="Submit"
         android:textColor="@color/white"
@@ -103,17 +103,22 @@
         app:layout_constraintStart_toStartOf="@+id/guideline21"
         app:layout_constraintTop_toBottomOf="@+id/profile_avatar" />
 
+
     <EditText
         android:id="@+id/editText_ID"
         android:layout_width="350dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="66dp"
         android:background="@drawable/button_border"
         android:gravity="center|left"
         android:hint=""
         android:inputType="none"
+        android:paddingLeft="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
 
     <TextView
         android:id="@+id/textView3"
@@ -130,12 +135,18 @@
         android:id="@+id/editText_Username"
         android:layout_width="350dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="66dp"
         android:background="@drawable/button_border"
         android:gravity="center|left"
         android:hint=""
         android:inputType="text"
+        android:paddingLeft="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/textview4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textview4"
@@ -153,10 +164,14 @@
         android:id="@+id/editText_PhoneNumber"
         android:layout_width="350dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="66dp"
         android:background="@drawable/button_border"
         android:gravity="center|left"
         android:hint=""
         android:inputType="number"
+        android:paddingLeft="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/textview5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
         app:layout_constraintTop_toBottomOf="@+id/textview4" />
@@ -177,10 +192,14 @@
         android:id="@+id/editText_Address"
         android:layout_width="350dp"
         android:layout_height="60dp"
+        android:layout_marginEnd="66dp"
         android:background="@drawable/button_border"
         android:gravity="top|left"
         android:hint=""
         android:inputType="text"
+        android:paddingLeft="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/textview6"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
         app:layout_constraintTop_toBottomOf="@+id/textview5" />
@@ -201,10 +220,12 @@
         android:id="@+id/editText_Email"
         android:layout_width="350dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="66dp"
         android:background="@drawable/button_border"
         android:gravity="center|left"
         android:hint=""
         android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
         app:layout_constraintTop_toBottomOf="@+id/textview6" />

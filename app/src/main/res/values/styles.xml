@@ -43,7 +43,7 @@
 
     <!-- for text -->
     <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">25dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textColor">#79CEED</item>
         <item name="textAllCaps">false</item>
     </style>

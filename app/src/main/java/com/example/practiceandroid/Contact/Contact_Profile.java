@@ -97,18 +97,15 @@ public class Contact_Profile extends AppCompatActivity {
     // this function is triggered when
     // the Select Image Button is clicked
     void imageChooser() {
-
         // create an instance of the
         // intent of the type image
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-
         // pass the constant to compare it
         // with the returned requestCode
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
     }
-
     // this function is triggered when user
     // selects the image from the imageChooser
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

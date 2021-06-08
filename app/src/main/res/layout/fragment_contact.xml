@@ -218,6 +218,7 @@
         app:layout_constraintTop_toBottomOf="@+id/order_text" />
 
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="95dp"
         android:layout_height="36dp"
         android:layout_marginTop="316sp"
@@ -270,20 +271,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.11" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
     <GridView
         android:layout_width="match_parent"
         android:layout_height="296dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline20" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

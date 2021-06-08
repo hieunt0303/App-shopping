@@ -3,10 +3,15 @@ package com.example.practiceandroid.Contact.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.practiceandroid.R;
 
@@ -16,6 +21,12 @@ import com.example.practiceandroid.R;
  * create an instance of this fragment.
  */
 public class FeedbackFragment extends Fragment {
+
+    private RecyclerView rvItem;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    ImageView ivProduct;
+    Button bttComment;
+    TextView tvName, tvPrice;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +72,12 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feedback, container, false);
+        View view = inflater.inflate(R.layout.fragment_feedback, container, false);
+
+
+
+        return view;
     }
+
+
 }
