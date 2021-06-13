@@ -50,6 +50,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
 }
 dependencies {
+
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
 
