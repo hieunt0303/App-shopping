@@ -5,10 +5,11 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.practiceandroid.Contact.Fragment.adapter_tablayout_contact;
+import com.example.practiceandroid.Contact.Tablayout_Fragment.adapter.adapter_tablayout_contact;
 import com.example.practiceandroid.Fragment.ContactFragment;
 import com.example.practiceandroid.R;
 import com.google.android.material.tabs.TabLayout;
@@ -27,7 +28,7 @@ public class Contact_Waiting_Shipping_Dellivering extends AppCompatActivity {
     TextView tvTitle;
 
     @BindView(R.id.imageview_Back)
-    ImageView ivBack;
+    ImageButton ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

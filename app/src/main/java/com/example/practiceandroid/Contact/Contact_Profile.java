@@ -3,29 +3,27 @@ package com.example.practiceandroid.Contact;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.practiceandroid.Contact.Fragment.adapter_tablayout_contact;
-import com.example.practiceandroid.Fragment.ViewPageAdapter;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.User;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
-import java.io.IOException;
-import java.security.Permission;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +40,7 @@ public class Contact_Profile extends AppCompatActivity {
     @BindView(R.id.change_photo) TextView tvChangePhoto;
     @BindView(R.id.profile_avatar) ImageView ivProfile_Avatar;
     @BindView(R.id.button_submit) Button bttSubmit;
-    @BindView(R.id.back_button) ImageView ivBack;
+    @BindView(R.id.back_button) ImageButton ivBack;
 
     User mUser;
 
@@ -56,17 +54,59 @@ public class Contact_Profile extends AppCompatActivity {
         //Su dung BindView thay cho findViewbyID
         ButterKnife.bind(this);
 
-        tvChangePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RequestPermission();
-            }
-        });
+        tvChangePhoto.setOnClickListener(v -> RequestPermission());
 
         ivBack.setOnClickListener(v -> finish());
 
+        bttSubmit.setOnClickListener(v -> {
+            String sEmail = edtEmail.getText().toString();
+            String iPhone = edtPhoneNumber.getText().toString();
+
+            if (TextUtils.isEmpty(edtAddress.getText().toString()) ||
+                    TextUtils.isEmpty(edtUserName.getText().toString())){
+                setupDialogMessage(" Something wrong\nPlease check again");
+            }
+            else if (!TextUtils.isEmpty(sEmail) && Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()){
+                setupDialogMessage("Email not correct");
+            }
+            else if (!TextUtils.isEmpty(iPhone) && iPhone.length() != 10){
+                setupDialogMessage("Phone number length must = 10");
+            }
+            else {
+                setupDialogYesNo();
+            }
+        });
 
 
+
+    }
+
+    private void setupDialogMessage(String message) {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_messagebox);
+
+        TextView tvMessage =dialog.findViewById(R.id.tvMessage_dialog);
+        Button bttOK = dialog.findViewById(R.id.btt_dialogOk);
+
+        tvMessage.setText(message);
+        bttOK.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+    }
+
+    private void setupDialogYesNo() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_confirmbox);
+
+        Button bttYes = dialog.findViewById(R.id.btt_dialogYes);
+        Button bttNo  = dialog.findViewById(R.id.btt_dialogNo);
+
+        bttNo.setOnClickListener(v -> dialog.dismiss());
+        bttYes.setOnClickListener(v ->  {
+
+        });
+
+        dialog.show();
     }
 
     //Request Permission

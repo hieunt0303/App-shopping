@@ -15,6 +15,11 @@ import com.example.practiceandroid.Contact.Contact_Profile;
 import com.example.practiceandroid.Contact.Contact_Waiting_Shipping_Dellivering;
 import com.example.practiceandroid.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link com.example.practiceandroid.Fragment.ContactFragment#newInstance} factory method to
@@ -22,9 +27,19 @@ import com.example.practiceandroid.R;
  */
 public class ContactFragment extends Fragment {
 
+    Unbinder unbinder;
+
+    @BindView(R.id.edit_profile)
     Button bttEditProfile;
 
-    ImageView ivWaiting, ivDelivering, ivFeedBack;
+    @BindView(R.id.waiting)
+    ImageView ivWaiting;
+    @BindView(R.id.delivering)
+    ImageView ivDelivering;
+    @BindView(R.id.feedback)
+    ImageView ivFeedBack;
+
+
     public static int Postion = 0;
 
     private static final String ARG_PARAM1 = "param1";
@@ -64,15 +79,12 @@ public class ContactFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
+        //Use ButterKnife instead of findViewByID
+        unbinder = ButterKnife.bind(ContactFragment.this, view);
 
         //Intend to Contact_Profile
-        bttEditProfile = view.findViewById(R.id.edit_profile);
         bttEditProfile.setOnClickListener(v -> startActivity(new Intent(getActivity(), Contact_Profile.class)));
 
-        //Intend to Tablayout_Waiting_Delivering_FeedBack
-        ivWaiting = view.findViewById(R.id.waiting);
-        ivDelivering = view.findViewById(R.id.delivering);
-        ivFeedBack = view.findViewById(R.id.feedback);
 
         ivWaiting.setOnClickListener(v ->{
             Postion = 0;
@@ -93,5 +105,13 @@ public class ContactFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // unbind the view to free some memory
+        unbinder.unbind();
     }
 }

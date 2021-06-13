@@ -29,6 +29,9 @@
         </activity>
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".Contact.Contact_Waiting_Shipping_Dellivering" />
+        <activity android:name=".Contact.Contact_Profile" />
+        <activity android:name=".Contact.FeedBack_Comment" />
     </application>
 
 </manifest>

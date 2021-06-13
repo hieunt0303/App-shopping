@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 
 public class FeedBack_Comment extends AppCompatActivity {
 
-    RecyclerView scrollListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
