@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.R;
 import com.google.android.material.tabs.TabLayout;
+import com.example.practiceandroid.shopping.activity_shopping;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -87,7 +88,9 @@ public class Detail_Information_Product extends AppCompatActivity {
         btn_buynow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//                Intent intent = new Intent(getApplicationContext(),activity_shopping.class);
+//                startActivity(intent);
+//                startActivity(new Intent(Detail_Information_Product.this, activity_shopping.class));
                 // viết code cho việc nhấn button Buy Now ở đây
                 Toast.makeText(Detail_Information_Product.this,"Click button Buy Now", Toast.LENGTH_SHORT).show();
             }

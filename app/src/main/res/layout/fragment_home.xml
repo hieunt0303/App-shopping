@@ -113,6 +113,18 @@ xmlns:tools="http://schemas.android.com/tools">
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/txt_number"
+        android:layout_width="15dp"
+        android:layout_height="10dp"
+        android:background="@drawable/rec"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="7sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintRight_toLeftOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="wrap_content"
@@ -124,12 +136,13 @@ xmlns:tools="http://schemas.android.com/tools">
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/notification_white_icon" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="300dp" />
+        app:layout_constraintGuide_end="991dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"

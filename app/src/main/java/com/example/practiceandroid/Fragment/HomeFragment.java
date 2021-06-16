@@ -1,6 +1,7 @@
 package com.example.practiceandroid.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -19,12 +21,14 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.practiceandroid.MainActivity;
 import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.data_app.class_user;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.adapter_slide_header_home;
 import com.example.practiceandroid.home.class_Information_Product;
+import com.example.practiceandroid.notification.activity_notification;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -34,6 +38,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.example.practiceandroid.notification.activity_notification;
+import com.example.practiceandroid.MainActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +47,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,9 +65,11 @@ public class HomeFragment extends Fragment {
     List<class_Information_Product> productArrayList;
     adapter_Information_product adapter_information_product;
     NestedScrollView nestedScrollView;
-
     //Fire base hiển thị sản phẩm
      DatabaseReference mData;
+     //Số thông báo
+
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,7 +81,9 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     EditText editText_search;
-    ImageView img;
+    ImageView imgNotification;
+    Button btnNumber;
+    public static int number = 0;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -127,21 +138,66 @@ public class HomeFragment extends Fragment {
         // set adapter cho các sản phẩm
         gridView = view.findViewById(R.id.Gridview_product);
         nestedScrollView= view.findViewById(R.id.scrollviewProduct);
-        img= view.findViewById(R.id.imageView11);
+        imgNotification= view.findViewById(R.id.imageView11);
+        btnNumber = view.findViewById(R.id.txt_number);
         productArrayList= new ArrayList<>();
 
+        Bundle bundle = new Bundle();
+        number = bundle.getInt("number");
+
+        if(number != 0)
+        {
+            btnNumber.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            btnNumber.setVisibility(View.INVISIBLE);
+        }
+        btnNumber.setText(String.valueOf(number));
         //Sắp xếp tăng dần
-        img.setOnClickListener(new View.OnClickListener() {
+        imgNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Collections.sort(productArrayList, new Comparator<class_Information_Product>() {
-                    @Override
-                    public int compare(class_Information_Product o1, class_Information_Product o2) {
-                        editText_search.setText(String.valueOf(productArrayList.size()));
-                        return o1.getPrice_product_real().compareTo(o2.getPrice_product_real());
-                    }
-                });
-                adapter_information_product.notifyDataSetChanged();
+                btnNumber.setVisibility(View.INVISIBLE);
+                btnNumber.setText("0");
+                Intent intent = new Intent(getContext(), activity_notification.class);
+                startActivity(intent);
+//                Collections.sort(productArrayList, new Comparator<class_Information_Product>() {
+//                    @Override
+//                    public int compare(class_Information_Product o1, class_Information_Product o2) {
+//                        editText_search.setText(String.valueOf(productArrayList.size()));
+//                        return o1.getPrice_product_real().compareTo(o2.getPrice_product_real());
+//                    }
+//                });
+//                adapter_information_product.notifyDataSetChanged();
+            }
+        });
+
+        mData.child("Notification").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
+//                btnNumber.setVisibility(View.VISIBLE);
+//                btnNumber.setText(String.valueOf(Integer.parseInt(btnNumber.getText().toString())+1));
+            }
+
+            @Override
+            public void onChildChanged(@NonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull  DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull  DatabaseError error) {
+
             }
         });
         adapter_information_product= new adapter_Information_product(container.getContext(),R.layout.layout_sanpham,productArrayList);
@@ -216,4 +272,9 @@ public class HomeFragment extends Fragment {
 
         return view ;
     }
+//    public static void changNumber(Button number)
+//    {
+//        number.setVisibility(View.VISIBLE);
+//        number.setText(String.valueOf(Integer.parseInt(number.getText().toString())+1));
+//    }
 }
