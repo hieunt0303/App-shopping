@@ -40,10 +40,12 @@ public class adapter_Information_product extends BaseAdapter {
     List<class_Information_Product> InformationProduct;
     DatabaseReference mData= FirebaseDatabase.getInstance().getReference();
 
+
     public adapter_Information_product(Context context, int layout, List<class_Information_Product> informationProduct) {
         this.context = context;
         this.layout = layout;
         InformationProduct = informationProduct;
+
     }
 
     @Override
@@ -253,6 +255,7 @@ public class adapter_Information_product extends BaseAdapter {
 
                 Toast.makeText(context,InformationProduct.get(position).name_product,Toast.LENGTH_SHORT).show();
                 context.startActivity(intent);
+
             }
         });
         viewHolder.txtName.setOnClickListener(new View.OnClickListener() {
@@ -269,6 +272,7 @@ public class adapter_Information_product extends BaseAdapter {
                 intent.putExtra("detail",InformationProduct.get(position).detail);
 
                 Toast.makeText(context,InformationProduct.get(position).name_product,Toast.LENGTH_SHORT).show();
+
                 context.startActivity(intent);
             }
         });
