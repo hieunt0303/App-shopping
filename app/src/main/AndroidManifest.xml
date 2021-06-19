@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.practiceandroid">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".home.Detail_Information_Product"></activity>
-        <activity android:name=".Manhinh_Login"></activity>
+        <activity android:name=".home.Category.CategoryProduct"></activity>
+        <activity android:name=".home.Detail_Information_Product" />
+        <activity android:name=".Manhinh_Login" />
         <activity android:name=".Manhinh_Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
