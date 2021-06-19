@@ -48,10 +48,6 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-storage'
-
-    // thư viện dùng để Swipe to delete item RecyclerView trong Android
-    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
-    implementation 'com.google.android.material:material:<version>'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'

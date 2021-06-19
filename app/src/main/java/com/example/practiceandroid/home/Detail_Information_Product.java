@@ -3,9 +3,6 @@ package com.example.practiceandroid.home;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -16,11 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.practiceandroid.Fragment.CartFragment;
 import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.R;
-import com.example.practiceandroid.function.getShowCartFragment;
-import com.example.practiceandroid.function.home_function.getChecked_ADD_TO_CART;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -60,9 +54,12 @@ public class Detail_Information_Product extends AppCompatActivity {
     DatabaseReference mData= FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_detail__information__product);
         intent= getIntent();
+
 
         // Anh xa
         txt_nameProduct_detail= findViewById(R.id.name_product_detail);
@@ -86,52 +83,21 @@ public class Detail_Information_Product extends AppCompatActivity {
         btn_addtocart= findViewById(R.id.button_addtocart);
         btn_buynow= findViewById(R.id.button_buynow);
 
-        // check xem thử sản phẩm đã có trong CART chưa
-        String checked = getChecked_ADD_TO_CART.get(
-                txt_nameCategory_detail.getText().toString()
-                ,intent.getStringExtra("Id_product")
-        );
         // Set clik cho button ADDTOCART , BUY NOW
         btn_buynow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // XÉT XEM THỬ ĐÃ TỒN TẠI TRONG CART CHƯA
-                // NẾU RỒI CHUYỂN QUA GIAO DIỆN CART
-                // NẾU CHƯA THÌ ADD VÀ CHUYỂN QUA GIAO DIỆN CART
-                if(checked.equals("false")){
-                    getChecked_ADD_TO_CART.set(
-                            txt_nameCategory_detail.getText().toString(),
-                            intent.getStringExtra("Id_product"),
-                            "true"
-                    );
-                    // CHUYEN QUA GIAO DIEN CART
-                    getShowCartFragment.set("true");
-                    startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
-                    
-                }
-                else{
-                    getShowCartFragment.set("true");
-                    startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
-                }
+
+                // viết code cho việc nhấn button Buy Now ở đây
+                Toast.makeText(Detail_Information_Product.this,"Click button Buy Now", Toast.LENGTH_SHORT).show();
             }
         });
         btn_addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // XÉT XEM THỬ ĐÃ TỒN TẠI TRONG CART CHƯA
-                // NẾU RỒI THÌ THÔNG BÁO ĐÃ CÓ RỒI VÀ K ADD ĐC
-                // NẾU CHƯA THÌ ADD VÀO VÀ THÔNG BÁO ĐÃ ADD
-                if(checked.equals("false")){
-                    getChecked_ADD_TO_CART.set(
-                            txt_nameCategory_detail.getText().toString(),
-                            intent.getStringExtra("Id_product"),
-                            "true"
-                    );
-                    Toast.makeText(Detail_Information_Product.this,"The product has been added to cart", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(Detail_Information_Product.this,"The product has been added to cart",Toast.LENGTH_SHORT).show();
-                }
+
+                // Viết code cho việc nhấn button Add to cart ở đây
+                Toast.makeText(Detail_Information_Product.this,"Click button Add to cart", Toast.LENGTH_SHORT).show();
             }
         });
 

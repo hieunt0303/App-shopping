@@ -1,113 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/FragmentCart"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.practiceandroid.Fragment.CartFragment"
-    android:orientation="vertical"
-    android:background="@color/white"
-    android:weightSum="10">
+    android:background="@color/purple_200"
+    tools:context="com.example.practiceandroid.Fragment.CartFragment">
+
+    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cart"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="#808080"
-        >
-    </TextView>
+        android:layout_centerInParent="true"
+        android:textSize="20dp"
+        android:textColor="@color/purple_200"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_weight="0.25"
-        android:gravity="right">
-<!--        <TextView-->
-<!--            android:id="@+id/txtView_checked"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:text="Select All"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="20dp"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <CheckBox-->
-<!--            android:id="@+id/checkbox_checked"-->
-<!--            android:layout_width="32dp"-->
-<!--            android:layout_height="32dp"-->
-<!--            android:layout_marginLeft="12dp"-->
-<!--            android:layout_marginRight="12dp"-->
-<!--            android:background="@drawable/circlebox"/>-->
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="8.5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/textIsEmpty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your cart is empty!!!"
-                android:textSize="20sp"
-                android:elevation="0dp"
-                android:textColor="@color/white"
-                android:layout_gravity="center"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_Cart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </androidx.recyclerview.widget.RecyclerView>
-        </FrameLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="15dp">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:weightSum="3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/botron_edittext_chat">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total"
-                android:textSize="24sp"
-                android:textColor="#808080">
-            </TextView>
-            <TextView
-                android:id="@+id/totalcart"
-                android:layout_weight="2.5"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$00"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="#F87328"
-                android:gravity="center"
-                tools:ignore="InvalidId">
-            </TextView>
-            <Button
-                android:id="@+id/btnbuynow"
-                android:layout_weight="0.5"
-                android:layout_width="90dp"
-                android:layout_height="60dp"
-                android:text="Buy Now"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:background="@drawable/button_botron4goc"
-                android:gravity="center">
-            </Button>
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
