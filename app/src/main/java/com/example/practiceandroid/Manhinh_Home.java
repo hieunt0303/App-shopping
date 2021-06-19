@@ -10,9 +10,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import com.example.practiceandroid.Fragment.ViewPageAdapter;
+import com.example.practiceandroid.function.getShowCartFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Manhinh_Home extends AppCompatActivity {
 
@@ -27,6 +32,15 @@ public class Manhinh_Home extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.Bottom_navigation);
         ViewPageAdapter adapter = new ViewPageAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter((adapter));
+
+
+        // SET CỨNG KHI CLICK BUTTON BUY NOW THÌ NÓ SẼ HIỂN HTỊ CÁI CART LUN
+        if(getShowCartFragment.get().equals("true")) {
+            Toast.makeText(Manhinh_Home.this,"getShowCartFragment",Toast.LENGTH_SHORT).show();
+            bottomNavigationView.getMenu().findItem(R.id.menu_cart).setChecked(true);
+            viewPager.setCurrentItem(1);
+            getShowCartFragment.set("false");
+        }
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -68,7 +82,6 @@ public class Manhinh_Home extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.menu_home:
                         viewPager.setCurrentItem(0);
-
                         break;
                     case R.id.menu_cart:
                         viewPager.setCurrentItem(1);
@@ -86,5 +99,7 @@ public class Manhinh_Home extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
 }
