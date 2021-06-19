@@ -68,6 +68,7 @@ public class Manhinh_Home extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.menu_home:
                         viewPager.setCurrentItem(0);
+
                         break;
                     case R.id.menu_cart:
                         viewPager.setCurrentItem(1);

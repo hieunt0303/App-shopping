@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/imageView_seen_chat_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/icon_tick_seen" />
+
+    <TextView
+        android:id="@+id/content_chat_user"
+        android:layout_width="wrap_content"
+        android:maxWidth="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+
+        android:text="TextView"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:background="@drawable/botron_chat_user"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_seen_chat_user"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
