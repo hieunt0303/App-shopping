@@ -22,7 +22,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>7
+            </intent-filter>
         </activity>
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
