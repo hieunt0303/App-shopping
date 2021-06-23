@@ -117,6 +117,7 @@ public class Manhinh_Login extends AppCompatActivity {
     }
     private void setupDatabase() {
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
+        databaseUserLogin.QueryData("DROP TABLE IF EXISTS User");
         databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50))");
     }
 }

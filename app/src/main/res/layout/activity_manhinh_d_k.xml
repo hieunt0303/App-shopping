@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Manhinh_DK"
-    android:background="#FFFF">
+    android:background="#FFFF"
+    android:windowSoftInputMode="adjustUnspecified">
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="301dp"
@@ -27,12 +28,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Dang Ky"
+        android:text="SIGN UP"
         android:textAppearance="@style/login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
         android:id="@+id/editTextName"
         android:layout_width="302dp"
         android:layout_height="58dp"
@@ -41,12 +45,17 @@
         android:layout_marginTop="384dp"
         android:background="@drawable/shape_email"
         android:ems="10"
-        android:hint="User"
+        android:hint="UserName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/email" />
+         />
 
     <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="textEmailAddress"
         android:id="@+id/editTextuser1"
         android:layout_width="302dp"
         android:layout_height="58dp"
@@ -55,12 +64,17 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/shape_email"
         android:ems="10"
-        android:hint="UserName"
+        android:hint="Email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName"
          />
 
     <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
         android:id="@+id/editTextPass1"
         android:layout_width="302dp"
         android:layout_height="58dp"
@@ -70,6 +84,8 @@
         android:background="@drawable/shape_email"
         android:ems="10"
         android:hint="@string/password"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextuser1"
     />
@@ -82,7 +98,7 @@
         android:layout_marginLeft="124dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/shape_login"
-        android:text="DK"
+        android:text="SIGN UP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPass1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
