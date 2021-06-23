@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -15,14 +16,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 public class Manhinh_Home extends AppCompatActivity {
-
     private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
+    DatabaseUserLogin db;
+    public static User userlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinh__home);
-
+        db = new DatabaseUserLogin(this, "user.sqlite", null, 1);
+        Cursor datauser = db.GetData("Select * from User");
+        while (datauser.moveToNext()) {
+            userlogin = new User("0","0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3));
+        }
         viewPager = findViewById((R.id.View_paper));
         bottomNavigationView = findViewById(R.id.Bottom_navigation);
         ViewPageAdapter adapter = new ViewPageAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

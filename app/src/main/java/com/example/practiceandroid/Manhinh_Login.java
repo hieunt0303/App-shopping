@@ -27,10 +27,12 @@ import java.util.ArrayList;
 
 public class Manhinh_Login extends AppCompatActivity {
 
+    DatabaseUserLogin databaseUserLogin;
     EditText editTextEmail;
     EditText editTextPassword;
     TextView dk;
     List<User> DS = new ArrayList<>();
+    public static User userlogin;
 
 
     //Declaration TextInputLayout
@@ -49,6 +51,7 @@ public class Manhinh_Login extends AppCompatActivity {
         editTextEmail=(EditText) findViewById(R.id.editTextuser);
         editTextPassword=(EditText) findViewById(R.id.editTextPass);
         dk = (TextView) findViewById(R.id.textView_description);
+        setupDatabase();
         mData.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -102,9 +105,18 @@ public class Manhinh_Login extends AppCompatActivity {
             if(DS.get(i).name_user.equals(editTextEmail.getText().toString())&&
                DS.get(i).password.equals(editTextPassword.getText().toString()))
             {
+                databaseUserLogin.QueryData("insert into User values(null, '"
+                        + DS.get(i).name_user + "', '"
+                        + DS.get(i).email+ "', '"
+                        + DS.get(i).password +"')"
+                        );
                 return  true;
             }
         }
         return false;
+    }
+    private void setupDatabase() {
+        databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50))");
     }
 }

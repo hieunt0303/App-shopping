@@ -21,6 +21,7 @@
         app:srcCompat="@drawable/icon_login" />
 
     <TextView
+
         android:id="@+id/login"
         android:layout_width="133dp"
         android:layout_height="50dp"
@@ -33,6 +34,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
         android:id="@+id/editTextuser"
         android:layout_width="302dp"
         android:layout_height="58dp"
@@ -41,12 +45,17 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_email"
         android:ems="10"
-        android:hint="@string/email"
+        android:hint="Username"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:text="@string/email" />
+         />
 
     <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
         android:id="@+id/editTextPass"
         android:layout_width="302dp"
         android:layout_height="58dp"
@@ -56,6 +65,8 @@
         android:background="@drawable/shape_email"
         android:ems="10"
         android:hint="@string/password"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextuser" />
 
