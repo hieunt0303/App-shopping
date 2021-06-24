@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".admin_Home">
+        <activity android:name=".Manhinh_Resetpass"></activity>
+        <activity android:name=".Manhinh_Mailreset">
 
         </activity>
-        <activity android:name=".Manhinh_DK">
-
-        </activity>
+        <activity android:name=".admin_Home" />
+        <activity android:name=".Manhinh_DK" />
         <activity android:name=".home.Detail_Information_Product" />
         <activity android:name=".Manhinh_Login">
             <intent-filter>
@@ -23,9 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Manhinh_Home">
-
-        </activity>
+        <activity android:name=".Manhinh_Home" />
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
     </application>
