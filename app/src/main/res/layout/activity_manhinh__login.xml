@@ -21,6 +21,7 @@
         app:srcCompat="@drawable/icon_login" />
 
     <TextView
+
         android:id="@+id/login"
         android:layout_width="133dp"
         android:layout_height="50dp"
@@ -33,6 +34,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
         android:id="@+id/editTextuser"
         android:layout_width="302dp"
         android:layout_height="58dp"
@@ -41,12 +45,17 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_email"
         android:ems="10"
-        android:hint="@string/email"
+        android:hint="Username"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:text="@string/email" />
+         />
 
     <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="textPassword"
         android:id="@+id/editTextPass"
         android:layout_width="302dp"
         android:layout_height="58dp"
@@ -56,6 +65,8 @@
         android:background="@drawable/shape_email"
         android:ems="10"
         android:hint="@string/password"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextuser" />
 
@@ -88,66 +99,25 @@
         android:id="@+id/textView_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="177dp"
-        android:layout_marginRight="177dp"
-        android:text="@string/forgot_pass"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="56dp"
+        android:text="Sign up"
+        android:textColor="@color/blue"
         android:textAppearance="@style/forgot_pass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:background="#FFFF"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/icon_fb" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:background="#FFFF"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/icon_gg" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginRight="152dp"
-        android:background="#FFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/icon_tw" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="64dp"
-        android:background="#FFFF"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/icon_ig" />
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="Don't have an account? "
+        android:textAppearance="@style/forgot_pass"
+        app:layout_constraintEnd_toStartOf="@+id/textView_description"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

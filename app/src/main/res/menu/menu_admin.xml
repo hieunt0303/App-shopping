@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background = "#FFFF">
+    <item android:id="@+id/fragment_adminHome" android:title="Home" android:icon="@drawable/home"/>
+    <item android:id="@+id/fragment_adminChat" android:title="Chat" android:icon="@drawable/message"/>
+    <item android:id="@+id/fragment_adminAdd" android:title="Add" android:icon="@drawable/add"/>
+</menu>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Manhinh_DK"
+    android:background="#FFFF"
+    android:windowSoftInputMode="adjustUnspecified">
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="301dp"
+        android:layout_height="270dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_login" />
+
+    <TextView
+        android:id="@+id/DK"
+        android:layout_width="182dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="SIGN UP"
+        android:textAppearance="@style/login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
+        android:id="@+id/editTextName"
+        android:layout_width="302dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="384dp"
+        android:background="@drawable/shape_email"
+        android:ems="10"
+        android:hint="UserName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="textEmailAddress"
+        android:id="@+id/editTextuser1"
+        android:layout_width="302dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_email"
+        android:ems="10"
+        android:hint="Email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+         />
+
+    <EditText
+        android:maxLines="1"
+        android:lines="1"
+        android:inputType="text"
+        android:id="@+id/editTextPass1"
+        android:layout_width="302dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_email"
+        android:ems="10"
+        android:hint="@string/password"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextuser1"
+    />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="197dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/shape_login"
+        android:text="SIGN UP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass1" />
+</androidx.constraintlayout.widget.ConstraintLayout>
