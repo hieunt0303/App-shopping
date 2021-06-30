@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +25,7 @@ import java.util.List;
 public class Manhinh_Login extends AppCompatActivity {
 
     DatabaseUserLogin databaseUserLogin;
-    EditText editTextEmail;
+    EditText editTextUser;
     EditText editTextPassword;
     TextView dk;
     List<User> DS = new ArrayList<>();
@@ -44,7 +45,7 @@ public class Manhinh_Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinh__login);
         btnLogin = (ImageButton) findViewById(R.id.imageButton2);
-        editTextEmail=(EditText) findViewById(R.id.editTextuser);
+        editTextUser=(EditText) findViewById(R.id.editTextuser);
         editTextPassword=(EditText) findViewById(R.id.editTextPass);
         dk = (TextView) findViewById(R.id.textView_description);
         setupDatabase();
@@ -86,10 +87,17 @@ public class Manhinh_Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check())
+                if(editTextPassword.getText() != null && editTextUser.getText() != null) {
+                    if (check()) {
+                        Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
+                        startActivity(mh);
+                    }
+                }
+                else
                 {
-                    Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
-                    startActivity(mh);
+                    Toast.makeText(getApplicationContext(),  "Tài khoản / mật khẩu không được để trống!",
+
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -106,7 +114,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
         for(int i=0;i<DS.size();i++)
         {
-            if(DS.get(i).name_user.equals(editTextEmail.getText().toString())&&
+            if(DS.get(i).name_user.equals(editTextUser.getText().toString())&&
                DS.get(i).password.equals(editTextPassword.getText().toString()))
             {
                 databaseUserLogin.QueryData("insert into User values(null, '"
@@ -121,6 +129,6 @@ public class Manhinh_Login extends AppCompatActivity {
     }
     private void setupDatabase() {
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
-        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50))");
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), User nvarchar(50), Password nvarchar(50))");
     }
 }
