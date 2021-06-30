@@ -28,6 +28,7 @@ public class Manhinh_Login extends AppCompatActivity {
     EditText editTextUser;
     EditText editTextPassword;
     TextView dk;
+    TextView forgotpass;
     List<User> DS = new ArrayList<>();
     public static User userlogin;
 
@@ -48,6 +49,7 @@ public class Manhinh_Login extends AppCompatActivity {
         editTextUser=(EditText) findViewById(R.id.editTextuser);
         editTextPassword=(EditText) findViewById(R.id.editTextPass);
         dk = (TextView) findViewById(R.id.textView_description);
+        forgotpass = (TextView) findViewById(R.id.textViewforgotpass);
         setupDatabase();
         Cursor datauser = databaseUserLogin.GetData("Select * from User");
         if(datauser !=null)
@@ -105,6 +107,13 @@ public class Manhinh_Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mh = new Intent(Manhinh_Login.this,Manhinh_DK.class);
+                startActivity(mh);
+            }
+        });
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mh = new Intent(Manhinh_Login.this,Manhinh_Mailreset.class);
                 startActivity(mh);
             }
         });
