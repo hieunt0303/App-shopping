@@ -114,7 +114,7 @@ android:background="@color/white"
     android:padding="10dp"
     android:textAllCaps="false"
     android:textSize="18dp"
-    android:background="@drawable/border_4goc_search"
+    android:background="@drawable/rec_woman"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView_categories" />
 
@@ -132,7 +132,7 @@ android:background="@color/white"
     android:padding="10dp"
     android:textAllCaps="false"
     android:textSize="18dp"
-    android:background="@drawable/border_4goc_search"
+    android:background="@drawable/rec_man"
     app:layout_constraintStart_toEndOf="@+id/button2"
     app:layout_constraintTop_toBottomOf="@+id/textView_categories" />
 
@@ -150,7 +150,7 @@ android:background="@color/white"
     android:padding="10dp"
     android:textAllCaps="false"
     android:textSize="18dp"
-    android:background="@drawable/border_4goc_search"
+    android:background="@drawable/rec_watch"
     app:layout_constraintStart_toEndOf="@+id/button3"
     app:layout_constraintTop_toBottomOf="@+id/textView_categories" />
 
@@ -168,7 +168,7 @@ android:background="@color/white"
     android:padding="10dp"
     android:textAllCaps="false"
     android:textSize="18dp"
-    android:background="@drawable/border_4goc_search"
+    android:background="@drawable/rec_laptop_computer"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -186,7 +186,7 @@ android:background="@color/white"
     android:padding="10dp"
     android:textAllCaps="false"
     android:textSize="18dp"
-    android:background="@drawable/border_4goc_search"
+    android:background="@drawable/rec_mobile"
     app:layout_constraintStart_toEndOf="@+id/button5"
     app:layout_constraintTop_toBottomOf="@+id/button3" />
 
@@ -204,7 +204,7 @@ android:background="@color/white"
     android:padding="10dp"
     android:textAllCaps="false"
     android:textSize="18dp"
-    android:background="@drawable/border_4goc_search"
+    android:background="@drawable/rec_watch"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/button5" />
 
@@ -222,7 +222,7 @@ android:background="@color/white"
     android:padding="10dp"
     android:textAllCaps="false"
     android:textSize="18dp"
-    android:background="@drawable/border_4goc_search"
+    android:background="@drawable/rec_watch"
     app:layout_constraintStart_toEndOf="@+id/button7"
     app:layout_constraintTop_toBottomOf="@+id/button5" />
 

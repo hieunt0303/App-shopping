@@ -32,6 +32,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="30dp"
         android:text="Apple iPhone 12"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/imageView_Product_search"

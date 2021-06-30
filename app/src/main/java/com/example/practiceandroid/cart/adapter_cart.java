@@ -133,10 +133,10 @@ public class adapter_cart extends BaseAdapter {
                     // Vô hiệu quá 2 cái button -,+
                     viewHolder.btn_add.setClickable(false);
                     viewHolder.btn_minus.setClickable(false);
-                    viewHolder.btn_add.setBackground(ContextCompat.getDrawable(myContext,R.drawable.checkbox_add_disabled));
-                    viewHolder.btn_minus.setBackground(ContextCompat.getDrawable(myContext,R.drawable.checkbox_minus_disable));
+                    viewHolder.btn_add.setBackground(ContextCompat.getDrawable(myContext,R.drawable.add_disable));
+                    viewHolder.btn_minus.setBackground(ContextCompat.getDrawable(myContext,R.drawable.minus_disable));
 
-                    viewHolder.cb_checked.setBackground(ContextCompat.getDrawable(myContext,R.drawable.checkbox_check));
+                    viewHolder.cb_checked.setBackground(ContextCompat.getDrawable(myContext,R.drawable.checkbox_check1));
                     int total=  Integer.parseInt(total_before)+number_product* Integer.parseInt(viewHolder.txt_price_cart_product.getText().toString());
                     String total_after =String.valueOf(total);
                     mData.child("Cart").child("price_total").setValue(total_after);
@@ -145,8 +145,8 @@ public class adapter_cart extends BaseAdapter {
                     // Bỏ vô hiệu hóa 2 cái nút
                     viewHolder.btn_add.setClickable(true);
                     viewHolder.btn_minus.setClickable(true);
-                    viewHolder.btn_add.setBackground(ContextCompat.getDrawable(myContext,R.drawable.button_add));
-                    viewHolder.btn_minus.setBackground(ContextCompat.getDrawable(myContext,R.drawable.button_minus));
+                    viewHolder.btn_add.setBackground(ContextCompat.getDrawable(myContext,R.drawable.add1));
+                    viewHolder.btn_minus.setBackground(ContextCompat.getDrawable(myContext,R.drawable.minus1));
 
                     viewHolder.cb_checked.setBackground(ContextCompat.getDrawable(myContext,R.drawable.circlebox));
                     String total_after =String.valueOf( Integer.parseInt(total_before)-number_product* Integer.parseInt(viewHolder.txt_price_cart_product.getText().toString()));

@@ -1,17 +1,15 @@
 package com.example.practiceandroid.Fragment;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,27 +17,18 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.R;
-import com.example.practiceandroid.data_app.class_user;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.adapter_slide_header_home;
 import com.example.practiceandroid.home.class_Information_Product;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.practiceandroid.notification.activity_notification;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -73,6 +62,8 @@ public class HomeFragment extends Fragment {
     private String mParam2;
     EditText editText_search;
     ImageView img;
+    Button txtNumberNotification;
+    public static  int number = 0;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -129,19 +120,30 @@ public class HomeFragment extends Fragment {
         nestedScrollView= view.findViewById(R.id.scrollviewProduct);
         img= view.findViewById(R.id.imageView11);
         productArrayList= new ArrayList<>();
-
+        txtNumberNotification = view.findViewById(R.id.txt_number);
+        txtNumberNotification.setText(String.valueOf(number));
+        if(Integer.parseInt(txtNumberNotification.getText().toString()) == 0)
+        {
+            txtNumberNotification.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            txtNumberNotification.setVisibility(View.VISIBLE);
+        }
         //Sắp xếp tăng dần
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Collections.sort(productArrayList, new Comparator<class_Information_Product>() {
-                    @Override
-                    public int compare(class_Information_Product o1, class_Information_Product o2) {
-                        editText_search.setText(String.valueOf(productArrayList.size()));
-                        return o1.getPrice_product_real().compareTo(o2.getPrice_product_real());
-                    }
-                });
-                adapter_information_product.notifyDataSetChanged();
+                Intent intent = new Intent(getContext(), activity_notification.class);
+                startActivity(intent);
+//                Collections.sort(productArrayList, new Comparator<class_Information_Product>() {
+//                    @Override
+//                    public int compare(class_Information_Product o1, class_Information_Product o2) {
+//                        editText_search.setText(String.valueOf(productArrayList.size()));
+//                        return o1.getPrice_product_real().compareTo(o2.getPrice_product_real());
+//                    }
+//                });
+//                adapter_information_product.notifyDataSetChanged();
             }
         });
         adapter_information_product= new adapter_Information_product(container.getContext(),R.layout.layout_sanpham,productArrayList);

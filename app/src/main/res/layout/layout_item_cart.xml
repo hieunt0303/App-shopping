@@ -87,9 +87,10 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:gravity="center_horizontal"
+                        android:text=""
                         android:textSize="30dp"
                         android:textColor="#808080"
-                        android:background="@drawable/button_minus">
+                        android:background="@drawable/minus1">
                     </Button>
                     <TextView
                         android:focusable="false"
@@ -111,7 +112,7 @@
                         android:layout_gravity="center_horizontal"
                         android:textSize="32sp"
                         android:textColor="#808080"
-                        android:background="@drawable/button_add">
+                        android:background="@drawable/add1">
                     </Button>
                 </LinearLayout>
             </LinearLayout>

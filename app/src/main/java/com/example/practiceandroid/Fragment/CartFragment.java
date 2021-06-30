@@ -1,5 +1,7 @@
 package com.example.practiceandroid.Fragment;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,15 +24,18 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.Purchased_Product.classBought_Product;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.cart.adapter_cart;
 import com.example.practiceandroid.cart.adapter_cart_SwipeRevealLayout;
 import com.example.practiceandroid.cart.class_cart;
+import com.example.practiceandroid.dbSQLite.dbHelper;
 import com.example.practiceandroid.function.cart_function.getTotalPrice;
 import com.example.practiceandroid.function.cart_function.setADDTOCART_product;
 import com.example.practiceandroid.function.getCurrent_Day_Time;
 import com.example.practiceandroid.home.class_Information_Product;
+import com.example.practiceandroid.shopping.activity_shopping;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,6 +58,7 @@ public class CartFragment extends Fragment {
     ListView listView;
     ArrayList<class_cart> arr_carts;
     DatabaseReference mData;
+    public  static dbHelper dbhelper;
 
     adapter_cart_SwipeRevealLayout adapter_cart;
 
@@ -60,6 +68,7 @@ public class CartFragment extends Fragment {
     TextView txt_CheckAll;
     CheckBox cb_CheckAll;
     TextView txtEmpty;
+    ImageView btn_back;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,6 +111,10 @@ public class CartFragment extends Fragment {
         // Hiển thị sản phẩm với firebase
         mData= FirebaseDatabase.getInstance().getReference();
         mData.child("Cart").child("price_total").setValue("0");
+        dbhelper = new dbHelper(getContext(), "Product.sqlite", null, 1);
+        dbhelper.QueryData("CREATE TABLE IF NOT EXISTS SANPHAM(Id INTEGER PRIMARY KEY ,NameProduct VARCHAR(200) , PriceProduct VARCHAR(10), NumberProduct VARCHAR(10))");
+//        dbhelper.QueryData("DROP TABLE SANPHAM");
+//        dbhelper.QueryData("DESC SANPHAM;");
     }
 
     @Override
@@ -203,20 +216,34 @@ public class CartFragment extends Fragment {
                 else {
                     for (int i = arr_carts.size()-1; i >=0; i--) {
                         if (arr_carts.get(i).getChecked()) {
+
+                            dbhelper.QueryData("INSERT INTO SANPHAM VALUES(null, '"+ arr_carts.get(i).getName_cart_product().toString() + "','"+ arr_carts.get(i).getPrice_cart_product().toString() + "', '"+ arr_carts.get(i).getNumber_product().toString() + "' )");
+                            Cursor cursor = dbhelper.GetData("SELECT * FROM SANPHAM");
+                            while (cursor.moveToNext()) {
+                                Toast.makeText(getContext(), cursor.getString(1), Toast.LENGTH_LONG).show();
+                            }
+//                            dbhelper.QueryData("DROP TABLE SANPHAM");
+                            Intent intent = new Intent(getContext(), activity_shopping.class);
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("name_product",arr_carts.get(i).getName_cart_product().toString());
+//                            bundle.putString("price_product",arr_carts.get(i).getPrice_cart_product().toString());
+//                            bundle.putString("number_product",arr_carts.get(i).getNumber_product().toString());
+//                            intent.putExtras(bundle);
+                            startActivity(intent);
                             //Toast.makeText(getContext(),String.valueOf(i),Toast.LENGTH_SHORT).show();
-                            String currentDayTime= getCurrent_Day_Time.get();
-                            // format từ 2021/3/3 về 2021 3 3 để firebase không bị lỗi
-                            String currentDay= currentDayTime.split(" ")[0].replace("/"," ");
-                            String currentTime = currentDayTime.split(" ")[1];
-                            classBought_Product BOUGHT =  new classBought_Product(
-                                    "IDuser",
-                                    arr_carts.get(i).getName_cart_product(),
-                                    arr_carts.get(i).getPrice_cart_product(),
-                                    arr_carts.get(i).getNumber_product(),
-                                    currentDayTime,
-                                    false
-                            );
-                            mData.child("Bought_Product").child("IDuser").child(currentDay).child(currentTime).child(arr_carts.get(i).getName_cart_product()).setValue(BOUGHT);
+//                            String currentDayTime= getCurrent_Day_Time.get();
+//                            // format từ 2021/3/3 về 2021 3 3 để firebase không bị lỗi
+//                            String currentDay= currentDayTime.split(" ")[0].replace("/"," ");
+//                            String currentTime = currentDayTime.split(" ")[1];
+//                            classBought_Product BOUGHT =  new classBought_Product(
+//                                    "IDuser",
+//                                    arr_carts.get(i).getName_cart_product(),
+//                                    arr_carts.get(i).getPrice_cart_product(),
+//                                    arr_carts.get(i).getNumber_product(),
+//                                    currentDayTime,
+//                                    false
+//                            );
+//                            mData.child("Bought_Product").child("IDuser").child(currentDay).child(currentTime).child(arr_carts.get(i).getName_cart_product()).setValue(BOUGHT);
                             Toast.makeText(getContext(),arr_carts.get(i).getName_cart_product(),Toast.LENGTH_SHORT).show();
                             setADDTOCART_product.set(arr_carts.get(i).getName_cart_product(),
                                     arr_carts.get(i).getCategory_cart_product(),
@@ -226,6 +253,7 @@ public class CartFragment extends Fragment {
                             adapter_cart.notifyDataSetChanged();
                         }
                     }
+
                     // TRƯỚC KHI SET LẠI =0 THÌ PRICE_TOTAL CHÍNH LÀ TỔNG GIÁ TIỀN ĐÃ MUA
                     mData.child("Cart").child("price_total").setValue("0");
                     if(arr_carts.size()==0)
@@ -234,6 +262,14 @@ public class CartFragment extends Fragment {
                     ///////////////////// CODE LIEN ////////////////
                     ///// --> HERE
                 }
+            }
+        });
+        btn_back = view.findViewById(R.id.btn_back1);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Manhinh_Home.class);
+                startActivity(intent);
             }
         });
         return view;

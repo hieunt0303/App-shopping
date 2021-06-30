@@ -9,23 +9,47 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:weightSum="10">
-    <TextView
-        android:id="@+id/toolbar"
+    <LinearLayout
+        android:id="@+id/layout_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cart"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="#808080"
-        >
-    </TextView>
+        android:orientation="horizontal"
+        android:weightSum="6">
+        <ImageView
+            android:id="@+id/btn_back1"
+            android:layout_width="30dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/icon_back">
+        </ImageView>
+        <TextView
+            android:layout_weight="5"
+            android:id="@+id/txt_cart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#808080"
+            android:layout_margin="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            app:layout_constraintStart_toEndOf="@+id/imgbtnback"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:layout_gravity="center">
+        </TextView>
+    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_weight="0.25"
-        android:gravity="right">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="57dp"-->
+<!--        android:layout_weight="0.25"-->
+<!--        android:gravity="right">-->
 <!--        <TextView-->
 <!--            android:id="@+id/txtView_checked"-->
 <!--            android:layout_width="wrap_content"-->
@@ -42,7 +66,7 @@
 <!--            android:layout_marginLeft="12dp"-->
 <!--            android:layout_marginRight="12dp"-->
 <!--            android:background="@drawable/circlebox"/>-->
-    </LinearLayout>
+<!--    </LinearLayout>-->
     <LinearLayout
         android:layout_weight="8.5"
         android:layout_width="match_parent"
@@ -75,10 +99,13 @@
             android:weightSum="3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/botron_edittext_chat">
+            android:background="@drawable/rec2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:text="Total"
                 android:textSize="24sp"
                 android:textColor="#808080">
@@ -100,8 +127,10 @@
             <Button
                 android:id="@+id/btnbuynow"
                 android:layout_weight="0.5"
-                android:layout_width="90dp"
-                android:layout_height="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
                 android:text="Buy Now"
                 android:textSize="20sp"
                 android:textStyle="bold"

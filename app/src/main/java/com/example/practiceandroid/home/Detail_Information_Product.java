@@ -2,6 +2,7 @@ package com.example.practiceandroid.home;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,6 +10,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +23,11 @@ import android.widget.Toast;
 import com.example.practiceandroid.Fragment.CartFragment;
 import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.function.getCurrent_Day_Time;
 import com.example.practiceandroid.function.getShowCartFragment;
 import com.example.practiceandroid.function.home_function.getChecked_ADD_TO_CART;
+import com.example.practiceandroid.function.pushNotification;
+import com.example.practiceandroid.shopping.activity_shopping;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -93,6 +100,7 @@ public class Detail_Information_Product extends AppCompatActivity {
         );
         // Set clik cho button ADDTOCART , BUY NOW
         btn_buynow.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 // XÉT XEM THỬ ĐÃ TỒN TẠI TRONG CART CHƯA
@@ -106,12 +114,12 @@ public class Detail_Information_Product extends AppCompatActivity {
                     );
                     // CHUYEN QUA GIAO DIEN CART
                     getShowCartFragment.set("true");
-                    startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
+                    startActivity(new Intent(Detail_Information_Product.this, CartFragment.class));
                     
                 }
                 else{
                     getShowCartFragment.set("true");
-                    startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
+                    startActivity(new Intent(Detail_Information_Product.this, CartFragment.class));
                 }
             }
         });
