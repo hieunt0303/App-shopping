@@ -12,6 +12,12 @@
         <activity android:name=".home.Category.CategoryProduct"></activity>
         <activity android:name=".home.Detail_Information_Product" />
         <activity android:name=".Manhinh_Login" />
+        <activity android:name=".Manhinh_Resetpass"/>
+        <activity android:name=".Manhinh_DK"/>
+        <activity android:name=".admin_Home"/>
+        <activity android:name=".Manhinh_Mailreset">
+
+        </activity>
         <activity android:name=".Manhinh_Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
