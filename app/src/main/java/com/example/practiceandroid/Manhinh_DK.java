@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -62,12 +64,25 @@ public class Manhinh_DK extends AppCompatActivity {
         buttondk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check())
+                if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+                    if (check()) {
+                        User user = new User("0", "0", email.getText().toString(), "0", name.getText().toString(), pass.getText().toString());
+                        mData.push().setValue(user);
+                        Intent mh = new Intent(Manhinh_DK.this, Manhinh_Login.class);
+                        startActivity(mh);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),  "Email hoặc tên đăng nhập đã tồn tại",
+
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+                else
                 {
-                    User user = new User("0","0",email.getText().toString(),"0",name.getText().toString(),pass.getText().toString());
-                    mData.push().setValue(user);
-                    Intent mh = new Intent(Manhinh_DK.this,Manhinh_Login.class);
-                    startActivity(mh);
+                    Toast.makeText(getApplicationContext(),  "Email bạn nhập không đúng",
+
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -76,7 +91,7 @@ public class Manhinh_DK extends AppCompatActivity {
     {
         for(int i=0;i<DS.size();i++)
         {
-            if(DS.get(i).name_user.equals(name.getText().toString()))
+            if(DS.get(i).name_user.equals(name.getText().toString())||DS.get(i).email.equals(email.getText().toString()))
             {
                 return  false;
             }
