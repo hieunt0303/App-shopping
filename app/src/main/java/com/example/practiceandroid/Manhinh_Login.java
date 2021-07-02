@@ -51,12 +51,12 @@ public class Manhinh_Login extends AppCompatActivity {
         dk = (TextView) findViewById(R.id.textView_description);
         forgotpass = (TextView) findViewById(R.id.textViewforgotpass);
         setupDatabase();
-        Cursor datauser = databaseUserLogin.GetData("Select * from User");
-        if(datauser !=null)
-        {
-            Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
-            startActivity(mh);
-        }
+        //Cursor datauser = databaseUserLogin.GetData("Select * from User");
+        //if(datauser !=null)
+        //{
+            //Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
+            //startActivity(mh);
+        //}
        
         mData.addChildEventListener(new ChildEventListener() {
             @Override
@@ -93,6 +93,12 @@ public class Manhinh_Login extends AppCompatActivity {
                     if (check()) {
                         Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
                         startActivity(mh);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),  "Tài khoản / mật khẩu không đúng!",
+
+                                Toast.LENGTH_LONG).show();
                     }
                 }
                 else
@@ -138,6 +144,7 @@ public class Manhinh_Login extends AppCompatActivity {
     }
     private void setupDatabase() {
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
-        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), User nvarchar(50), Password nvarchar(50))");
+        databaseUserLogin.QueryData("Drop table if exists User");
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50))");
     }
 }
