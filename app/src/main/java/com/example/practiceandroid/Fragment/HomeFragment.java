@@ -20,7 +20,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.practiceandroid.Manhinh_Home;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.admin_Home;
 import com.example.practiceandroid.data_app.class_user;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.adapter_slide_header_home;
@@ -213,6 +215,11 @@ public class HomeFragment extends Fragment {
 
         }
         editText_search= view.findViewById(R.id.editTextTextPersonName);
+
+            Toast.makeText(getActivity(),  "Tài khoản la " + Manhinh_Login.userlogin.name_user,
+
+                    Toast.LENGTH_LONG).show();
+
 
         return view ;
     }

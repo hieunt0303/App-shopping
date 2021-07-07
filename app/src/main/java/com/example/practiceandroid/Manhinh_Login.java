@@ -54,7 +54,10 @@ public class Manhinh_Login extends AppCompatActivity {
         //Cursor datauser = databaseUserLogin.GetData("Select * from User");
         //if(datauser !=null)
         //{
-            //Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
+        //while (datauser.moveToNext()) {
+           //userlogin = new User("0","0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3));
+        //}
+        //Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
             //startActivity(mh);
         //}
        
@@ -86,14 +89,33 @@ public class Manhinh_Login extends AppCompatActivity {
             }
         });
 
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(editTextPassword.getText() != null && editTextUser.getText() != null) {
                     if (check()) {
-                        Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
-                        startActivity(mh);
+                        if(editTextUser.getText().toString().equals("admin"))
+                        {
+
+                            Cursor datauser = databaseUserLogin.GetData("Select * from User");
+                            while (datauser.moveToNext()) {
+                                userlogin = new User("0","0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3));
+                            }
+                            Intent mh = new Intent(Manhinh_Login.this, admin_Home.class);
+                            startActivity(mh);
+                        }
+                        else {
+
+                            Cursor datauser = databaseUserLogin.GetData("Select * from User");
+                            while (datauser.moveToNext()) {
+                                userlogin = new User("0","0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3));
+                            }
+                            Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
+                            startActivity(mh);
+                        }
                     }
+
                     else
                     {
                         Toast.makeText(getApplicationContext(),  "Tài khoản / mật khẩu không đúng!",

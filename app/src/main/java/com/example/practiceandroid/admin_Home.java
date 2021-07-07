@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -46,6 +47,10 @@ public class admin_Home extends AppCompatActivity {
                     case 2:
                         bottomNavigationView.getMenu().findItem(R.id.adminAdd).setChecked(true);
                         break;
+                    case 3:
+                        bottomNavigationView.getMenu().findItem(R.id.adminStatic).setChecked(true);
+                        break;
+
 
 
                 }
@@ -71,11 +76,15 @@ public class admin_Home extends AppCompatActivity {
                     case R.id.adminAdd:
                         viewPager.setCurrentItem(2);
                         break;
+                    case R.id.adminStatic:
+                        viewPager.setCurrentItem(3);
+                        break;
 
                 }
                 return true;
             }
         });
+
 
 
     }
