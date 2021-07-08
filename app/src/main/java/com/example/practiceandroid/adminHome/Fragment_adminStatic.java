@@ -147,9 +147,9 @@ public class Fragment_adminStatic extends Fragment {
     {
         for(int i =0 ;i < DS.size();i++)
         {
-            if(DS.get(i).Price == 200000)
+            if(DS.get(i).Price == 250000)
             {
-                Toast.makeText(getActivity(),"Chay duoc roi con di lon!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Chay duoc roi con di lon!" + DS.get(i).Day + " "+ DS.get(i).Price,Toast.LENGTH_SHORT).show();
             }
         }
     }

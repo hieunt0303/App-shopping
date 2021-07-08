@@ -64,12 +64,7 @@ public class Fragment_adminHome extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        if(Manhinh_Login.userlogin.name_user.equals("admin"))
-        {
-            Toast.makeText(getActivity(),  "Tài khoản la admin",
 
-                    Toast.LENGTH_LONG).show();
-        }
         return inflater.inflate(R.layout.fragment_admin_home, container, false);
     }
 }
