@@ -9,18 +9,25 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.practiceandroid.DatabaseUserLogin;
 import com.example.practiceandroid.R;
-import com.example.practiceandroid.User;
-import com.example.practiceandroid.search.ThongKe;
+import com.example.practiceandroid.ThongKe;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +42,8 @@ public class Fragment_adminStatic extends Fragment {
     List<ThongKe> DS ;
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     Button test;
+    LineChart lineChart;
+    private Spinner Thang;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,6 +90,24 @@ public class Fragment_adminStatic extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_admin_static, container, false);
         DS = new ArrayList<>();
         test = view.findViewById(R.id.buttonTest);
+        lineChart = view.findViewById(R.id.linechart);
+        Thang = view.findViewById(R.id.Thang);
+        List<String> list = new ArrayList<>();
+        for(int i =0; i<12;i++)
+        {
+            if(i<9)
+            {
+                list.add("0"+(i+1));
+            }
+            else {
+                list.add(String.valueOf((i + 1)));
+            }
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item,list);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+
+        Thang.setAdapter(adapter);
         mData.child("CartTest").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -145,13 +172,54 @@ public class Fragment_adminStatic extends Fragment {
     }
     private void check()
     {
-        for(int i =0 ;i < DS.size();i++)
-        {
-            if(DS.get(i).Price == 250000)
-            {
-                Toast.makeText(getActivity(),"Chay duoc roi con di lon!" + DS.get(i).Day + " "+ DS.get(i).Price,Toast.LENGTH_SHORT).show();
+        LineDataSet lineDataSet = new LineDataSet(data(),"Doanh thu");
+        LineData data = new LineData(lineDataSet);
+        lineChart.setData(data);
+        lineChart.invalidate();
+        lineChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                Toast.makeText(getActivity(), "Ngày: "
+                        + (h.getX()+1)
+                        + ", Doanh thu: "
+                        + e.getY()
+                        , Toast.LENGTH_SHORT).show();
             }
-        }
-    }
 
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
+    }
+    private ArrayList<Entry> data()
+    {
+        String thang = Thang.getSelectedItem().toString();
+        String ngay = "0";
+        int doanhthu;
+        ArrayList<Entry> datavals = new ArrayList<>();
+        for(int i =0 ;i<31;i++)
+        {
+            ngay = "0";
+            doanhthu = 0;
+            if((i+1)<10)
+            {
+                ngay = ngay + (i+1);
+            }
+            else
+            {
+                ngay = String.valueOf((i+1));
+            }
+            for(int j =0 ;j < DS.size();j++)
+            {
+                String ngaymua = "/"+thang+"/"+ngay;
+                if(DS.get(j).Day.contains(ngaymua))
+                {
+                    doanhthu += DS.get(j).Price;
+                }
+            }
+            datavals.add(new Entry(i,doanhthu));
+        }
+        return datavals;
+    }
 }
