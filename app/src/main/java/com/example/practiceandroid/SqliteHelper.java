@@ -64,7 +64,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         //Put username in  @values
-        values.put(KEY_USER_NAME, user.userName);
+        values.put(KEY_USER_NAME, user.name_user);
 
         //Put email in  @values
         values.put(KEY_EMAIL, user.email);

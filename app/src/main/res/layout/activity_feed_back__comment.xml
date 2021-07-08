@@ -1,65 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".Contact.FeedBack_Comment">
-     <androidx.constraintlayout.widget.ConstraintLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:background="@color/white"
-         android:layout_alignParentTop="true"
-         android:layout_marginTop="20dp">
-         <ImageView
-             android:id="@+id/imageview_Back"
-             android:layout_width="50dp"
-             android:layout_height="41dp"
-             android:src="@drawable/icon_back"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toTopOf="@+id/guideline22" />
 
-         <TextView
-             android:id="@+id/textview_Title"
-             android:layout_width="wrap_content"
-             android:layout_height="40sp"
-             android:text="Feedback"
-             android:textAllCaps="false"
-             android:textColor="#808080"
-             android:textSize="35sp"
-             android:textStyle="bold"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintHorizontal_bias="0.498"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toTopOf="@+id/guideline22" />
+    <ImageView
+        android:id="@+id/imageview_Back"
+        android:layout_width="50dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icon_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textview_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="40sp"
+        android:layout_marginTop="20dp"
+        android:text="Feedback"
+        android:textAllCaps="false"
+        android:textColor="#808080"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="396dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_Back"
+        app:srcCompat="@drawable/airpod" />
 
+    <ImageButton
+        android:id="@+id/ivbutton_star1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/starbox_shape"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/icon_starfill" />
 
-         <androidx.constraintlayout.widget.Guideline
-             android:id="@+id/guideline22"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal"
-             app:layout_constraintGuide_percent="0.05" />
-     </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/ivbutton_star5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/starbox_shape"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/ivbutton_star4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/icon_starfill" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_FeedBack_Comment"
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/ivbutton_star3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/starbox_shape"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/ivbutton_star2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/icon_starfill" />
+
+    <ImageButton
+        android:id="@+id/ivbutton_star4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/starbox_shape"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/ivbutton_star3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/icon_starfill" />
+
+    <TextView
+        android:id="@+id/textView_rating_comment"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="198dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="50dp"
+        android:text="5.0"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toEndOf="@+id/ivbutton_star5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <ImageButton
+        android:id="@+id/ivbutton_star2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/starbox_shape"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toEndOf="@+id/ivbutton_star1"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/icon_starfill" />
+
+    <EditText
+        android:id="@+id/editText_comment"
+        android:layout_width="0dp"
+        android:layout_height="157dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="36dp"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        android:textColorHint="#808080"
+        android:hint="Write Feedback here"
+        android:gravity="top|left"
+        android:background="@drawable/botron_edittext_chat"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivbutton_star1" />
+
+    <Button
+        android:id="@+id/button_Submit_cmt"
+        android:layout_width="338dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/button_submit"
+        android:text="Submit"
+        android:textSize="30dp"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_comment" />
 
 
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

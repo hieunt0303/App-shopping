@@ -1,27 +1,23 @@
 package com.example.practiceandroid;
 
-import android.widget.ImageView;
-
 public class User {
-    public String id;
-    public String userName;
-    public String password;
-    public String email;
     public String address;
-    public String phoneNumber;
-    public ImageView avatar;
+    public String avatar;
+    public String email;
+    public String id;
+    public String name_user;
+    public String password;
 
+    public User(String string, String cursorString, String s, String string1)
+    {
 
-
-    public User(String id, String userName, String email, String password) {
+    }
+    public User(String add, String ava,  String email, String id, String userName, String password) {
         this.id = id;
-        this.userName = userName;
-        this.password = password;
+        this.name_user = userName;
         this.email = email;
-        this.address = "";
-        this.phoneNumber = "";
-        this.avatar = null;
-
-
+        this.password = password;
+        this.address = add;
+        this.avatar = ava;
     }
 }
