@@ -20,7 +20,7 @@
 
         </activity>
         <activity android:name=".home.Detail_Information_Product" />
-        <activity android:name=".Manhinh_Login">
+        <activity android:name=".Manhinh_Login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +30,9 @@
         <activity android:name=".Manhinh_Home" />
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".Contact.Contact_Waiting_Shipping_Dellivering" />
+        <activity android:name=".Contact.Contact_Profile" />
+        <activity android:name=".Contact.FeedBack_Comment" />
     </application>
 
 </manifest>

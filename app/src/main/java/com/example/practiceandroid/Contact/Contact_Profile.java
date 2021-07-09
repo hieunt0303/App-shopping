@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.practiceandroid.DatabaseUserLogin;
+import com.example.practiceandroid.Manhinh_DK;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.User;
 import com.gun0912.tedpermission.PermissionListener;
@@ -31,6 +35,7 @@ import butterknife.ButterKnife;
 public class Contact_Profile extends AppCompatActivity {
 
     private static final int SELECT_PICTURE = 1;
+    DatabaseUserLogin databaseUserLogin;
     @BindView(R.id.editText_Address) EditText edtAddress;
     @BindView(R.id.editText_ID) EditText edtID;
     @BindView(R.id.editText_Email) EditText edtEmail;
@@ -41,14 +46,13 @@ public class Contact_Profile extends AppCompatActivity {
     @BindView(R.id.profile_avatar) ImageView ivProfile_Avatar;
     @BindView(R.id.button_submit) Button bttSubmit;
     @BindView(R.id.back_button) ImageButton ivBack;
-
-    User mUser;
+    @BindView(R.id.logout_button) ImageButton logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact__profile);
-
+        databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
 
 
         //Su dung BindView thay cho findViewbyID
@@ -74,6 +78,14 @@ public class Contact_Profile extends AppCompatActivity {
             }
             else {
                 setupDialogYesNo();
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseUserLogin.QueryData("Drop table User");
+                Intent mh = new Intent(Contact_Profile.this, Manhinh_Login.class);
+                startActivity(mh);
             }
         });
 
