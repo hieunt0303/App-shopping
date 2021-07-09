@@ -7,13 +7,13 @@ public class User {
     public String id;
     public String name_user;
     public String password;
-    public int phone;
+    public String phone;
 
     public User()
     {
 
     }
-    public User(String add, String ava,  String email, String id, String userName, String password, int phone) {
+    public User(String add, String ava,  String email, String id, String userName, String password, String phone) {
         this.id = id;
         this.name_user = userName;
         this.email = email;
