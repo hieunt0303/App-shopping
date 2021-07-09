@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 public class Manhinh_Login extends AppCompatActivity {
 
     DatabaseUserLogin databaseUserLogin;
@@ -100,7 +102,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
                             Cursor datauser = databaseUserLogin.GetData("Select * from User");
                             while (datauser.moveToNext()) {
-                                userlogin = new User("0","0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3));
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),parseInt(datauser.getString(5)));
                             }
                             Intent mh = new Intent(Manhinh_Login.this, admin_Home.class);
                             startActivity(mh);
@@ -109,7 +111,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
                             Cursor datauser = databaseUserLogin.GetData("Select * from User");
                             while (datauser.moveToNext()) {
-                                userlogin = new User("0","0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3));
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),parseInt(datauser.getString(5)));
                             }
                             Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
                             startActivity(mh);
@@ -157,7 +159,9 @@ public class Manhinh_Login extends AppCompatActivity {
                 databaseUserLogin.QueryData("insert into User values(null, '"
                         + DS.get(i).name_user + "', '"
                         + DS.get(i).email+ "', '"
-                        + DS.get(i).password +"')"
+                        + DS.get(i).password+ "', '"
+                                + DS.get(i).address+ "', '"
+                                + DS.get(i).phone +"')"
                         );
                 return  true;
             }
@@ -167,6 +171,6 @@ public class Manhinh_Login extends AppCompatActivity {
     private void setupDatabase() {
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
         databaseUserLogin.QueryData("Drop table if exists User");
-        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50))");
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50) )");
     }
 }

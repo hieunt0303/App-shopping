@@ -215,7 +215,7 @@ public class HomeFragment extends Fragment {
 
         }
         editText_search= view.findViewById(R.id.editTextTextPersonName);
-
+        
 
 
         return view ;

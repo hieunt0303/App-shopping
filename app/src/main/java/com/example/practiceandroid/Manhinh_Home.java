@@ -86,5 +86,6 @@ public class Manhinh_Home extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 }
