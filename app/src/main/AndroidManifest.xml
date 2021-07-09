@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.practiceandroid">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,19 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Manhinh_Per"/>
+        <activity android:name=".TestButtonPicker">
+
+        </activity>
+        <activity android:name=".Manhinh_Per" />
         <activity android:name=".Manhinh_Nof" />
         <activity android:name=".Manhinh_Mes" />
         <activity android:name=".Manhinh_Cart" />
-        <activity android:name=".Manhinh_Home" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Manhinh_Home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".activity_slide_intro"/>
+        <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".Contact.Contact_Waiting_Shipping_Dellivering" />
+        <activity android:name=".Contact.Contact_Profile" />
+        <activity android:name=".Contact.FeedBack_Comment" />
     </application>
 
 </manifest>

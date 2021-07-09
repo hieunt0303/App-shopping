@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="190dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="253dp" />
+
+    <ImageView
+        android:id="@+id/border_product"
+        android:layout_width="166dp"
+        android:layout_height="225dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@drawable/border_product_1"
+        android:elevation="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_product"
+        android:elevation="6dp"
+        android:layout_width="114dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/avatar_app" />
+
+    <ImageView
+        android:id="@+id/img_heart"
+        android:elevation="6dp"
+        android:layout_width="33dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/border_product"
+        app:layout_constraintTop_toTopOf="@+id/border_product"
+        app:srcCompat="@drawable/icon_heart_red" />
+
+    <TextView
+        android:id="@+id/text_Name_Product"
+        android:layout_width="wrap_content"
+        android:maxWidth="130dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="50dp"
+        android:autoSizeTextType="uniform"
+        android:layout_marginBottom="52dp"
+        android:paddingBottom="6dp"
+        android:gravity="bottom"
+        android:text="Nike Jordan Low"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/border_product"
+
+        app:layout_constraintStart_toStartOf="@+id/guideline5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="35dp" />
+
+    <TextView
+        android:id="@+id/text_Price_Product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="0dp"
+        android:text="$150.00"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/text_Name_Product" />
+
+    <TextView
+        android:id="@+id/text_Ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="8dp"
+        android:text="5.0"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toStartOf="@+id/text_Bought"
+        app:layout_constraintTop_toBottomOf="@+id/text_Price_Product"
+        app:layout_constraintVertical_bias="0.428" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="228dp" />
+
+    <TextView
+        android:id="@+id/text_Bought"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="4dp"
+        android:text="(10.1K)"
+        android:textColor="#808080"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="@+id/border_product" />
+
+    <ImageView
+        android:id="@+id/img_star2"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_star3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_star1"
+        app:layout_constraintTop_toBottomOf="@+id/text_Price_Product"
+        app:srcCompat="@drawable/icon_star" />
+
+    <ImageView
+        android:id="@+id/img_star4"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_star5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_star3"
+        app:layout_constraintTop_toBottomOf="@+id/text_Price_Product"
+        app:srcCompat="@drawable/icon_star" />
+
+    <ImageView
+        android:id="@+id/img_star3"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_star4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_star2"
+        app:layout_constraintTop_toBottomOf="@+id/text_Price_Product"
+        app:srcCompat="@drawable/icon_star" />
+
+    <ImageView
+        android:id="@+id/img_star1"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_star2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/border_product"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/text_Price_Product"
+        app:srcCompat="@drawable/icon_star" />
+
+    <ImageView
+        android:id="@+id/img_star5"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_Ratingbar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_star4"
+        app:layout_constraintTop_toBottomOf="@+id/text_Price_Product"
+        app:srcCompat="@drawable/icon_star" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

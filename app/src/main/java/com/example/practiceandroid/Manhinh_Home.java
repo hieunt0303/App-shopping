@@ -1,49 +1,89 @@
 package com.example.practiceandroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import com.example.practiceandroid.Fragment.ViewPageAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.os.Bundle;
+import android.view.MenuItem;
 
 public class Manhinh_Home extends AppCompatActivity {
 
-    ImageButton btngh,btntb,btnchat,btnacc;
+    private ViewPager viewPager;
+    private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinh__home);
-        btngh =  (ImageButton) findViewById(R.id.button_Cart);
-        btntb =  (ImageButton) findViewById(R.id.button_Nof);
-        btnchat =  (ImageButton) findViewById(R.id.button_Mes);
-        btnacc =  (ImageButton) findViewById(R.id.button_Per);
-        btngh.setOnClickListener(new View.OnClickListener() {
+
+        viewPager = findViewById((R.id.View_paper));
+        bottomNavigationView = findViewById(R.id.Bottom_navigation);
+        ViewPageAdapter adapter = new ViewPageAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        viewPager.setAdapter((adapter));
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onClick(View v) {
-                Intent mhbuy = new Intent(Manhinh_Home.this , Manhinh_Cart.class);
-                startActivity(mhbuy);
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 0:
+                        bottomNavigationView.getMenu().findItem(R.id.menu_home).setChecked(true);
+                        break;
+                    case 1:
+                        bottomNavigationView.getMenu().findItem(R.id.menu_cart).setChecked(true);
+                        break;
+                    case 2:
+                        bottomNavigationView.getMenu().findItem(R.id.menu_search).setChecked(true);
+                        break;
+                    case 3:
+                        bottomNavigationView.getMenu().findItem(R.id.menu_speech).setChecked(true);
+                        break;
+                    case 4:
+                        bottomNavigationView.getMenu().findItem(R.id.menu_contact).setChecked(true);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
-        btntb.setOnClickListener(new View.OnClickListener() {
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent mhtb = new Intent(Manhinh_Home.this , Manhinh_Nof.class);
-                startActivity(mhtb);
-            }
-        });
-        btnchat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mhchat = new Intent(Manhinh_Home.this , Manhinh_Mes.class);
-                startActivity(mhchat);
-            }
-        });
-        btnacc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mhtt = new Intent(Manhinh_Home.this , Manhinh_Per.class);
-                startActivity(mhtt);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.menu_home:
+                        viewPager.setCurrentItem(0);
+
+                        break;
+                    case R.id.menu_cart:
+                        viewPager.setCurrentItem(1);
+                        break;
+                    case R.id.menu_search:
+                        viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.menu_speech:
+                        viewPager.setCurrentItem(3);
+                        break;
+                    case R.id.menu_contact:
+                        viewPager.setCurrentItem(4);
+                        break;
+                }
+                return true;
             }
         });
     }

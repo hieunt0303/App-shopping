@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView_slide_header_home"
+        android:layout_width="413dp"
+        android:layout_height="136dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/slide_header_2" />
+
+    <ImageView
+        android:id="@+id/icon_slide_header_home1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintEnd_toStartOf="@+id/icon_slide_header_home2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guideline12"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_slide_header_home"
+        app:srcCompat="@drawable/slidehere" />
+
+    <ImageView
+        android:id="@+id/icon_slide_header_home2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintEnd_toStartOf="@+id/icon_slide_header_home3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/icon_slide_header_home1"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_slide_header_home"
+        app:srcCompat="@drawable/iconslide_header_trang" />
+
+    <ImageView
+        android:id="@+id/icon_slide_header_home3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/icon_slide_header_home2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_slide_header_home"
+        app:srcCompat="@drawable/iconslide_header_trang" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="166dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="251dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

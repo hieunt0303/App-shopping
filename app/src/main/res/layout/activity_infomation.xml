@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.example.tablayout_test.Fragment.InfomationFragment">
+
+    <Button
+        android:id="@+id/edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="@string/edit_profile"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginStart="125dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="100dp"
+        android:layout_toEndOf="@+id/edit_text"
+        android:layout_toRightOf="@+id/edit_text"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/setting" />
+
+</RelativeLayout>

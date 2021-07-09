@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background = "#FFFF">
+
+    <item android:id="@+id/menu_home" android:title="Home" android:icon="@drawable/home"/>
+    <item android:id="@+id/menu_cart" android:title="Cart" android:icon="@drawable/cart"/>
+    <item android:id="@+id/menu_search" android:title="Search" android:icon="@drawable/search"/>
+    <item android:id="@+id/menu_speech" android:title="Speech" android:icon="@drawable/message"/>
+    <item android:id="@+id/menu_contact" android:title="Contact" android:icon="@drawable/personal"/>
+</menu>

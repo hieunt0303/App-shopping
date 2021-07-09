@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView_detail"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Size and Weight: \n
+   Width: 71.5 mm (2.82 inches)  \n
+   Height: 146.7 mm (5.78 inches)  \n
+   Weight: 187 grams (6.60 ounces)  \n
+   Display: Super Retina XDR display 6.1‑inch (diagonal) all‑screen \n
+   OLED display 2532x1170-pixel resolution at 460 ppi \n
+   The iPhone 12 Pro display has rounded corners that follow a  beautiful curved design, and these corners are within a standard  rectangle.\n
+   When measured as a standard rectangular shape, the  screen is 6.06 inches diagonally (actual viewable area is less). \n
+   HDR display \n
+   True Tone\n
+     Face ID: Enabled by TrueDepth camera for facial recognition  Location: Built‑in GPS, GLONASS, Galileo, QZSS and BeiDou Digital compass Wi‑Fi \n
+     Mobile data iBeacon micro-location  Power and Battery:  \n
+     Video playback: Up to 17 hours  Video playback (streamed): Up to 11 hours  Audio playback: Up to 65 hours"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
