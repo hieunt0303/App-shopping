@@ -102,7 +102,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
                             Cursor datauser = databaseUserLogin.GetData("Select * from User");
                             while (datauser.moveToNext()) {
-                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),parseInt(datauser.getString(5)));
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
                             }
                             Intent mh = new Intent(Manhinh_Login.this, admin_Home.class);
                             startActivity(mh);
@@ -111,7 +111,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
                             Cursor datauser = databaseUserLogin.GetData("Select * from User");
                             while (datauser.moveToNext()) {
-                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),parseInt(datauser.getString(5)));
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
                             }
                             Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
                             startActivity(mh);
