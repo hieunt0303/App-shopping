@@ -5,13 +5,13 @@ public class class_Information_Product {
     public String id_product;
     public String categories;
     public String name_product;
-    public   String price_product_real;
+    public String price_product_real;
     public String discount;
     public String price_product_fake;
     public String Sum_Ratingbar;
     public int in_stock;
     public int Sum_Bought;
-    public  Boolean favourite;
+    public Boolean favourite;
     public Boolean add_to_cart;
     public String description;
     public String detail;

@@ -3,7 +3,24 @@ PHÂN CÔNG NHIỆM VỤ
 - Lưu ý : làm bất cứ thành phần nào có thể click đc vd như button, các item trong list view, ...
 nói chung thành phần nào có thể setOnClick thì làm lun cái hàm đó, chỉ cẩn làm click vào nó hiện ra cái thông báo gì đó là đc
 ( vd dùng hàm touch ) để sau này làm backend cho dễ 
+- Cách đặt tên : (tên thuộc tính)_(tên chức năng)
 
+![image](https://user-images.githubusercontent.com/66076345/113801245-a255b280-9782-11eb-9293-af0deb567a43.png)
+![image](https://user-images.githubusercontent.com/66076345/113801258-a97cc080-9782-11eb-8697-2752efe42e47.png)
+
+
+		
+		
+- Cách đặt tên các thuộc tính ( text, list view) 
+	* Trong XML : đặt nguyên cái tên đó cộng với chức năng --> (tên thuộc tính)_(tên chức năng hiển thị viết hoa chữ đầu)
+		textview_Name
+		
+		button_GetStarted
+	* Khi ánh xạ trong file activity : (tên thuộc tính)(tên chức năng viết hoa chữ đầu )
+	
+		textviewName
+		
+		buttonGetStarted
 
 1. DATABASE ( Hiếu)
 2. Chuyển giữa các giao diện với nhau trong menu dưới ( Long )
@@ -51,39 +68,40 @@ d. Database
 	- Search ( tìm kiếm trước đó, tìm kiếm nhiều (trending), tìm kiếm tên sản phẩm )
 	- Thông tin từng sản phẩm
 		* id sản phẩm  : từng sản phẩm có id khác nhau
-		* id của shop bán sản phẩm đó
-		* Hình của sản phẩm
+		* id của shop bán sản phẩm đó ( ID user )
 		* Tên sản phẩm
+		* Hình sản phẩm ( 1 hình )
 		* Giá sản phẩm ( đơn vị $ hết cho đồng bộ )
 		* Số sao ( rating bar )
 		* Số người đã mua
 		* Nơi bán 
 		* Thông tin chi tiết, mô tả sản phẩm
-		* Số sản phẩm còn trong kho
-		* Size
 		* Đánh giá của người dùng (* làm sau cùng )
 		* Mã giảm giá (* làm sau cùng )
 		* Sản phẩm tương tự ( * làm sau cùng )
-	- Thông tin shop bán sản phẩm
-		* id : từng shop có id khác nhau 
-		* Tên shop
-		* Địa chỉ shop
-		* Số người đã mua tất cả sản phẩm
-		* Số sản phẩm ( list hết sản phẩm bằng *id )
-	- Thông tin người mua
-		* id người mua
-		* Tên người mua
-		* Địa chỉ
+		* Nước sản xuất
+	- Thông tin chi tiết sản phẩm
+		* ID sản phẩm
+		* Size
+		* Color
+		* Số sản phẩm còn trong kho
+		* Số sản phẩm đã bán
+	- User
+		* ID user
+		* Tên user ( vừa là tên shop đại diện bán hàng )
+		* Địa chỉ 
 		* Sđt
-		* Ngày sinh
+		* Avatar
 
 	- Hóa đơn
 		* Số hóa đơn
 		* Ngày hóa đơn
-		* Mã khách hàng
+		* Mã khách hàng( ID user )
 		* Giá
 	- CTHD 
 		* Số hóa đơn
 		* id sản phẩm
 		* Số lượng
+		
+![image](https://user-images.githubusercontent.com/66076345/113800883-eeecbe00-9781-11eb-8c52-be82df64b034.png)
 		
