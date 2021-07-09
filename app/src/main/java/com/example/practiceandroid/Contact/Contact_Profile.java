@@ -1,5 +1,7 @@
 package com.example.practiceandroid.Contact;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -23,6 +25,11 @@ import com.example.practiceandroid.Manhinh_DK;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.User;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -33,8 +40,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Contact_Profile extends AppCompatActivity {
-
+    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     private static final int SELECT_PICTURE = 1;
+    public User user;
     DatabaseUserLogin databaseUserLogin;
     @BindView(R.id.editText_Address) EditText edtAddress;
     @BindView(R.id.editText_ID) EditText edtID;
@@ -43,6 +51,7 @@ public class Contact_Profile extends AppCompatActivity {
     @BindView(R.id.editText_PhoneNumber) EditText edtPhoneNumber;
 
     @BindView(R.id.change_photo) TextView tvChangePhoto;
+    @BindView(R.id.profile_name) TextView name;
     @BindView(R.id.profile_avatar) ImageView ivProfile_Avatar;
     @BindView(R.id.button_submit) Button bttSubmit;
     @BindView(R.id.back_button) ImageButton ivBack;
@@ -55,9 +64,16 @@ public class Contact_Profile extends AppCompatActivity {
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
 
 
+
+
         //Su dung BindView thay cho findViewbyID
         ButterKnife.bind(this);
-
+        name.setText(Manhinh_Login.userlogin.name_user);
+        edtUserName.setText(Manhinh_Login.userlogin.name_user);
+        edtID.setText(Manhinh_Login.userlogin.id);
+        edtAddress.setText(Manhinh_Login.userlogin.address);
+        edtEmail.setText(Manhinh_Login.userlogin.email);
+        edtPhoneNumber.setText(Manhinh_Login.userlogin.phone);
         tvChangePhoto.setOnClickListener(v -> RequestPermission());
 
         ivBack.setOnClickListener(v -> finish());
@@ -70,9 +86,6 @@ public class Contact_Profile extends AppCompatActivity {
                     TextUtils.isEmpty(edtUserName.getText().toString())){
                 setupDialogMessage(" Something wrong\nPlease check again");
             }
-            else if (!TextUtils.isEmpty(sEmail) && Patterns.EMAIL_ADDRESS.matcher(sEmail).matches()){
-                setupDialogMessage("Email not correct");
-            }
             else if (!TextUtils.isEmpty(iPhone) && iPhone.length() != 10){
                 setupDialogMessage("Phone number length must = 10");
             }
@@ -83,6 +96,7 @@ public class Contact_Profile extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 databaseUserLogin.QueryData("Drop table User");
                 Intent mh = new Intent(Contact_Profile.this, Manhinh_Login.class);
                 startActivity(mh);
@@ -115,7 +129,40 @@ public class Contact_Profile extends AppCompatActivity {
 
         bttNo.setOnClickListener(v -> dialog.dismiss());
         bttYes.setOnClickListener(v ->  {
+            mData.child("User").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    if (snapshot.child("email").getValue().toString().equals(edtEmail.getText().toString())) {
+                        mData.child("User").child(snapshot.getKey()).child("address").setValue(edtAddress.getText().toString());
+                        mData.child("User").child(snapshot.getKey()).child("phone").setValue(edtPhoneNumber.getText().toString());
+                        Manhinh_Login.userlogin.address=edtAddress.getText().toString();
+                        Manhinh_Login.userlogin.phone=edtPhoneNumber.getText().toString();
 
+                    }
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            dialog.dismiss();
         });
 
         dialog.show();

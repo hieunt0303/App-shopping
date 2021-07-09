@@ -236,7 +236,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
-        app:layout_constraintTop_toBottomOf="@+id/textview6" />
+        app:layout_constraintTop_toBottomOf="@+id/textview6"
+        android:enabled="false"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

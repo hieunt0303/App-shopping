@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.practiceandroid.Contact.Contact_Profile;
 import com.example.practiceandroid.Contact.Contact_Waiting_Shipping_Dellivering;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.class_Information_Product;
@@ -56,6 +57,8 @@ public class ContactFragment extends Fragment {
     ImageView ivDelivering;
     @BindView(R.id.feedback)
     ImageView ivFeedBack;
+    @BindView(R.id.Name)
+    TextView username;
 
     // hiển thị sản phẩm
     GridView gridView;
@@ -110,7 +113,7 @@ public class ContactFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
         //Use ButterKnife instead of findViewByID
         unbinder = ButterKnife.bind(ContactFragment.this, view);
-
+        username.setText(Manhinh_Login.userlogin.name_user);
         //Intend to Contact_Profile
         bttEditProfile.setOnClickListener(v -> startActivity(new Intent(getActivity(), Contact_Profile.class)));
 

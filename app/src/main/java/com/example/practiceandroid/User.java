@@ -22,4 +22,12 @@ public class User {
         this.avatar = ava;
         this.phone = phone;
     }
+    public void setAddress(String add)
+    {
+        this.address = add;
+    }
+    public  void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
 }
