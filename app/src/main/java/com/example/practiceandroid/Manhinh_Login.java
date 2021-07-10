@@ -62,8 +62,17 @@ public class Manhinh_Login extends AppCompatActivity {
         }
         if(count != 0 )
         {
-            Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
-            startActivity(mh);
+            if(userlogin.name_user.equals("admin"))
+            {
+                Intent mh = new Intent(Manhinh_Login.this, admin_Home.class);
+                startActivity(mh);
+            }
+            else
+            {
+                Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
+                startActivity(mh);
+            }
+
         }
 
 

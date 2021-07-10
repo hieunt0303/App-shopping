@@ -1,8 +1,9 @@
 package com.example.practiceandroid;
 
 public class ThongKe {
-    public String Day;
-    public int Price;
+    public String day;
+    public String total_price;
+    public String user_name;
     public ThongKe()
     {
 

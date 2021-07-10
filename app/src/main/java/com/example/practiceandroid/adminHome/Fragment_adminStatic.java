@@ -108,36 +108,11 @@ public class Fragment_adminStatic extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
         Thang.setAdapter(adapter);
-        mData.child("CartTest").addChildEventListener(new ChildEventListener() {
+        mData.child("Statistic").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                mData.child("CartTest").child(snapshot.getKey()).addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                        ThongKe thongKe = snapshot.getValue(ThongKe.class);
-                        DS.add(thongKe);
-                    }
-
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                ThongKe thongKe = snapshot.getValue(ThongKe.class);
+                DS.add(thongKe);
             }
 
             @Override
@@ -213,9 +188,9 @@ public class Fragment_adminStatic extends Fragment {
             for(int j =0 ;j < DS.size();j++)
             {
                 String ngaymua = "/"+thang+"/"+ngay;
-                if(DS.get(j).Day.contains(ngaymua))
+                if(DS.get(j).day.contains(ngaymua))
                 {
-                    doanhthu += DS.get(j).Price;
+                    doanhthu += Integer.parseInt(DS.get(j).total_price);
                 }
             }
             datavals.add(new Entry(i,doanhthu));
