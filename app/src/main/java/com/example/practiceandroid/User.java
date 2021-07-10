@@ -30,4 +30,7 @@ public class User {
     {
         this.phone = phone;
     }
+    public String getName_user() {
+        return name_user;
+    }
 }

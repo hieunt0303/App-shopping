@@ -17,12 +17,12 @@
         android:background="@color/green"
         android:layout_marginTop="600dp"
         />
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/linechart"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_marginTop="70dp" />
 
     <Spinner
         android:id="@+id/Thang"
@@ -31,5 +31,13 @@
         android:layout_height="50dp"
         android:layout_marginTop="600dp"
         android:layout_marginLeft="100dp"/>
+    <ImageButton
+        android:id="@+id/btnlogout"
+        android:layout_width="54dp"
+        android:layout_height="45dp"
+        android:background="@null"
+        android:layout_marginLeft="350dp"
+        android:src="@drawable/icon_logout"
+        />
 
 </FrameLayout>

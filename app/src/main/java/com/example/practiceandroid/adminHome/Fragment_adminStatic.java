@@ -1,5 +1,6 @@
 package com.example.practiceandroid.adminHome;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.practiceandroid.Contact.Contact_Profile;
+import com.example.practiceandroid.DatabaseUserLogin;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.ThongKe;
 import com.github.mikephil.charting.charts.LineChart;
@@ -41,9 +46,11 @@ public class Fragment_adminStatic extends Fragment {
 
     List<ThongKe> DS ;
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-    Button test;
+    Button btnCheck;
+    ImageButton logout;
     LineChart lineChart;
     private Spinner Thang;
+    DatabaseUserLogin databaseUserLogin;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -88,10 +95,12 @@ public class Fragment_adminStatic extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_admin_static, container, false);
+        databaseUserLogin = new DatabaseUserLogin(getActivity(), "user.sqlite", null, 1);
         DS = new ArrayList<>();
-        test = view.findViewById(R.id.buttonTest);
+        btnCheck = view.findViewById(R.id.buttonTest);
         lineChart = view.findViewById(R.id.linechart);
         Thang = view.findViewById(R.id.Thang);
+        logout = view.findViewById(R.id.btnlogout);
         List<String> list = new ArrayList<>();
         for(int i =0; i<12;i++)
         {
@@ -135,10 +144,18 @@ public class Fragment_adminStatic extends Fragment {
 
             }
         });
-        test.setOnClickListener(new View.OnClickListener() {
+        btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 check();
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseUserLogin.QueryData("Drop table User");
+                Intent mh = new Intent(getContext(), Manhinh_Login.class);
+                startActivity(mh);
             }
         });
 
