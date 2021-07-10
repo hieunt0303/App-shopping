@@ -53,7 +53,7 @@ public class Manhinh_Login extends AppCompatActivity {
         dk = (TextView) findViewById(R.id.textView_description);
         forgotpass = (TextView) findViewById(R.id.textViewforgotpass);
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
-        setupDatabase();
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50) )");
         Cursor datauser = databaseUserLogin.GetData("Select * from User ");
         int count = 0;
         while (datauser.moveToNext()) {
@@ -174,8 +174,6 @@ public class Manhinh_Login extends AppCompatActivity {
         }
         return false;
     }
-    private void setupDatabase() {
 
-        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50) )");
-    }
+
 }

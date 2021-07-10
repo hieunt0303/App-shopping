@@ -215,10 +215,6 @@ public class HomeFragment extends Fragment {
 
         }
         editText_search= view.findViewById(R.id.editTextTextPersonName);
-        Toast.makeText(getActivity(),  Manhinh_Login.userlogin.name_user,
-
-                Toast.LENGTH_LONG).show();
-
 
         return view ;
     }
