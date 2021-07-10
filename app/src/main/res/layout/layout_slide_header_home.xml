@@ -22,20 +22,19 @@
         android:layout_marginBottom="25dp"
         app:layout_constraintEnd_toStartOf="@+id/icon_slide_header_home2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guideline12"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_slide_header_home"
         app:srcCompat="@drawable/slidehere" />
 
     <ImageView
         android:id="@+id/icon_slide_header_home2"
-        android:layout_width="wrap_content"
+        android:layout_width="10dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_slide_header_home"
         app:layout_constraintEnd_toStartOf="@+id/icon_slide_header_home3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/icon_slide_header_home1"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_slide_header_home"
         app:srcCompat="@drawable/iconslide_header_trang" />
 
     <ImageView
@@ -43,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/guideline15"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/icon_slide_header_home2"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_slide_header_home"

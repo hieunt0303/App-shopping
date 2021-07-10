@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.practiceandroid.Fragment.CartFragment;
 import com.example.practiceandroid.Manhinh_Home;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.Purchased_Product.classBought_Product;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.dbSQLite.dbHelper;
@@ -38,8 +39,8 @@ public class activity_shopping extends AppCompatActivity {
     String name ;
     String phonenumber ;
     String address ;
-
-    String currenttime;
+    String idProduct;
+    String categoryProduct;
     String nameProduct;
     String priceProduct;
     String numberProduct;
@@ -64,7 +65,7 @@ public class activity_shopping extends AppCompatActivity {
         DatabaseReference databaseReference;
         databaseReference = FirebaseDatabase.getInstance().getReference();
         btnSubmit.setOnClickListener(new View.OnClickListener() {
-//            final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.order);
+            //            final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.order);
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
@@ -74,11 +75,15 @@ public class activity_shopping extends AppCompatActivity {
                 Cursor cursor = dbhelper.GetData("SELECT * FROM SANPHAM");
                 while (cursor.moveToNext())
                 {
-                    nameProduct = cursor.getString(1);
-                    priceProduct = cursor.getString(2);
-                    numberProduct = cursor.getString(3);
+                    idProduct = cursor.getString(1);
+                    categoryProduct = cursor.getString(2);
+                    nameProduct = cursor.getString(3);
+                    priceProduct = cursor.getString(4);
+                    numberProduct = cursor.getString(5);
                     classBought_Product BOUGHT =  new classBought_Product(
                             "IDuser",
+                            idProduct,
+                            categoryProduct,
                             nameProduct,
                             priceProduct,
                             numberProduct,
@@ -88,7 +93,7 @@ public class activity_shopping extends AppCompatActivity {
                             getCurrent_Day_Time.get(),
                             false
                     );
-                    databaseReference.child("Bought_Product").child("IDuser").child(getCurrent_Day_Time.get().split(" ")[0].replace("/"," ")).child(getCurrent_Day_Time.get().split(" ")[1]).child(nameProduct).setValue(BOUGHT);
+                    databaseReference.child("Bought_Product").child(Manhinh_Login.userlogin.getName_user()).child(getCurrent_Day_Time.get().split(" ")[0].replace("/"," ")).child(getCurrent_Day_Time.get().split(" ")[1]).child(nameProduct).setValue(BOUGHT);
                     dbhelper.QueryData("DELETE FROM SANPHAM WHERE NameProduct = '" + nameProduct + "' ");
                 }
 

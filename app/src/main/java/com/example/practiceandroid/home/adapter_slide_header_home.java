@@ -33,17 +33,25 @@ public class adapter_slide_header_home  extends PagerAdapter {
 
         switch (position){
             case 0:
+                img_slideimage_header.setImageResource(R.drawable.slide_header_2);
+                img_slide_header1.setImageResource(R.drawable.slidehere);
+                img_slide_header2.setImageResource(R.drawable.iconslide_header_trang);
+                img_slide_header3.setImageResource(R.drawable.iconslide_header_trang);
                 break;
             case 1:
                 img_slideimage_header.setImageResource(R.drawable.slide_header_1);
                 img_slide_header1.setImageResource(R.drawable.iconslide_header_trang);
                 img_slide_header2.setImageResource(R.drawable.slidehere);
                 img_slide_header3.setImageResource(R.drawable.iconslide_header_trang);
+                break;
             case 2:
-                img_slideimage_header.setImageResource(R.drawable.slide_header_1);
+                img_slideimage_header.setImageResource(R.drawable.slide_header_3);
                 img_slide_header1.setImageResource(R.drawable.iconslide_header_trang);
                 img_slide_header2.setImageResource(R.drawable.iconslide_header_trang);
                 img_slide_header3.setImageResource(R.drawable.slidehere);
+                break;
+
+
 
         }
 

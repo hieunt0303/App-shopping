@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -19,11 +20,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class admin_Home extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin__home);
         bottomNavigationView = findViewById(R.id.bottom_nav);
+
         viewPager = findViewById((R.id.View_paperadmin));
         ViewPageAdapterAdmin adapter = new ViewPageAdapterAdmin(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter((adapter));

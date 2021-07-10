@@ -17,13 +17,13 @@ public class ViewPageAdapterAdmin extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new com.example.practiceandroid.adminHome.Fragment_adminHome();
+                return new com.example.practiceandroid.Fragment.HomeFragment();
             case 1:
                 return new com.example.practiceandroid.adminHome.Fragment_adminChat();
             case 2:
                 return new com.example.practiceandroid.adminHome.Fragment_adminAdd();
             default:
-                return new com.example.practiceandroid.adminHome.Fragment_adminHome();
+                return new com.example.practiceandroid.Fragment.HomeFragment();
         }
     }
 

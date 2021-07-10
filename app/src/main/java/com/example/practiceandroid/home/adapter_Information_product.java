@@ -17,9 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import com.example.practiceandroid.AdminContent.AdminHome.Activity_Information_Product_admin;
 import com.example.practiceandroid.Fragment.HomeFragment;
 import com.example.practiceandroid.Manhinh_Home;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.function.FIREBASE;
+import com.example.practiceandroid.function.ToLowerCase_Trim;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,7 +42,6 @@ public class adapter_Information_product extends BaseAdapter {
     Context context;
     int layout;
     List<class_Information_Product> InformationProduct;
-    DatabaseReference mData= FirebaseDatabase.getInstance().getReference();
 
 
     public adapter_Information_product(Context context, int layout, List<class_Information_Product> informationProduct) {
@@ -118,9 +121,9 @@ public class adapter_Information_product extends BaseAdapter {
         // Lấy từ fireBase Storage
         StorageReference mStorage;
         String name_product= InformationProduct.get(position).name_product;
-        mStorage = FirebaseStorage.getInstance().getReference().child(name_product+"/"+ToLowerCase_Trim(name_product)+1+".png");
+        mStorage = FirebaseStorage.getInstance().getReference().child(name_product+"/"+ ToLowerCase_Trim.set(name_product)+1+".png");
         try {
-            final File localfile= File.createTempFile(ToLowerCase_Trim(name_product)+1,"png");
+            final File localfile= File.createTempFile(ToLowerCase_Trim.set(name_product)+1,"png");
             mStorage.getFile(localfile)
                     .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                         @Override
@@ -243,7 +246,14 @@ public class adapter_Information_product extends BaseAdapter {
         viewHolder.imgProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,Detail_Information_Product.class );
+                Intent intent;
+                if(Manhinh_Login.userlogin.getName_user().equals("admin")){
+                    intent = new Intent(context, Activity_Information_Product_admin.class );
+                }
+                else{
+                    intent = new Intent(context,Detail_Information_Product.class );
+
+                }
                 intent.putExtra("Name_product",InformationProduct.get(position).name_product);
                 intent.putExtra("Category_product",InformationProduct.get(position).categories);
                 intent.putExtra("Id_product",InformationProduct.get(position).id_product);
@@ -252,16 +262,25 @@ public class adapter_Information_product extends BaseAdapter {
                 intent.putExtra("Sum_Bought",InformationProduct.get(position).Sum_Bought);
                 intent.putExtra("description",InformationProduct.get(position).description);
                 intent.putExtra("detail",InformationProduct.get(position).detail);
+                intent.putExtra("discount",InformationProduct.get(position).discount);
+                intent.putExtra("inStock",InformationProduct.get(position).in_stock);
+
 
                 Toast.makeText(context,InformationProduct.get(position).name_product,Toast.LENGTH_SHORT).show();
                 context.startActivity(intent);
-
             }
         });
         viewHolder.txtName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,Detail_Information_Product.class );
+                Intent intent;
+                if(Manhinh_Login.userlogin.getName_user().equals("admin")){
+                    intent = new Intent(context, Activity_Information_Product_admin.class );
+                }
+                else{
+                    intent = new Intent(context,Detail_Information_Product.class );
+
+                }
                 intent.putExtra("Name_product",InformationProduct.get(position).name_product);
                 intent.putExtra("Category_product",InformationProduct.get(position).categories);
                 intent.putExtra("Id_product",InformationProduct.get(position).id_product);
@@ -270,35 +289,27 @@ public class adapter_Information_product extends BaseAdapter {
                 intent.putExtra("Sum_Bought",InformationProduct.get(position).Sum_Bought);
                 intent.putExtra("description",InformationProduct.get(position).description);
                 intent.putExtra("detail",InformationProduct.get(position).detail);
+                intent.putExtra("discount",InformationProduct.get(position).discount);
 
                 Toast.makeText(context,InformationProduct.get(position).name_product,Toast.LENGTH_SHORT).show();
-
                 context.startActivity(intent);
             }
         });
 
         return convertView;
     }
-    public  static String ToLowerCase_Trim(String data){
-        //làm thành chữ thường và bỏ dấu cách
-        String [] arrdata= data.split(" ");
-        String trim="";
-        for(int i=0;i<arrdata.length;i++){
-            trim = trim + arrdata[i].toLowerCase();
-        }
-        return  trim;
-    }
+
 
     public  void Update_Heart(String categories,String name,Boolean logic){
 
-        mData.child("Products").child(categories).addChildEventListener(new ChildEventListener() {
+        FIREBASE.MDATA.child("Products").child(categories).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if(snapshot.child("name_product").getValue().equals(name)){
                     String [] arr_decode= snapshot.child("name_product").getRef().toString().split("/");
 
                     Toast.makeText(context,arr_decode[5],Toast.LENGTH_SHORT).show();
-                    mData.child("Products").child(categories).child(arr_decode[5]).child("favourite").setValue(logic);
+                    FIREBASE.MDATA.child("Products").child(categories).child(arr_decode[5]).child("favourite").setValue(logic);
 
                     //mData.child("Products").child("name_product").updateChildren("favourite",false);
                 }

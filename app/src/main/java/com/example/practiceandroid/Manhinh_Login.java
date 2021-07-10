@@ -3,9 +3,12 @@ package com.example.practiceandroid;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.practiceandroid.function.FIREBASE;
+import com.example.practiceandroid.home.Comment.classComment;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,6 +34,8 @@ public class Manhinh_Login extends AppCompatActivity {
     EditText editTextPassword;
     TextView dk;
     TextView forgotpass;
+
+    ImageView imgview_eye;
     List<User> DS = new ArrayList<>();
     public static User userlogin;
 
@@ -36,7 +43,7 @@ public class Manhinh_Login extends AppCompatActivity {
     //Declaration TextInputLayout
 
     //Declaration Button
-    ImageButton btnLogin;
+    Button btnLogin;
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference("User");
 
     //Declaration SqliteHelper
@@ -45,11 +52,28 @@ public class Manhinh_Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manhinh__login);
-        btnLogin = (ImageButton) findViewById(R.id.imageButton2);
+        btnLogin = (Button) findViewById(R.id.imageButton2);
         editTextUser=(EditText) findViewById(R.id.editTextuser);
         editTextPassword=(EditText) findViewById(R.id.editTextPass);
+
+        imgview_eye= findViewById(R.id.ImageView_eye);
         dk = (TextView) findViewById(R.id.textView_description);
         forgotpass = (TextView) findViewById(R.id.textViewforgotpass);
+
+        // add
+        databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50) )");
+        Cursor datauser = databaseUserLogin.GetData("Select * from User ");
+        int count = 0;
+        while (datauser.moveToNext()) {
+            count ++;
+            userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
+        }
+        if(count != 0 )
+        {
+            Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
+            startActivity(mh);
+        }
         setupDatabase();
         //Cursor datauser = databaseUserLogin.GetData("Select * from User");
         //if(datauser !=null)
@@ -57,7 +81,31 @@ public class Manhinh_Login extends AppCompatActivity {
             //Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
             //startActivity(mh);
         //}
-       
+        imgview_eye.setImageResource(R.drawable.icon_eye_close);
+        imgview_eye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                classComment a1= new classComment(
+//                        "SP0003",
+//                        "Electronics",
+//                        "Airpods Pro",
+//                        "long",
+//                        "4",
+//                        "rất đáng tiền"
+//                );
+//
+//                FIREBASE.MDATA.child("Comment").child("Electronics").child("SP0003").push().setValue(a1);
+                if(editTextPassword.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                    editTextPassword.setInputType( InputType.TYPE_CLASS_TEXT |
+                            InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    imgview_eye.setImageResource(R.drawable.icon_eye_close);
+                }else {
+                    editTextPassword.setInputType( InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD );
+                    imgview_eye.setImageResource(R.drawable.icon_eye_open);
+                }
+            }
+        });
+
         mData.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -91,9 +139,27 @@ public class Manhinh_Login extends AppCompatActivity {
             public void onClick(View v) {
                 if(editTextPassword.getText() != null && editTextUser.getText() != null) {
                     if (check()) {
-                        Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
-                        startActivity(mh);
+                        if(editTextUser.getText().toString().equals("admin"))
+                        {
+
+                            Cursor datauser = databaseUserLogin.GetData("Select * from User");
+                            while (datauser.moveToNext()) {
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
+                            }
+                            Intent mh = new Intent(Manhinh_Login.this, admin_Home.class);
+                            startActivity(mh);
+                        }
+                        else {
+
+                            Cursor datauser = databaseUserLogin.GetData("Select * from User");
+                            while (datauser.moveToNext()) {
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
+                            }
+                            Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
+                            startActivity(mh);
+                        }
                     }
+
                     else
                     {
                         Toast.makeText(getApplicationContext(),  "Tài khoản / mật khẩu không đúng!",
@@ -130,13 +196,15 @@ public class Manhinh_Login extends AppCompatActivity {
         for(int i=0;i<DS.size();i++)
         {
             if(DS.get(i).name_user.equals(editTextUser.getText().toString())&&
-               DS.get(i).password.equals(editTextPassword.getText().toString()))
+                    DS.get(i).password.equals(editTextPassword.getText().toString()))
             {
                 databaseUserLogin.QueryData("insert into User values(null, '"
                         + DS.get(i).name_user + "', '"
                         + DS.get(i).email+ "', '"
-                        + DS.get(i).password +"')"
-                        );
+                        + DS.get(i).password+ "', '"
+                        + DS.get(i).address+ "', '"
+                        + DS.get(i).phone +"')"
+                );
                 return  true;
             }
         }
@@ -145,6 +213,6 @@ public class Manhinh_Login extends AppCompatActivity {
     private void setupDatabase() {
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
         databaseUserLogin.QueryData("Drop table if exists User");
-        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50))");
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50) )");
     }
 }

@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.example.practiceandroid.AdminContent.AdminChat.adapter_item_adminchat;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.function.functionUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +19,9 @@ import com.example.practiceandroid.R;
  * create an instance of this fragment.
  */
 public class Fragment_adminChat extends Fragment {
+    ListView listView_chatadmin;
+    adapter_item_adminchat adapterItemAdminchat;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +67,13 @@ public class Fragment_adminChat extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_chat, container, false);
+        View view= inflater.inflate(R.layout.fragment_admin_chat, container, false);
+
+        // ANh xa
+        listView_chatadmin= view.findViewById(R.id.list_ChatAdmin);
+        adapterItemAdminchat= new adapter_item_adminchat(container.getContext(),R.layout.layout_item_chat_admin, functionUser.getArrUser());
+        listView_chatadmin.setAdapter(adapterItemAdminchat);
+
+        return view;
     }
 }

@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.practiceandroid.Manhinh_Home;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -61,7 +62,7 @@ public class activity_notification extends AppCompatActivity {
         });
         DatabaseReference databaseReference;
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Notification").child("IDuser").addChildEventListener(new ChildEventListener() {
+        databaseReference.child("Notification").child(Manhinh_Login.userlogin.getName_user()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
                 String id = snapshot.child("id").getValue().toString();

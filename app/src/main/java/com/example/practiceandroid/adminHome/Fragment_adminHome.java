@@ -2,13 +2,24 @@ package com.example.practiceandroid.adminHome;
 
 import android.os.Bundle;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.home.adapter_Information_product;
+import com.example.practiceandroid.home.class_Information_Product;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +27,18 @@ import com.example.practiceandroid.R;
  * create an instance of this fragment.
  */
 public class Fragment_adminHome extends Fragment {
+    // slide hiển thị 3 cái bảng thông báo chương trình sắp tới (black friday,...)
+    ViewPager viewPager_slide_header ;
+    com.example.practiceandroid.home.adapter_slide_header_home adapter_slide_header_home;
 
+    // hiển thị sản phẩm
+    GridView gridView;
+    List<class_Information_Product> productArrayList;
+    adapter_Information_product adapter_information_product;
+    NestedScrollView nestedScrollView;
+
+    //Fire base hiển thị sản phẩm
+    DatabaseReference mData;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -25,7 +47,10 @@ public class Fragment_adminHome extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    EditText editText_search;
+    ImageView img;
+    Button txtNumberNotification;
+    public static  int number = 0;
     public Fragment_adminHome() {
         // Required empty public constructor
     }

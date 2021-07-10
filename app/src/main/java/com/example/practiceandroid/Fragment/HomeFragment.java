@@ -1,7 +1,10 @@
 package com.example.practiceandroid.Fragment;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,24 +12,35 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.function.FIREBASE;
+import com.example.practiceandroid.function.getNumberCategories;
+import com.example.practiceandroid.home.Category.CategoryProduct;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.adapter_slide_header_home;
 import com.example.practiceandroid.home.class_Information_Product;
 import com.example.practiceandroid.notification.activity_notification;
+import com.example.practiceandroid.search.adapter_Search_product;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +62,7 @@ public class HomeFragment extends Fragment {
     adapter_Information_product adapter_information_product;
     NestedScrollView nestedScrollView;
 
-    //Fire base hiển thị sản phẩm
-     DatabaseReference mData;
+
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -63,6 +76,17 @@ public class HomeFragment extends Fragment {
     EditText editText_search;
     ImageView img;
     Button txtNumberNotification;
+
+    // CÁC BUTTON CATEGORIES
+    ImageView img_Woman;
+    ImageView img_Man;
+    ImageView img_Phones;
+    ImageView img_Furniture;
+    ImageView img_Electronic;
+    ImageView img_Laptop;
+    ImageView img_Shoes;
+    ImageView img_Watch;
+
     public static  int number = 0;
     public HomeFragment() {
         // Required empty public constructor
@@ -93,10 +117,6 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        // Hiển thị sản phẩm với firebase
-        mData= FirebaseDatabase.getInstance().getReference();
-
         //mData.child("Products").child("Electronics").push().setValue(listProduct);
 
     }
@@ -115,21 +135,34 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
+
         // set adapter cho các sản phẩm
         gridView = view.findViewById(R.id.Gridview_product);
         nestedScrollView= view.findViewById(R.id.scrollviewProduct);
         img= view.findViewById(R.id.imageView11);
         productArrayList= new ArrayList<>();
         txtNumberNotification = view.findViewById(R.id.txt_number);
-        txtNumberNotification.setText(String.valueOf(number));
-        if(Integer.parseInt(txtNumberNotification.getText().toString()) == 0)
-        {
-            txtNumberNotification.setVisibility(View.INVISIBLE);
-        }
-        else
-        {
-            txtNumberNotification.setVisibility(View.VISIBLE);
-        }
+        txtNumberNotification.setVisibility(View.INVISIBLE);
+        FIREBASE.MDATA.child("text_Notification").child("IDuser").child("number_Notification").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                number = Integer.parseInt(snapshot.getValue().toString());
+                if(number == 0)
+                {
+                    txtNumberNotification.setVisibility(View.INVISIBLE);
+                }
+                else if(number != 0)
+                {
+                    txtNumberNotification.setVisibility(View.VISIBLE);
+                }
+                txtNumberNotification.setText(String.valueOf(number));
+            }
+
+            @Override
+            public void onCancelled(@NonNull  DatabaseError error) {
+
+            }
+        });
         //Sắp xếp tăng dần
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +200,7 @@ public class HomeFragment extends Fragment {
         int i=0;
         for(i=0;i< arr_categories.length;i++){
             // lấy sãn phẩm theo mỗi loại từ data xuống và cho hiển thị
-            mData.child("Products").child(arr_categories[i]).addChildEventListener(new ChildEventListener() {
+            FIREBASE.MDATA.child("Products").child(arr_categories[i]).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     productArrayList.add(new class_Information_Product(
@@ -214,8 +247,87 @@ public class HomeFragment extends Fragment {
             });
 
         }
-        editText_search= view.findViewById(R.id.editTextTextPersonName);
+
+
+        // Anh xa CATEGORIES
+        img_Woman=view.findViewById(R.id.img_category_Woman);
+        img_Man= view.findViewById(R.id.img_category_Man);
+        img_Shoes= view.findViewById(R.id.img_category_Shoes);
+        img_Watch= view.findViewById(R.id.img_category_Watch);
+        img_Electronic= view.findViewById(R.id.img_category_Electronics);
+        img_Furniture= view.findViewById(R.id.img_category_Furniture);
+        img_Phones= view.findViewById(R.id.img_category_Phones);
+        img_Laptop= view.findViewById(R.id.img_category_Laptop);
+
+
+        // SET CLICK MẤY CÁI CATEGORIES
+        Intent intent= new Intent(getContext(), CategoryProduct.class);
+        img_Woman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Woman");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Woman")));
+                startActivity(intent);
+            }
+        });
+        img_Man.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Man");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Man")));
+                startActivity(intent);
+            }
+        });
+        img_Shoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Shoes");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Shoes")));
+                startActivity(intent);
+            }
+        });
+        img_Watch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Watch");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Watch")));
+                startActivity(intent);
+            }
+        });
+        img_Electronic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Electronics");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Electronics")));
+                startActivity(intent);
+            }
+        });
+        img_Furniture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Furniture");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Furniture")));
+                startActivity(intent);
+            }
+        });
+        img_Phones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Phones");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Phones")));
+                startActivity(intent);
+            }
+        });
+        img_Laptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent.putExtra("nameCategory","Laptop");
+                intent.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Laptop")));
+                startActivity(intent);
+            }
+        });
 
         return view ;
     }
+
 }

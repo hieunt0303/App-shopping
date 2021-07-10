@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:layout_gravity="center"
+    tools:context=".AdminContent.AdminChat.Activity_AdminChat">
+<LinearLayout
+    android:gravity="center_vertical"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imageview_back_chatAdmin"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp" />
+    <ImageView
+        android:id="@+id/imageView_avatar_chatAdmin"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/avatar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp" />
+    <TextView
+        android:id="@+id/textview_nameUserChatAdmin"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nameUser"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp" />
+</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_weight="8"
+        android:id="@+id/Recyclerview_chatAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:weightSum="7"
+        android:id="@+id/constraintLayout_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout
+            android:layout_weight="6"
+            android:background="@drawable/botron_edittext_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imageview_hintchatAdmin"
+                android:background="@drawable/icon_plus_chat"
+                android:layout_width="34dp"
+                android:layout_height="34dp"/>
+            <EditText
+                android:layout_weight="6"
+                android:id="@+id/editText_content_chatAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:ems="10"
+                android:hint="Starting typing ..."
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#958F8F"
+                />
+            <ImageView
+                android:id="@+id/imageview_microchatAdmin"
+                android:background="@drawable/icon_microphone"
+                android:layout_width="34dp"
+                android:layout_height="34dp"/>
+        </LinearLayout>
+        <ImageButton
+            android:layout_weight="1"
+            android:id="@+id/button_send_content_chatAdmin"
+            android:layout_width="25dp"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:scaleType="fitXY"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/icon_send"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editText_content_chat"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+</LinearLayout>

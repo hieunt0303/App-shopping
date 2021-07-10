@@ -112,7 +112,7 @@ public class CartFragment extends Fragment {
         mData= FirebaseDatabase.getInstance().getReference();
         mData.child("Cart").child("price_total").setValue("0");
         dbhelper = new dbHelper(getContext(), "Product.sqlite", null, 1);
-        dbhelper.QueryData("CREATE TABLE IF NOT EXISTS SANPHAM(Id INTEGER PRIMARY KEY ,NameProduct VARCHAR(200) , PriceProduct VARCHAR(10), NumberProduct VARCHAR(10))");
+        dbhelper.QueryData("CREATE TABLE IF NOT EXISTS SANPHAM(Id INTEGER PRIMARY KEY ,IdProduct VARCHAR(10), CategoryProduct VARCHAR (50), NameProduct VARCHAR(200) , PriceProduct VARCHAR(10), NumberProduct VARCHAR(10))");
 //        dbhelper.QueryData("DROP TABLE SANPHAM");
 //        dbhelper.QueryData("DESC SANPHAM;");
     }
@@ -217,7 +217,7 @@ public class CartFragment extends Fragment {
                     for (int i = arr_carts.size()-1; i >=0; i--) {
                         if (arr_carts.get(i).getChecked()) {
 
-                            dbhelper.QueryData("INSERT INTO SANPHAM VALUES(null, '"+ arr_carts.get(i).getName_cart_product().toString() + "','"+ arr_carts.get(i).getPrice_cart_product().toString() + "', '"+ arr_carts.get(i).getNumber_product().toString() + "' )");
+                            dbhelper.QueryData("INSERT INTO SANPHAM VALUES(null, '"+ arr_carts.get(i).getId_cart_product().toString() +"','"+ arr_carts.get(i).getCategory_cart_product().toString() + "' , '"+ arr_carts.get(i).getName_cart_product().toString() + "','"+ arr_carts.get(i).getPrice_cart_product().toString() + "', '"+ arr_carts.get(i).getNumber_product().toString() + "' )");
                             Cursor cursor = dbhelper.GetData("SELECT * FROM SANPHAM");
                             while (cursor.moveToNext()) {
                                 Toast.makeText(getContext(), cursor.getString(1), Toast.LENGTH_LONG).show();

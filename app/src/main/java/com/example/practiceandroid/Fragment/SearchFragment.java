@@ -1,5 +1,6 @@
 package com.example.practiceandroid.Fragment;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,8 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +22,9 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.function.getNumberCategories;
+import com.example.practiceandroid.home.Category.CategoryProduct;
+import com.example.practiceandroid.home.Detail_Information_Product;
 import com.example.practiceandroid.home.class_Information_Product;
 import com.example.practiceandroid.search.adapter_Search_product;
 import com.example.practiceandroid.search.class_Search_product;
@@ -43,10 +50,22 @@ public class SearchFragment extends Fragment {
     ArrayList<class_Information_Product> class_search_productArrayList;
     ArrayList<class_Information_Product> class_search_productArrayList_temp;
 
+    // THÀNH PHẦN TRONG SEARCH
     TextView txt_recent_search_history;
     TextView txt_trending_search;
     TextView txt_cetagories;
+    ImageView imgbtn_scan;
 
+    // CÁC BUTTON ĐỂ NHẤN KẾT QUẢ
+    Button btn_Converse;
+    Button btn_Balenciaga;
+    Button btn_wonmanfashion;
+    Button btn_manfashion;
+    Button btn_Watch;
+    Button btn_LaptopAndComputer;
+    Button btn_Mobile;
+    Button btn_Furniture;
+    Button btn_Shoes;
     int temp_before_search=0;
 
     DatabaseReference mData;
@@ -98,13 +117,11 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_search, container, false);
         TextView txt_recent_search_history=view.findViewById(R.id.textView_recentsearchhistory);
-        TextView txt_trending_search= view.findViewById(R.id.textView_trendingsearch);
         TextView txt_cetagories= view.findViewById(R.id.textView_categories);
 
 
         editTextSearch= view.findViewById(R.id.editText_Search);
         listViewSearch= view.findViewById(R.id.listview_Search_product);
-
         // gan gia tri cac thuoc tinh đẻ hiển thị list view
         class_search_productArrayList= new ArrayList<>();
         class_search_productArrayList_temp= new ArrayList<>();
@@ -168,6 +185,14 @@ public class SearchFragment extends Fragment {
         }
         // Lưu trữ độ dài chữ sau mỗi lần gõ sẽ gọi hàm fitter
 
+        // SCAN
+        imgbtn_scan= view.findViewById(R.id.imagebutton_scan);
+        imgbtn_scan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         editTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -204,6 +229,107 @@ public class SearchFragment extends Fragment {
             }
         });
         //class_search_productArrayList.clear();
+
+        // ÁNH XẠ , GÁN GIÁ TRJ VÀ SET ONCLICK CHO CÁC BUTTON PHÍA DƯỚI
+         btn_Converse= view.findViewById(R.id.buttonConverse_Chuck_70);
+         btn_Balenciaga= view.findViewById(R.id.button_Balenciaga);
+         btn_wonmanfashion= view.findViewById(R.id.button_search_woman);
+         btn_manfashion = view.findViewById(R.id.button_search_man);
+         btn_Watch=view.findViewById(R.id.button_search_watch);
+         btn_LaptopAndComputer= view.findViewById(R.id.button_search__laptop);
+         btn_Mobile= view.findViewById(R.id.button_search_mobile);
+         btn_Furniture=view.findViewById(R.id.button_search_furniture);
+         btn_Shoes= view.findViewById(R.id.button_search_shoes);
+
+        Intent intent_detail_product_search = new Intent(getContext(), Detail_Information_Product.class );
+         btn_Converse.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_detail_product_search.putExtra("Name_product","Converse Chuck 70");
+                 intent_detail_product_search.putExtra("Category_product","Shoes");
+                 intent_detail_product_search.putExtra("Id_product","SP0013");
+                 intent_detail_product_search.putExtra("Price_product_real","11554");
+                 intent_detail_product_search.putExtra("Sum_Ratingbar","5");
+                 intent_detail_product_search.putExtra("Sum_Bought",20);
+                 intent_detail_product_search.putExtra("description","The best ever chuck 70, in vintage canvas ");
+                 intent_detail_product_search.putExtra("detail","Why you should be down\n Crafted in recycled");
+
+                 startActivity(intent_detail_product_search);
+             }
+         });
+         btn_Balenciaga.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_detail_product_search.putExtra("Name_product","Balenciaga Triple S White Black Pink");
+                 intent_detail_product_search.putExtra("Category_product","Shoes");
+                 intent_detail_product_search.putExtra("Id_product","SP0008");
+                 intent_detail_product_search.putExtra("Price_product_real","5993");
+                 intent_detail_product_search.putExtra("Sum_Ratingbar","5");
+                 intent_detail_product_search.putExtra("Sum_Bought",20);
+                 intent_detail_product_search.putExtra("description","The best ever chuck 70, in vintage canvas ");
+                 intent_detail_product_search.putExtra("detail","Why you should be down\n Crafted in recycled");
+
+                 startActivity(intent_detail_product_search);
+             }
+         });
+
+        Intent intent_search= new Intent(getContext(), CategoryProduct.class);
+         btn_wonmanfashion.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_search.putExtra("nameCategory","Woman");
+                 intent_search.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Watch")));
+                 startActivity(intent_search);
+             }
+         });
+         btn_manfashion.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_search.putExtra("nameCategory","Man");
+                 intent_search.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Man")));
+                 startActivity(intent_search);
+             }
+         });
+         btn_Watch.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_search.putExtra("nameCategory","Watch");
+                 intent_search.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Watch")));
+                 startActivity(intent_search);
+             }
+         });
+         btn_LaptopAndComputer.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_search.putExtra("nameCategory","Laptop");
+                 intent_search.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Laptop")));
+                 startActivity(intent_search);
+             }
+         });
+         btn_Mobile.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_search.putExtra("nameCategory","Phones");
+                 intent_search.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Phones")));
+                 startActivity(intent_search);
+             }
+         });
+         btn_Furniture.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_search.putExtra("nameCategory","Furniture");
+                 intent_search.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Furniture")));
+                 startActivity(intent_search);
+             }
+         });
+         btn_Shoes.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 intent_search.putExtra("nameCategory","Shoes");
+                 intent_search.putExtra("numberCategory",String.valueOf(getNumberCategories.Get("Shoes")));
+                 startActivity(intent_search);
+             }
+         });
         return view;
     }
 

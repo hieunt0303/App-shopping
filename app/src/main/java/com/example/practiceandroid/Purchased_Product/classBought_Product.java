@@ -2,6 +2,8 @@ package com.example.practiceandroid.Purchased_Product;
 
 public class classBought_Product {
     String idUser;
+    String idProduct;
+    String categoryProduct;
     String nameProduct;
     String priceProduct;
     String numberBought;
@@ -13,8 +15,10 @@ public class classBought_Product {
     // Đã nhận được hàng chưa, dùng để tiện thao tác với giao diện giao hàng
     Boolean DeliveringFinish;
 
-    public classBought_Product(String idUser, String nameProduct, String priceProduct, String numberBought, String userName, String userPhoneNumber, String userAddress, String dayBought, Boolean deliveringFinish) {
+    public classBought_Product(String idUser, String idProduct, String categoryProduct, String nameProduct, String priceProduct, String numberBought, String userName, String userPhoneNumber, String userAddress, String dayBought, Boolean deliveringFinish) {
         this.idUser = idUser;
+        this.idProduct = idProduct;
+        this.categoryProduct = categoryProduct;
         this.nameProduct = nameProduct;
         this.priceProduct = priceProduct;
         this.numberBought = numberBought;
@@ -31,6 +35,22 @@ public class classBought_Product {
 
     public void setIdUser(String idUser) {
         this.idUser = idUser;
+    }
+
+    public String getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(String idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public String getCategoryProduct() {
+        return categoryProduct;
+    }
+
+    public void setCategoryProduct(String categoryProduct) {
+        this.categoryProduct = categoryProduct;
     }
 
     public String getNameProduct() {

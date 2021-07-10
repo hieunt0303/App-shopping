@@ -22,9 +22,10 @@
             android:layout_width="20dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:background="@drawable/icon_back" />
+             />
 
         <TextView
+            android:id="@+id/nameCategory"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
@@ -52,12 +53,13 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
+            android:id="@+id/numberCategoryProduct"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:paddingRight="30dp"
-            android:text="1000 found."
+            android:text="        "
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -79,15 +81,18 @@
             android:layout_marginRight="12dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Price Low to High"
+            android:text="Popular Items"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <GridView
+        android:id="@+id/gridviewCategoryProduct"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
+        android:numColumns="2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />

@@ -17,16 +17,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.practiceandroid.Fragment.CartFragment;
 import com.example.practiceandroid.Manhinh_Home;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.getCurrent_Day_Time;
 import com.example.practiceandroid.function.getShowCartFragment;
 import com.example.practiceandroid.function.home_function.getChecked_ADD_TO_CART;
 import com.example.practiceandroid.function.pushNotification;
+import com.example.practiceandroid.home.Comment.adapterComment;
+import com.example.practiceandroid.home.Comment.classComment;
 import com.example.practiceandroid.shopping.activity_shopping;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.ChildEventListener;
@@ -34,6 +39,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Detail_Information_Product extends AppCompatActivity {
     private ViewPager mViewPager;
@@ -55,11 +63,10 @@ public class Detail_Information_Product extends AppCompatActivity {
     ImageView star_up_4;
     ImageView star_up_5;
 
-    ImageView star_down_1;
-    ImageView star_down_2;
-    ImageView star_down_3;
-    ImageView star_down_4;
-    ImageView star_down_5;
+    // COMMENT
+    List<classComment> arr_cmt;
+    adapterComment adapter_cmt;
+    ListView listView_cmt;
 
     Button btn_addtocart;
     Button btn_buynow;
@@ -77,7 +84,7 @@ public class Detail_Information_Product extends AppCompatActivity {
         txt_numberBought_detail = findViewById(R.id.numberBought_product_detail);
         txt_numberRatingbar_detail= findViewById(R.id.numberRatingbar_product_detail);
         txt_Price_detail= findViewById(R.id.price_product_detail);
-        txt_numratingbar_comment= findViewById(R.id.textView_numRatingBar_comment);
+
 
         // Gan gia tri
         txt_nameCategory_detail.setText(intent.getStringExtra("Category_product"));
@@ -85,10 +92,16 @@ public class Detail_Information_Product extends AppCompatActivity {
         txt_Price_detail.setText(intent.getStringExtra("Price_product_real"));
         txt_numberRatingbar_detail.setText(intent.getStringExtra("Sum_Ratingbar"));
         txt_numberBought_detail.setText(intent.getStringExtra("Sum_Bought"));
-        txt_numratingbar_comment.setText(intent.getStringExtra("Sum_Ratingbar"));
 
         //Set hình cho ngôi sao
         setImgNgoi_sao();
+
+        // COMMENT
+        arr_cmt= new ArrayList<>();
+        adapter_cmt= new adapterComment(this, R.layout.layout_item_comment,arr_cmt);
+        listView_cmt= findViewById(R.id.listview_comment);
+        listView_cmt.setAdapter(adapter_cmt);
+        setComment(arr_cmt);
 
         btn_addtocart= findViewById(R.id.button_addtocart);
         btn_buynow= findViewById(R.id.button_buynow);
@@ -156,7 +169,37 @@ public class Detail_Information_Product extends AppCompatActivity {
             }
         });
     }
+    public void setComment(List<classComment>arr){
+        FIREBASE.MDATA.child("Comment").child(intent.getStringExtra("Category_product")).child(intent.getStringExtra("Id_product"))
+                .addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        classComment cmt= snapshot.getValue(classComment.class);
+                        arr.add(cmt);
+                        adapter_cmt.notifyDataSetChanged();
+                    }
 
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
     private void initView() {
         mViewPager= findViewById(R.id.viewpager_detail_product);
         mViewPager.setAdapter(new adapter_tablayout_detailProduct(getSupportFragmentManager(),
@@ -188,11 +231,7 @@ public class Detail_Information_Product extends AppCompatActivity {
         star_up_4= findViewById(R.id.icon_ngoisao4_detail);
         star_up_5= findViewById(R.id.icon_ngoisao5_detail);
 
-        star_down_1 = findViewById(R.id.icon_ngoisao1_detail_comment);
-        star_down_2 = findViewById(R.id.icon_ngoisao2_detail_comment);
-        star_down_3 = findViewById(R.id.icon_ngoisao3_detail_comment);
-        star_down_4 = findViewById(R.id.icon_ngoisao4_detail_comment);
-        star_down_5 = findViewById(R.id.icon_ngoisao5_detail_comment);
+
 
         switch (intent.getStringExtra("Sum_Ratingbar")){
             case "0":
@@ -202,11 +241,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_none);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star_none);
-                star_down_2.setImageResource(R.drawable.icon_star_none);
-                star_down_3.setImageResource(R.drawable.icon_star_none);
-                star_down_4.setImageResource(R.drawable.icon_star_none);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "0.5":
                 star_up_1.setImageResource(R.drawable.icon_star_haft);
@@ -215,11 +250,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_none);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star_haft);
-                star_down_2.setImageResource(R.drawable.icon_star_none);
-                star_down_3.setImageResource(R.drawable.icon_star_none);
-                star_down_4.setImageResource(R.drawable.icon_star_none);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "1":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -228,11 +259,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_none);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star_none);
-                star_down_3.setImageResource(R.drawable.icon_star_none);
-                star_down_4.setImageResource(R.drawable.icon_star_none);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "1.5":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -241,11 +268,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_none);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star_haft);
-                star_down_3.setImageResource(R.drawable.icon_star_none);
-                star_down_4.setImageResource(R.drawable.icon_star_none);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "2":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -254,11 +277,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_none);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star);
-                star_down_3.setImageResource(R.drawable.icon_star_none);
-                star_down_4.setImageResource(R.drawable.icon_star_none);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "2.5":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -267,11 +286,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_none);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star);
-                star_down_3.setImageResource(R.drawable.icon_star_haft);
-                star_down_4.setImageResource(R.drawable.icon_star_none);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "3":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -280,11 +295,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_none);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star);
-                star_down_3.setImageResource(R.drawable.icon_star);
-                star_down_4.setImageResource(R.drawable.icon_star_none);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "3.5":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -293,11 +304,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star_haft);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star);
-                star_down_3.setImageResource(R.drawable.icon_star);
-                star_down_4.setImageResource(R.drawable.icon_star_haft);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "4":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -306,11 +313,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star);
                 star_up_5.setImageResource(R.drawable.icon_star_none);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star);
-                star_down_3.setImageResource(R.drawable.icon_star);
-                star_down_4.setImageResource(R.drawable.icon_star);
-                star_down_5.setImageResource(R.drawable.icon_star_none);
+
                 break;
             case "4.5":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -319,11 +322,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star);
                 star_up_5.setImageResource(R.drawable.icon_star_haft);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star);
-                star_down_3.setImageResource(R.drawable.icon_star);
-                star_down_4.setImageResource(R.drawable.icon_star);
-                star_down_5.setImageResource(R.drawable.icon_star_haft);
+
                 break;
             case "5":
                 star_up_1.setImageResource(R.drawable.icon_star);
@@ -332,11 +331,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 star_up_4.setImageResource(R.drawable.icon_star);
                 star_up_5.setImageResource(R.drawable.icon_star);
 
-                star_down_1.setImageResource(R.drawable.icon_star);
-                star_down_2.setImageResource(R.drawable.icon_star);
-                star_down_3.setImageResource(R.drawable.icon_star);
-                star_down_4.setImageResource(R.drawable.icon_star);
-                star_down_5.setImageResource(R.drawable.icon_star);
+
                 break;
 
         }
