@@ -101,7 +101,7 @@ public class Manhinh_Mailreset extends AppCompatActivity {
     {
         for(int i=0;i<DS.size();i++)
         {
-            if(DS.get(i).name_user.equals(Email.getText().toString()))
+            if(DS.get(i).email.equals(Email.getText().toString()))
             {
                 return  true;
             }

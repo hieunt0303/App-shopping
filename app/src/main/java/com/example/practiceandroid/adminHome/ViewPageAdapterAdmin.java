@@ -22,6 +22,8 @@ public class ViewPageAdapterAdmin extends FragmentStatePagerAdapter {
                 return new com.example.practiceandroid.adminHome.Fragment_adminChat();
             case 2:
                 return new com.example.practiceandroid.adminHome.Fragment_adminAdd();
+            case 3:
+                return new com.example.practiceandroid.adminHome.Fragment_adminStatic();
             default:
                 return new com.example.practiceandroid.Fragment.HomeFragment();
         }
@@ -29,6 +31,6 @@ public class ViewPageAdapterAdmin extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }
