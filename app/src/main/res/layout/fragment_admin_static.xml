@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".adminHome.Fragment_adminStatic"
+    android:background="#FFFF">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <Button
+        android:id="@+id/buttonTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xem"
+        android:background="@color/green"
+        android:layout_marginTop="600dp"
+        />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/linechart"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="70dp" />
+
+    <Spinner
+        android:id="@+id/Thang"
+        android:background="#D300BCD4"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="100dp"/>
+    <ImageButton
+        android:id="@+id/btnlogout"
+        android:layout_width="54dp"
+        android:layout_height="45dp"
+        android:background="@null"
+        android:layout_marginLeft="350dp"
+        android:src="@drawable/icon_logout"
+        />
+
+</FrameLayout>

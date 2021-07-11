@@ -72,10 +72,19 @@ public class Manhinh_Login extends AppCompatActivity {
         }
         if(count != 0 )
         {
-            Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
-            startActivity(mh);
+            if(userlogin.name_user.equals("admin"))
+            {
+                Intent mh = new Intent(Manhinh_Login.this, admin_Home.class);
+                startActivity(mh);
+            }
+            else
+            {
+                Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
+                startActivity(mh);
+            }
+
         }
-        setupDatabase();
+
         //Cursor datauser = databaseUserLogin.GetData("Select * from User");
         //if(datauser !=null)
         //{
@@ -211,9 +220,5 @@ public class Manhinh_Login extends AppCompatActivity {
         }
         return false;
     }
-    private void setupDatabase() {
-        databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
-        databaseUserLogin.QueryData("Drop table if exists User");
-        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50) )");
-    }
+
 }

@@ -9,24 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".AdminContent.AdminHome.Activity_Information_Product_admin"></activity>
-        <activity android:name=".AdminContent.AdminChat.Activity_AdminChat" />
-        <activity android:name=".home.Category.CategoryProduct" />
+        <activity android:name=".Manhinh_Resetpass"></activity>
+        <activity android:name=".Manhinh_Mailreset">
+
+        </activity>
+        <activity android:name=".admin_Home" >
+
+        </activity>
+        <activity android:name=".Manhinh_DK" >
+
+        </activity>
         <activity android:name=".home.Detail_Information_Product" />
-        <activity android:name=".Manhinh_Login">
+        <activity android:name=".Manhinh_Login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Manhinh_Resetpass" />
-        <activity android:name=".Manhinh_DK" />
-        <activity android:name=".admin_Home" />
-        <activity android:name=".Manhinh_Mailreset" />
         <activity android:name=".Manhinh_Home" />
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".Contact.Contact_Waiting_Shipping_Dellivering" />
+        <activity android:name=".Contact.Contact_Profile" />
+        <activity android:name=".Contact.FeedBack_Comment" />
+        <activity android:name=".AdminContent.AdminChat.Activity_AdminChat"/>
+        <activity android:name=".AdminContent.AdminHome.Activity_Information_Product_admin"/>
         <activity android:name=".shopping.activity_shopping">
             <intent-filter>
                 <action android:name="Shopping" />
@@ -39,6 +47,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".home.Category.CategoryProduct" />
     </application>
 
 </manifest>
