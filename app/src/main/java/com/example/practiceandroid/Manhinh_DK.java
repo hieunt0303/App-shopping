@@ -66,7 +66,8 @@ public class Manhinh_DK extends AppCompatActivity {
             public void onClick(View v) {
                 if(Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
                     if (check()) {
-                        User user = new User("0", "0", email.getText().toString(), "0", name.getText().toString(), pass.getText().toString(),"0");
+                        int id = (int) Math.floor(((Math.random() * 899999) + 100000));
+                        User user = new User("0", "0", email.getText().toString(), Integer.toString(id), name.getText().toString(), pass.getText().toString(),"0");
                         mData.child("text_Notification").child(name.getText().toString()).child("number_Notification").setValue("0");
                         mData.child("User").push().setValue(user);
                         Intent mh = new Intent(Manhinh_DK.this, Manhinh_Login.class);
