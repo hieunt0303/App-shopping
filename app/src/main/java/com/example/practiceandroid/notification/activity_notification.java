@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
-import com.example.practiceandroid.function.getNumberNotification;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,7 +57,6 @@ public class activity_notification extends AppCompatActivity {
 
                 Intent intent = new Intent(activity_notification.this, Manhinh_Home.class);
                 HomeFragment.number = 0;
-                getNumberNotification.setNumber(String.valueOf(HomeFragment.number));
                 startActivity(intent);
             }
         });

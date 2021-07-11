@@ -224,11 +224,11 @@ public class CartFragment extends Fragment {
                             }
 //                            dbhelper.QueryData("DROP TABLE SANPHAM");
                             Intent intent = new Intent(getContext(), activity_shopping.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putString("total_price",txt_totalPrice.getText().toString());
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("name_product",arr_carts.get(i).getName_cart_product().toString());
 //                            bundle.putString("price_product",arr_carts.get(i).getPrice_cart_product().toString());
 //                            bundle.putString("number_product",arr_carts.get(i).getNumber_product().toString());
-                            intent.putExtras(bundle);
+//                            intent.putExtras(bundle);
                             startActivity(intent);
                             //Toast.makeText(getContext(),String.valueOf(i),Toast.LENGTH_SHORT).show();
 //                            String currentDayTime= getCurrent_Day_Time.get();

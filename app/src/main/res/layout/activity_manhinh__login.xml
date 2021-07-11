@@ -8,11 +8,11 @@
     android:background="#FFFF">
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="301dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,24 +23,22 @@
     <TextView
 
         android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="133dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
         android:text="@string/login"
-        android:textSize="32sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textAppearance="@style/login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextuser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/rec6"
+        android:layout_width="302dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_email"
         android:ems="10"
         android:paddingLeft="10dp"
         android:hint="Username"
@@ -48,18 +46,18 @@
         android:lines="1"
         android:maxLines="1"
         android:textColor="@color/black"
-        android:textColorHint="#808080"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:weightSum="5"
         android:id="@+id/linearlayoutpassword"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rec6"
+        android:layout_width="302dp"
+        android:layout_height="58dp"
+        android:background="@drawable/shape_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextuser">
@@ -67,7 +65,7 @@
             android:layout_weight="4"
             android:id="@+id/editTextPass"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="58dp"
             android:ems="10"
             android:paddingLeft="10dp"
             android:hint="Password"
@@ -75,28 +73,25 @@
             android:lines="1"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textColorHint="#808080"
+            android:textColorHint="@color/black"
             />
         <ImageView
             android:id="@+id/ImageView_eye"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icon_eye_close"/>
+
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
     </LinearLayout>
 
 
     <Button
         android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/rec1"
+        android:background="@drawable/shape_login"
         android:text="LOGIN"
-        android:textSize="24dp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:textSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -107,10 +102,10 @@
         android:id="@+id/textViewforgotpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Forgot Password?"
+        android:layout_marginTop="32dp"
+        android:text="Forgot password"
         android:textAppearance="@style/forgot_pass"
-        android:textColor="#808080"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayoutpassword" />
@@ -118,8 +113,8 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -132,15 +127,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have an account? "
-            android:textAppearance="@style/forgot_pass" />
+            android:textAppearance="@style/forgot_pass"
+
+            />
 
         <TextView
             android:id="@+id/textView_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="Sign up"
             android:textAppearance="@style/forgot_pass"
-            android:textColor="#79CEED" />
+            android:textColor="@color/blue" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

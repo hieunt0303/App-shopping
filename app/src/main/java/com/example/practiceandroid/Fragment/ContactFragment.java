@@ -59,8 +59,8 @@ public class ContactFragment extends Fragment {
     @BindView(R.id.edit_profile)
     Button bttEditProfile;
 
-//    @BindView(R.id.waiting)
-//    ImageView ivWaiting;
+    @BindView(R.id.waiting)
+    ImageView ivWaiting;
     @BindView(R.id.delivering)
     ImageView ivDelivering;
     @BindView(R.id.feedback)
@@ -127,18 +127,18 @@ public class ContactFragment extends Fragment {
         bttEditProfile.setOnClickListener(v -> startActivity(new Intent(getActivity(), Contact_Profile.class)));
 
 
-//        ivWaiting.setOnClickListener(v ->{
-//            Postion = 0;
-//            startActivity(new Intent(getActivity(), Contact_Waiting_Shipping_Dellivering.class));
-//        });
-
-        ivDelivering.setOnClickListener(v ->{
+        ivWaiting.setOnClickListener(v ->{
             Postion = 0;
             startActivity(new Intent(getActivity(), Contact_Waiting_Shipping_Dellivering.class));
         });
 
-        ivFeedBack.setOnClickListener(v ->{
+        ivDelivering.setOnClickListener(v ->{
             Postion = 1;
+            startActivity(new Intent(getActivity(), Contact_Waiting_Shipping_Dellivering.class));
+        });
+
+        ivFeedBack.setOnClickListener(v ->{
+            Postion = 2;
             startActivity(new Intent(getActivity(), Contact_Waiting_Shipping_Dellivering.class));
         });
 

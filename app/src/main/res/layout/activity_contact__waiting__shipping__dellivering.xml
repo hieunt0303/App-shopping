@@ -9,10 +9,8 @@
 
     <ImageButton
         android:id="@+id/imageview_Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_width="50dp"
+        android:layout_height="41dp"
         android:background="@null"
         android:src="@drawable/icon_back"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,9 +19,9 @@
     <TextView
         android:id="@+id/textview_Title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40sp"
         android:text="Bill"
-        android:textSize="24sp"
+        android:textSize="35sp"
         android:textColor="#808080"
         android:textAllCaps="false"
         android:textStyle="bold"
@@ -68,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.038" />
+        app:layout_constraintGuide_percent="0.05" />
 
 
 

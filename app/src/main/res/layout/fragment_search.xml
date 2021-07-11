@@ -15,17 +15,17 @@ android:background="@color/white"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
-            android:background="@drawable/rec8"
+            android:background="@drawable/botron_edittext_chat"
             android:layout_weight="4"
             android:weightSum="4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_marginStart="10dp"
+                android:layout_weight="1"
                 android:background="@drawable/search"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="20dp"
+                android:layout_height="25dp"/>
             <EditText
                 android:layout_weight="3"
                 android:id="@+id/editText_Search"
@@ -43,8 +43,9 @@ android:background="@color/white"
         <ImageView
             android:id="@+id/imagebutton_scan"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_height="46dp"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
             android:background="@drawable/buttonscan" />
     </LinearLayout>
 

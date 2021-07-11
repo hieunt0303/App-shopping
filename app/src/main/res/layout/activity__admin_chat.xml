@@ -61,48 +61,41 @@
             android:layout_weight="6"
             android:background="@drawable/botron_edittext_chat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp">
+            android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imageview_hintchatAdmin"
                 android:background="@drawable/icon_plus_chat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_width="34dp"
+                android:layout_height="34dp"/>
             <EditText
                 android:layout_weight="6"
                 android:id="@+id/editText_content_chatAdmin"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="38dp"
                 android:ems="10"
                 android:hint="Starting typing ..."
-                android:textSize="16sp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:paddingTop="3dp"
                 android:paddingLeft="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="#808080"
+                android:textColorHint="#958F8F"
                 />
             <ImageView
                 android:id="@+id/imageview_microchatAdmin"
                 android:background="@drawable/icon_microphone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_width="34dp"
+                android:layout_height="34dp"/>
         </LinearLayout>
         <ImageButton
+            android:layout_weight="1"
             android:id="@+id/button_send_content_chatAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
+            android:layout_width="25dp"
+            android:layout_height="40dp"
             android:background="@color/white"
             android:scaleType="fitXY"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/sent"
+            android:src="@drawable/icon_send"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/editText_content_chat"
             app:layout_constraintTop_toTopOf="parent" />

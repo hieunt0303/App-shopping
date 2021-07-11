@@ -11,10 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.getNumberCategories;
@@ -42,7 +39,6 @@ public class CategoryProduct extends AppCompatActivity {
     GridView gridView;
     TextView txtnameCategory;
     TextView txtnumberCategory;
-    ImageView btnback;
     // hiển thị sản phẩm
     List<class_Information_Product> productArrayList;
     adapter_Information_product adapter_information_product_adminhome;
@@ -60,19 +56,11 @@ public class CategoryProduct extends AppCompatActivity {
         txt= findViewById(R.id.arrangeProduct_category);
         txtnameCategory= findViewById(R.id.nameCategory);
         txtnumberCategory = findViewById(R.id.numberCategoryProduct);
-        btnback = findViewById(R.id.btn_back2);
         gridView= findViewById(R.id.gridviewCategoryProduct);
         productArrayList= new ArrayList<>();
         adapter_information_product_adminhome= new adapter_Information_product(CategoryProduct.this,R.layout.layout_sanpham,productArrayList);
         gridView.setAdapter(adapter_information_product_adminhome);
 
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CategoryProduct.this, Manhinh_Home.class);
-                startActivity(intent);
-            }
-        });
         txtnameCategory.setText(nameCategory);
         // MỞ RA 1 CÁI DIALOG ĐỂ CHỌN LÀ MUỐN SĂP XẾP THEO KIỂU NÀO
         txt.setOnClickListener(new View.OnClickListener() {
