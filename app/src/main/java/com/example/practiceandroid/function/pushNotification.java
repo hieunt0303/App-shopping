@@ -16,6 +16,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
 import com.example.practiceandroid.Fragment.HomeFragment;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.notification.activity_notification;
 import com.example.practiceandroid.notification.class_notification;
@@ -36,6 +37,7 @@ public class pushNotification {
         String currentDay= currentDayTime.split(" ")[0].replace("/"," ");
         String currentTime = currentDayTime.split(" ")[1];
         HomeFragment.number +=1;
+        getNumberNotification.setNumber(String.valueOf(HomeFragment.number));
         random = new Random();
         switch (id)
         {
@@ -45,7 +47,7 @@ public class pushNotification {
                 String information1 = "Discount 30% iPhone 12 128GB";
                 String time1 = currentDay + " " + currentTime;
                 class_notification order1 = new class_notification(id1, title1, information1, time1);
-                mData.child("Notification").child("IDuser").push().setValue(order1);
+                mData.child("Notification").child(Manhinh_Login.userlogin.getName_user()).push().setValue(order1);
                 Bitmap bitmap1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.order);
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "My Notification");
                 builder.setContentTitle(title1);
@@ -68,7 +70,7 @@ public class pushNotification {
                 String information2 = "Your order #" + random.nextInt(1000000) + " is success";
                 String time2 = currentDay + " " + currentTime;
                 class_notification order2 = new class_notification(id2, title2, information2, time2);
-                mData.child("Notification").child("IDuser").push().setValue(order2);
+                mData.child("Notification").child(Manhinh_Login.userlogin.getName_user()).push().setValue(order2);
                 Bitmap bitmap2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.order);
                 NotificationCompat.Builder builder1 = new NotificationCompat.Builder(context, "My Notification");
                 builder1.setContentTitle(title2);
@@ -93,8 +95,8 @@ public class pushNotification {
                 String  title3 = "Order";
                 String information3 = "Your order is success";
                 String time3 = currentDay + " " + currentTime;
-                class_notification order = new class_notification(id3, title3, information3, time3);
-                mData.child("Notification").child("IDuser").push().setValue(order);
+                class_notification order3 = new class_notification(id3, title3, information3, time3);
+                mData.child("Notification").child(Manhinh_Login.userlogin.getName_user()).push().setValue(order3);
                 Bitmap bitmap3 = BitmapFactory.decodeResource(context.getResources(), R.drawable.delivery);
                 NotificationCompat.Builder builder3 = new NotificationCompat.Builder(context, "My Notification");
                 builder3.setContentTitle(title3);
@@ -120,7 +122,7 @@ public class pushNotification {
                 String information4 = "Your order is success";
                 String time4 = currentDay + " " + currentTime;
                 class_notification order4 = new class_notification(id4, title4, information4, time4);
-                mData.child("Notification").child("IDuser").push().setValue(order4);
+                mData.child("Notification").child(Manhinh_Login.userlogin.getName_user()).push().setValue(order4);
                 Bitmap bitmap4 = BitmapFactory.decodeResource(context.getResources(), R.drawable.account);
                 NotificationCompat.Builder builder4 = new NotificationCompat.Builder(context, "My Notification");
                 builder4.setContentTitle(title4);
