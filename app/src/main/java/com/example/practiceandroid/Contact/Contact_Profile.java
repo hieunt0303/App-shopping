@@ -2,12 +2,16 @@ package com.example.practiceandroid.Contact;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -59,6 +63,7 @@ public class Contact_Profile extends AppCompatActivity {
     @BindView(R.id.back_button) ImageButton ivBack;
     @BindView(R.id.logout_button) ImageButton logout;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +109,14 @@ public class Contact_Profile extends AppCompatActivity {
             }
         });
 
-
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            if(manager != null) {
+                manager.createNotificationChannel(channel);
+            }
+        }
 
     }
 
@@ -121,6 +133,7 @@ public class Contact_Profile extends AppCompatActivity {
         dialog.show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void setupDialogYesNo() {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_confirmbox);
@@ -138,6 +151,7 @@ public class Contact_Profile extends AppCompatActivity {
                         mData.child("User").child(snapshot.getKey()).child("phone").setValue(edtPhoneNumber.getText().toString());
                         Manhinh_Login.userlogin.address=edtAddress.getText().toString();
                         Manhinh_Login.userlogin.phone=edtPhoneNumber.getText().toString();
+                        databaseUserLogin.QueryData("Update User set Address = '"+edtAddress.getText().toString()+"', Phone= '"+edtPhoneNumber.getText().toString()+"' where Id = 0 ;");
 
                     }
 
@@ -163,6 +177,7 @@ public class Contact_Profile extends AppCompatActivity {
 
                 }
             });
+            pushNotification.pushnotification("4", Contact_Profile.this);
             dialog.dismiss();
         });
 

@@ -63,12 +63,12 @@ public class Manhinh_Login extends AppCompatActivity {
 
         // add
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
-        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50) )");
+        databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50), Accountid nvarchar(100) )");
         Cursor datauser = databaseUserLogin.GetData("Select * from User ");
         int count = 0;
         while (datauser.moveToNext()) {
             count ++;
-            userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
+            userlogin = new User(datauser.getString(4),"0",datauser.getString(2),datauser.getString(6),datauser.getString(1),datauser.getString(3),datauser.getString(5));
         }
         if(count != 0 )
         {
@@ -154,7 +154,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
                             Cursor datauser = databaseUserLogin.GetData("Select * from User");
                             while (datauser.moveToNext()) {
-                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),datauser.getString(6),datauser.getString(1),datauser.getString(3),datauser.getString(5));
                             }
                             Intent mh = new Intent(Manhinh_Login.this, admin_Home.class);
                             startActivity(mh);
@@ -163,7 +163,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
                             Cursor datauser = databaseUserLogin.GetData("Select * from User");
                             while (datauser.moveToNext()) {
-                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),"0",datauser.getString(1),datauser.getString(3),datauser.getString(5));
+                                userlogin = new User(datauser.getString(4),"0",datauser.getString(2),datauser.getString(6),datauser.getString(1),datauser.getString(3),datauser.getString(5));
                             }
                             Intent mh = new Intent(Manhinh_Login.this, Manhinh_Home.class);
                             startActivity(mh);
@@ -208,12 +208,13 @@ public class Manhinh_Login extends AppCompatActivity {
             if(DS.get(i).name_user.equals(editTextUser.getText().toString())&&
                     DS.get(i).password.equals(editTextPassword.getText().toString()))
             {
-                databaseUserLogin.QueryData("insert into User values(null, '"
+                databaseUserLogin.QueryData("insert into User values(0, '"
                         + DS.get(i).name_user + "', '"
                         + DS.get(i).email+ "', '"
                         + DS.get(i).password+ "', '"
                         + DS.get(i).address+ "', '"
-                        + DS.get(i).phone +"')"
+                        + DS.get(i).phone+ "', '"
+                        + DS.get(i).id+"')"
                 );
                 return  true;
             }

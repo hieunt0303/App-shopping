@@ -118,8 +118,8 @@ public class pushNotification {
                 break;
             case "4":
                 String id4 = "4";
-                String  title4 = "Order";
-                String information4 = "Your order is success";
+                String  title4 = "Account";
+                String information4 = "Your account has been updated!";
                 String time4 = currentDay + " " + currentTime;
                 class_notification order4 = new class_notification(id4, title4, information4, time4);
                 mData.child("Notification").child(Manhinh_Login.userlogin.getName_user()).push().setValue(order4);

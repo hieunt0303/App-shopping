@@ -34,7 +34,7 @@ public class Manhinh_DK extends AppCompatActivity {
         email = (EditText) findViewById(R.id.editTextuser1);
         pass = (EditText) findViewById(R.id.editTextPass1);
         buttondk = (Button) findViewById(R.id.button9);
-        mData.addChildEventListener(new ChildEventListener() {
+        mData.child("User").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 User user = snapshot.getValue(User.class);
@@ -68,8 +68,8 @@ public class Manhinh_DK extends AppCompatActivity {
                     if (check()) {
                         int id = (int) Math.floor(((Math.random() * 899999) + 100000));
                         User user = new User("0", "0", email.getText().toString(), Integer.toString(id), name.getText().toString(), pass.getText().toString(),"0");
+                        mData.child("User").child(name.getText().toString()).setValue(user);
                         mData.child("text_Notification").child(name.getText().toString()).child("number_Notification").setValue("0");
-                        mData.child("User").push().setValue(user);
                         Intent mh = new Intent(Manhinh_DK.this, Manhinh_Login.class);
                         startActivity(mh);
                     }

@@ -49,8 +49,8 @@ public class Fragment_adminHome extends Fragment {
     private String mParam2;
     EditText editText_search;
     ImageView img;
-    Button txtNumberNotification;
-    public static  int number = 0;
+//    Button txtNumberNotification;
+//    public static  int number = 0;
     public Fragment_adminHome() {
         // Required empty public constructor
     }

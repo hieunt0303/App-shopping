@@ -145,6 +145,10 @@ public class HomeFragment extends Fragment {
         productArrayList= new ArrayList<>();
         txtNumberNotification = view.findViewById(R.id.txt_number);
         txtNumberNotification.setVisibility(View.INVISIBLE);
+        if(Manhinh_Login.userlogin.getName_user().equals("admin"))
+        {
+            img.setEnabled(false);
+        }
         FIREBASE.MDATA.child("text_Notification").child(Manhinh_Login.userlogin.getName_user()).child("number_Notification").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull  DataSnapshot snapshot) {
@@ -169,8 +173,9 @@ public class HomeFragment extends Fragment {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), activity_notification.class);
-                startActivity(intent);
+
+                    Intent intent = new Intent(getContext(), activity_notification.class);
+                    startActivity(intent);
 //                Collections.sort(productArrayList, new Comparator<class_Information_Product>() {
 //                    @Override
 //                    public int compare(class_Information_Product o1, class_Information_Product o2) {
