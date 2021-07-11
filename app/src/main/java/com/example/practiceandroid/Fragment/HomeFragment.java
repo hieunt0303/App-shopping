@@ -25,6 +25,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.function.FIREBASE;
@@ -143,7 +144,7 @@ public class HomeFragment extends Fragment {
         productArrayList= new ArrayList<>();
         txtNumberNotification = view.findViewById(R.id.txt_number);
         txtNumberNotification.setVisibility(View.INVISIBLE);
-        FIREBASE.MDATA.child("text_Notification").child("IDuser").child("number_Notification").addValueEventListener(new ValueEventListener() {
+        FIREBASE.MDATA.child("text_Notification").child(Manhinh_Login.userlogin.getName_user()).child("number_Notification").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull  DataSnapshot snapshot) {
                 number = Integer.parseInt(snapshot.getValue().toString());

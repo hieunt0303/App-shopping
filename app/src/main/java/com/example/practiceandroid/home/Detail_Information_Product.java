@@ -127,12 +127,12 @@ public class Detail_Information_Product extends AppCompatActivity {
                     );
                     // CHUYEN QUA GIAO DIEN CART
                     getShowCartFragment.set("true");
-                    startActivity(new Intent(Detail_Information_Product.this, CartFragment.class));
+                    startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
                     
                 }
                 else{
                     getShowCartFragment.set("true");
-                    startActivity(new Intent(Detail_Information_Product.this, CartFragment.class));
+                    startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
                 }
             }
         });
