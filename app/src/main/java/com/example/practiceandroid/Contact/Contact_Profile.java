@@ -25,6 +25,8 @@ import com.example.practiceandroid.Manhinh_DK;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.User;
+import com.example.practiceandroid.function.pushNotification;
+import com.example.practiceandroid.shopping.activity_shopping;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -81,7 +83,6 @@ public class Contact_Profile extends AppCompatActivity {
         bttSubmit.setOnClickListener(v -> {
             String sEmail = edtEmail.getText().toString();
             String iPhone = edtPhoneNumber.getText().toString();
-
             if (TextUtils.isEmpty(edtAddress.getText().toString()) ||
                     TextUtils.isEmpty(edtUserName.getText().toString())){
                 setupDialogMessage(" Something wrong\nPlease check again");

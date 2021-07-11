@@ -20,6 +20,7 @@ import com.example.practiceandroid.Fragment.CartFragment;
 import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.Purchased_Product.classBought_Product;
+import com.example.practiceandroid.Purchased_Product.classInfo_Bill;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.dbSQLite.dbHelper;
 import com.example.practiceandroid.function.getCurrent_Day_Time;
@@ -72,6 +73,8 @@ public class activity_shopping extends AppCompatActivity {
                 name = editTextName.getText().toString();
                 phonenumber = editTextPhonenmber.getText().toString();
                 address = editTextAddress.getText().toString();
+                Bundle bundle = getIntent().getExtras();
+                String totalPrice = bundle.getString("total_price");
                 Cursor cursor = dbhelper.GetData("SELECT * FROM SANPHAM");
                 while (cursor.moveToNext())
                 {
@@ -93,7 +96,13 @@ public class activity_shopping extends AppCompatActivity {
                             getCurrent_Day_Time.get(),
                             false
                     );
+                    classInfo_Bill infoBill = new classInfo_Bill(
+                            name,
+                            totalPrice,
+                            getCurrent_Day_Time.get()
+                    );
                     databaseReference.child("Bought_Product").child(Manhinh_Login.userlogin.getName_user()).child(getCurrent_Day_Time.get().split(" ")[0].replace("/"," ")).child(getCurrent_Day_Time.get().split(" ")[1]).child(nameProduct).setValue(BOUGHT);
+                    databaseReference.child("Statistic").push().setValue(infoBill);
                     dbhelper.QueryData("DELETE FROM SANPHAM WHERE NameProduct = '" + nameProduct + "' ");
                 }
 
