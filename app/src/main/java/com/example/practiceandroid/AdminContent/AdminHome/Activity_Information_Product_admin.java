@@ -1,30 +1,44 @@
 package com.example.practiceandroid.AdminContent.AdminHome;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.practiceandroid.Contact.Contact_Profile;
+import com.example.practiceandroid.DatabaseUserLogin;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.ImageFromStorage;
 import com.example.practiceandroid.function.ToLowerCase_Trim;
 import com.example.practiceandroid.home.class_Information_Product;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Activity_Information_Product_admin extends AppCompatActivity {
 
@@ -34,6 +48,7 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
     ImageView imgProduct1;
     ImageView imgProduct2;
     ImageView imgProduct3;
+    ImageView img;
 
     EditText editText_nameProduct;
     EditText editText_inStock;
@@ -42,6 +57,14 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
     EditText editText_detail;
     EditText editText_description;
     EditText editText_discount;
+    private static final int SELECT_PICTURE = 1;
+    Uri selectedImageUri;
+    Uri Urianh;
+    Uri upLoadUri1;
+    Uri upLoadUri2;
+    Uri upLoadUri3;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     Button save;
     Button delete;
@@ -60,7 +83,8 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__information__product_admin);
-
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
         // Khởi tạo dialog nhắc chữ
         builder = new AlertDialog.Builder(this);
         builder.setTitle("select choose");
@@ -113,26 +137,40 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
         categoryProduct=intent.getStringExtra("Category_product");
         sumRatingBar=intent.getStringExtra("Sum_Ratingbar");
 
+
         // THAY ĐỔI ẢNH BẰNG CÁCH NHẤN VÀO MÕI CÁI ẢNH
         // MỞ MÁY ẢNH RA VÀ LẤY ẢNH, HÀM CÓ TRONG SETTING, NHỚ XEM ĐÃ IMPORT THƯ VIỆN CHƯA
         imgProduct1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img = imgProduct1;
+                RequestPermission(1);
+
 
             }
         });
+
         imgProduct2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img = imgProduct2;
+                RequestPermission(2);
+
 
             }
         });
+
+
         imgProduct3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                img = imgProduct3;
+                RequestPermission(3);
+
 
             }
         });
+
         // NHẤN SAVE VÀ DELETE
         // THỰC HIỆN 2 CHỨC NĂNG NÀY TRÊN CẢ REALTIMEDATABASE VÀ STORAGE ĐỂ SET ẢNH VÀ SET THÔNG TIN SẢN PHẨM
         editText_category.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +230,9 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
                         ));
                 // xét lại hình cho nó như đã nói ở trên
                 // code here....
-
+                uploadImage(1,upLoadUri1);
+                uploadImage(2,upLoadUri2);
+                uploadImage(3,upLoadUri3);
                 finish();
             }
         });
@@ -243,5 +283,123 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
         });
 
 
+    }
+    private void RequestPermission(int Postition){
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                imageChooser(Postition);
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(Activity_Information_Product_admin.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+
+        };
+        TedPermission.with(this)
+                .setPermissionListener(permissionlistener)
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .check();
+    }
+
+
+
+
+    // this function is triggered when
+    // the Select Image Button is clicked
+    void imageChooser(int Postition) {
+        // create an instance of the
+        // intent of the type image
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        // pass the constant to compare it
+        // with the returned requestCode
+        startActivityForResult(Intent.createChooser(i, "Select Picture"), Postition);
+    }
+    // this function is triggered when user
+    // selects the image from the imageChooser
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            // compare the resultCode with the
+            // SELECT_PICTURE constant
+            if (requestCode == 1) {
+                // Get the url of the image from data
+                selectedImageUri = data.getData();
+                upLoadUri1 = selectedImageUri;
+                if (null != selectedImageUri) {
+                    // update the preview image in the layout
+                    img.setImageURI(selectedImageUri);
+
+                }
+            } else if (requestCode == 2) {
+                // Get the url of the image from data
+                selectedImageUri = data.getData();
+                upLoadUri2 = selectedImageUri;
+                if (null != selectedImageUri) {
+                    // update the preview image in the layout
+                    img.setImageURI(selectedImageUri);
+
+                }
+            } else if (requestCode == 3) {
+                // Get the url of the image from data
+                selectedImageUri = data.getData();
+                upLoadUri3 = selectedImageUri;
+                if (null != selectedImageUri) {
+                    // update the preview image in the layout
+                    img.setImageURI(selectedImageUri);
+
+                }
+            }
+        }
+    }
+    private void uploadImage(int count, Uri uri) {
+
+        if(uri != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+            String child1= editText_nameProduct.getText().toString()+"/"+ ToLowerCase_Trim(editText_nameProduct.getText().toString())+count +".png";
+            StorageReference ref = storageReference.child(child1);
+            ref.putFile(uri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(Activity_Information_Product_admin.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(Activity_Information_Product_admin.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
+    }
+    public  static String ToLowerCase_Trim(String data){
+        //làm thành chữ thường và bỏ dấu cách
+        String [] arrdata= data.split(" ");
+        String trim="";
+        for(int i=0;i<arrdata.length;i++){
+            trim = trim + arrdata[i].toLowerCase();
+        }
+        return  trim;
     }
 }

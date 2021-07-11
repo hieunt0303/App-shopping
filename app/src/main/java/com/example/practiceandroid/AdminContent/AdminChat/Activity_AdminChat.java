@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -28,10 +30,16 @@ import com.example.practiceandroid.chat.adapter_chat_recycleview;
 import com.example.practiceandroid.chat.class_chat;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.getCurrent_Day_Time;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -84,7 +92,7 @@ public class Activity_AdminChat extends AppCompatActivity {
         Intent intent = getIntent();
         String nameUser = intent.getStringExtra("nameUser");
         txt_nameUser.setText(nameUser);
-
+        layanh();
         imgview_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,6 +221,25 @@ public class Activity_AdminChat extends AppCompatActivity {
         if(requestCode==1  && data!=null){
             ArrayList<String> arrayList= data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             editText_content.setText(arrayList.get(0).toString());
+        }
+    }
+    private  void layanh()
+    {
+        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("Avata/"+ txt_nameUser.getText().toString()+".png");
+        try {
+            final File localfile= File.createTempFile(Manhinh_Login.userlogin.getName_user(),"png");
+            mStorage.getFile(localfile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            //Toast.makeText(HomeFragment.this,"Đưa ảnh lên thành công !!!",Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            imgview_Avatar.setImageBitmap(bitmap);
+
+                        }
+                    });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

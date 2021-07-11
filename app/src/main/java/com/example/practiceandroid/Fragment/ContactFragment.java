@@ -1,6 +1,8 @@
 package com.example.practiceandroid.Fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -23,12 +25,18 @@ import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.class_Information_Product;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -59,6 +67,7 @@ public class ContactFragment extends Fragment {
     ImageView ivFeedBack;
     @BindView(R.id.Name)
     TextView username;
+    @BindView(R.id.profileImage) ImageView iv_Avatar;
 
     // hiển thị sản phẩm
     GridView gridView;
@@ -67,7 +76,6 @@ public class ContactFragment extends Fragment {
     NestedScrollView nestedScrollView;
     ImageView img;
     EditText editText_search;
-
 
     //Fire base hiển thị sản phẩm
     DatabaseReference mData;
@@ -114,6 +122,7 @@ public class ContactFragment extends Fragment {
         //Use ButterKnife instead of findViewByID
         unbinder = ButterKnife.bind(ContactFragment.this, view);
         username.setText(Manhinh_Login.userlogin.name_user);
+        layanh();
         //Intend to Contact_Profile
         bttEditProfile.setOnClickListener(v -> startActivity(new Intent(getActivity(), Contact_Profile.class)));
 
@@ -217,5 +226,24 @@ public class ContactFragment extends Fragment {
 
         // unbind the view to free some memory
         unbinder.unbind();
+    }
+    private  void layanh()
+    {
+        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("Avata/"+ Manhinh_Login.userlogin.getName_user()+".png");
+        try {
+            final File localfile= File.createTempFile(Manhinh_Login.userlogin.getName_user(),"png");
+            mStorage.getFile(localfile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            //Toast.makeText(HomeFragment.this,"Đưa ảnh lên thành công !!!",Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            iv_Avatar.setImageBitmap(bitmap);
+
+                        }
+                    });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
