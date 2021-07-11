@@ -97,7 +97,7 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
         // get id_product : intent.getStringExtra("Id_product") -> dùng để xóa và update cho dễ
 
         editText_nameProduct.setText(intent.getStringExtra("Name_product"));
-        editText_inStock.setText(String.valueOf(intent.getIntExtra("Name_product", 0)));
+        editText_inStock.setText(String.valueOf(intent.getIntExtra("inStock", 0)));
         editText_price.setText(intent.getStringExtra("Price_product_real"));
         editText_description.setText(intent.getStringExtra("description"));
         editText_detail.setText(intent.getStringExtra("detail"));
@@ -154,10 +154,25 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editText_category.getText().toString().equals(intent.getStringExtra("Category_product"))) {
+                if (!editText_category.getText().toString().equals(intent.getStringExtra("Category_product"))) {
                     // NẾU ĐÃ CHỌN LẠI LOẠI THÌ PHẢI DELETE RỒI MỚI SET
                     // nhớ delete theo loại cũ : intent.getStringExtra("Category_product")
-                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("id_product").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("categories").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("name_product").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("price_product_real").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("discount").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("price_product_fake").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("Sum_Ratingbar").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("in_stock").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("Sum_Bought").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("favourite").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("add_to_cart").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("description").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("detail").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("color1").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("color2").removeValue();
+                    FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("Img_border").removeValue();
                 }
                 FIREBASE.MDATA.child("Products").child(editText_category.getText().toString()).child(idProduct)
                         .setValue(new class_Information_Product(
@@ -209,7 +224,8 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
                         FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("color1").removeValue();
                         FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("color2").removeValue();
                         FIREBASE.MDATA.child("Products").child(categoryProduct).child(idProduct).child("Img_border").removeValue();
-                        dialog.cancel();
+
+                        finish();
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -218,11 +234,11 @@ public class Activity_Information_Product_admin extends AppCompatActivity {
 
                         // Do nothing
                         dialog.dismiss();
+                        finish();
                     }
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
-                finish();
             }
         });
 

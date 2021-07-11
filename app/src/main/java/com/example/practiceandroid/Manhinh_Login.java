@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.home.Comment.classComment;
+import com.example.practiceandroid.home.class_Information_Product;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
