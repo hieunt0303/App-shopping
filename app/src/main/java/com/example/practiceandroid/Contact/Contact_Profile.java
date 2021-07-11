@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,14 +28,24 @@ import com.example.practiceandroid.Manhinh_DK;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.User;
+import com.example.practiceandroid.function.ToLowerCase_Trim;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -44,6 +57,9 @@ public class Contact_Profile extends AppCompatActivity {
     private static final int SELECT_PICTURE = 1;
     public User user;
     DatabaseUserLogin databaseUserLogin;
+    Uri selectedImageUri;
+    FirebaseStorage storage;
+    StorageReference storageReference;
     @BindView(R.id.editText_Address) EditText edtAddress;
     @BindView(R.id.editText_ID) EditText edtID;
     @BindView(R.id.editText_Email) EditText edtEmail;
@@ -62,10 +78,8 @@ public class Contact_Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact__profile);
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
-
-
-
-
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
         //Su dung BindView thay cho findViewbyID
         ButterKnife.bind(this);
         name.setText(Manhinh_Login.userlogin.name_user);
@@ -75,7 +89,7 @@ public class Contact_Profile extends AppCompatActivity {
         edtEmail.setText(Manhinh_Login.userlogin.email);
         edtPhoneNumber.setText(Manhinh_Login.userlogin.phone);
         tvChangePhoto.setOnClickListener(v -> RequestPermission());
-
+        layanh();
         ivBack.setOnClickListener(v -> finish());
 
         bttSubmit.setOnClickListener(v -> {
@@ -162,6 +176,7 @@ public class Contact_Profile extends AppCompatActivity {
 
                 }
             });
+            uploadImage();
             dialog.dismiss();
         });
 
@@ -216,12 +231,65 @@ public class Contact_Profile extends AppCompatActivity {
             // SELECT_PICTURE constant
             if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
-                Uri selectedImageUri = data.getData();
+                selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     ivProfile_Avatar.setImageURI(selectedImageUri);
                 }
             }
+        }
+    }
+    private void uploadImage() {
+
+        if(selectedImageUri != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference ref = storageReference.child("Avata/"+ Manhinh_Login.userlogin.getName_user()+".png");
+            ref.putFile(selectedImageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(Contact_Profile.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(Contact_Profile.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
+    }
+    private  void layanh()
+    {
+        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("Avata/"+ Manhinh_Login.userlogin.getName_user()+".png");
+        try {
+            final File localfile= File.createTempFile(Manhinh_Login.userlogin.getName_user(),"png");
+            mStorage.getFile(localfile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            //Toast.makeText(HomeFragment.this,"Đưa ảnh lên thành công !!!",Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            ivProfile_Avatar.setImageBitmap(bitmap);
+
+                        }
+                    });
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

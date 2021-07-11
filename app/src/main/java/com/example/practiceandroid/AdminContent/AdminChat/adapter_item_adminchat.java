@@ -2,6 +2,8 @@ package com.example.practiceandroid.AdminContent.AdminChat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +23,16 @@ import com.example.practiceandroid.R;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.admin.chat.ExistUserChat;
 import com.example.practiceandroid.home.class_Information_Product;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class adapter_item_adminchat extends BaseAdapter {
@@ -70,10 +77,24 @@ public class adapter_item_adminchat extends BaseAdapter {
 
         // Gan gia tri
         // NÀO LÀM XONG BÊN SETTING VÔ ĐÂY ĐỔI LẠI CÁI ĐƯỜNG DẪN AVATAR CỦA USER
-        imgview_avatar.setBackground(ContextCompat.getDrawable(context,R.drawable.avatar));
 
         txt_nameUser.setText(arr_User.get(position).toString());
+        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("Avata/"+ txt_nameUser.getText().toString()+".png");
+        try {
+            final File localfile= File.createTempFile(Manhinh_Login.userlogin.getName_user(),"png");
+            mStorage.getFile(localfile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            //Toast.makeText(HomeFragment.this,"Đưa ảnh lên thành công !!!",Toast.LENGTH_SHORT).show();
+                            Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                            imgview_avatar.setImageBitmap(bitmap);
 
+                        }
+                    });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         FIREBASE.MDATA.child("Message").child(arr_User.get(position).toString()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -121,6 +142,8 @@ public class adapter_item_adminchat extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
+
         return convertView;
     }
+
 }
