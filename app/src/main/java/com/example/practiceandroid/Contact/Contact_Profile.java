@@ -55,7 +55,6 @@ import butterknife.ButterKnife;
 public class Contact_Profile extends AppCompatActivity {
     DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     private static final int SELECT_PICTURE = 1;
-    public User user;
     DatabaseUserLogin databaseUserLogin;
     Uri selectedImageUri;
     FirebaseStorage storage;
