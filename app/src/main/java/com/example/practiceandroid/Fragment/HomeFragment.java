@@ -30,6 +30,7 @@ import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.getNumberCategories;
+import com.example.practiceandroid.function.getNumberNotification;
 import com.example.practiceandroid.home.Category.CategoryProduct;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.adapter_slide_header_home;
