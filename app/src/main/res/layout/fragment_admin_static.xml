@@ -1,58 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminHome.Fragment_adminStatic"
-    android:background="#FFFF">
+    android:background="#FFFF"
+    android:orientation="vertical"
+    android:weightSum="9"
+    tools:context=".adminHome.Fragment_adminStatic">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <TextView
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:text="Statistic"
-        android:textColor="#808080"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-    <Button
-        android:id="@+id/buttonTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
-        android:text="Check"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:background="@color/green"
-        android:layout_marginTop="600dp"
-        />
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="25dp"
+            android:layout_weight="1"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Statistic"
+            android:textColor="#808080"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnlogout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/icon_logout" />
+    </LinearLayout>
 
     <com.github.mikephil.charting.charts.LineChart
+        android:layout_weight="7"
         android:id="@+id/linechart"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="70dp" />
-
-    <Spinner
-        android:id="@+id/Thang"
-        android:background="#D300BCD4"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginLeft="215dp"/>
-    <ImageButton
-        android:id="@+id/btnlogout"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@null"
-        android:layout_marginLeft="360dp"
-        android:src="@drawable/icon_logout" />
+         />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_weight="1"
+            android:id="@+id/Thang"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="#D300BCD4" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/buttonTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            android:text="Check"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</LinearLayout>

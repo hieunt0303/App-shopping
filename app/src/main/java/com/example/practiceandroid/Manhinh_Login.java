@@ -63,6 +63,7 @@ public class Manhinh_Login extends AppCompatActivity {
 
         // add
         databaseUserLogin = new DatabaseUserLogin(this, "user.sqlite", null, 1);
+        //databaseUserLogin.QueryData("Drop table User");
         databaseUserLogin.QueryData("Create table if not exists User (Id Integer Primary key autoincrement, User nvarchar(20), Email nvarchar(50), Password nvarchar(50), Address nvarchar(100),Phone nvarchar(50), Accountid nvarchar(100) )");
         Cursor datauser = databaseUserLogin.GetData("Select * from User ");
         int count = 0;
@@ -88,8 +89,8 @@ public class Manhinh_Login extends AppCompatActivity {
         //Cursor datauser = databaseUserLogin.GetData("Select * from User");
         //if(datauser !=null)
         //{
-            //Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
-            //startActivity(mh);
+        //Intent mh = new Intent(Manhinh_Login.this,Manhinh_Home.class);
+        //startActivity(mh);
         //}
         imgview_eye.setImageResource(R.drawable.icon_eye_close);
         imgview_eye.setOnClickListener(new View.OnClickListener() {

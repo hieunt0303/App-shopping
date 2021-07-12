@@ -24,6 +24,7 @@ import com.example.practiceandroid.Purchased_Product.classInfo_Bill;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.dbSQLite.dbHelper;
 import com.example.practiceandroid.function.getCurrent_Day_Time;
+import com.example.practiceandroid.function.getShowCartFragment;
 import com.example.practiceandroid.function.pushNotification;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -107,7 +108,6 @@ public class activity_shopping extends AppCompatActivity {
                 }
 
                 pushNotification.pushnotification("2", activity_shopping.this);
-
                 Intent intent1 = new Intent(activity_shopping.this, Manhinh_Home.class);
                 startActivity(intent1);
             }
