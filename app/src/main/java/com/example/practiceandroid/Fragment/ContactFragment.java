@@ -58,7 +58,6 @@ public class ContactFragment extends Fragment {
 
     @BindView(R.id.edit_profile)
     Button bttEditProfile;
-
 //    @BindView(R.id.waiting)
 //    ImageView ivWaiting;
     @BindView(R.id.delivering)
