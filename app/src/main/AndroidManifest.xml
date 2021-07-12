@@ -16,41 +16,41 @@
         <activity android:name=".Manhinh_Mailreset">
 
         </activity>
-        <activity android:name=".admin_Home" >
+        <activity android:name=".admin_Home" android:noHistory="true" >
 
         </activity>
         <activity android:name=".Manhinh_DK" >
 
         </activity>
-        <activity android:name=".home.Detail_Information_Product" />
-        <activity android:name=".Manhinh_Login" >
+        <activity android:name=".home.Detail_Information_Product" android:noHistory="true" />
+        <activity android:name=".Manhinh_Login" android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Manhinh_Home" />
+        <activity android:name=".Manhinh_Home" android:noHistory="true" />
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Contact.Contact_Waiting_Shipping_Dellivering" />
-        <activity android:name=".Contact.Contact_Profile" />
-        <activity android:name=".Contact.FeedBack_Comment" />
-        <activity android:name=".AdminContent.AdminChat.Activity_AdminChat"/>
-        <activity android:name=".AdminContent.AdminHome.Activity_Information_Product_admin"/>
-        <activity android:name=".shopping.activity_shopping">
+        <activity android:name=".Contact.Contact_Waiting_Shipping_Dellivering" android:noHistory="true" />
+        <activity android:name=".Contact.Contact_Profile" android:noHistory="true"/>
+        <activity android:name=".Contact.FeedBack_Comment" android:noHistory="true" />
+        <activity android:name=".AdminContent.AdminChat.Activity_AdminChat" android:noHistory="true"/>
+        <activity android:name=".AdminContent.AdminHome.Activity_Information_Product_admin" android:noHistory="true"/>
+        <activity android:name=".shopping.activity_shopping" android:noHistory="true">
             <intent-filter>
                 <action android:name="Shopping" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".notification.activity_notification">
+        <activity android:name=".notification.activity_notification" android:noHistory="true">
             <intent-filter>
                 <action android:name="Notification" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.Category.CategoryProduct" />
+        <activity android:name=".home.Category.CategoryProduct" android:noHistory="true" />
     </application>
 
 </manifest>
