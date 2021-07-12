@@ -47,43 +47,6 @@ b. Úp ảnh từ thư viện trong điện thoại ( dùng để up sản phẩ
 c. Chat ( * làm sau cùng )
 
 d. Database 
+![Untitled Diagram](https://user-images.githubusercontent.com/66076345/125297331-58680400-e351-11eb-98f1-9ac3906cf98d.png)
 
-	- Search ( tìm kiếm trước đó, tìm kiếm nhiều (trending), tìm kiếm tên sản phẩm )
-	- Thông tin từng sản phẩm
-		* id sản phẩm  : từng sản phẩm có id khác nhau
-		* id của shop bán sản phẩm đó
-		* Hình của sản phẩm
-		* Tên sản phẩm
-		* Giá sản phẩm ( đơn vị $ hết cho đồng bộ )
-		* Số sao ( rating bar )
-		* Số người đã mua
-		* Nơi bán 
-		* Thông tin chi tiết, mô tả sản phẩm
-		* Số sản phẩm còn trong kho
-		* Size
-		* Đánh giá của người dùng (* làm sau cùng )
-		* Mã giảm giá (* làm sau cùng )
-		* Sản phẩm tương tự ( * làm sau cùng )
-	- Thông tin shop bán sản phẩm
-		* id : từng shop có id khác nhau 
-		* Tên shop
-		* Địa chỉ shop
-		* Số người đã mua tất cả sản phẩm
-		* Số sản phẩm ( list hết sản phẩm bằng *id )
-	- Thông tin người mua
-		* id người mua
-		* Tên người mua
-		* Địa chỉ
-		* Sđt
-		* Ngày sinh
-
-	- Hóa đơn
-		* Số hóa đơn
-		* Ngày hóa đơn
-		* Mã khách hàng
-		* Giá
-	- CTHD 
-		* Số hóa đơn
-		* id sản phẩm
-		* Số lượng
 		
