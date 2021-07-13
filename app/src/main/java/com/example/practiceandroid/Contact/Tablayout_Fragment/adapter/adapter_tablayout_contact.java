@@ -32,7 +32,7 @@ public class adapter_tablayout_contact extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String title = "Feedback";
+        String title = " ";
         return title;
     }
 }

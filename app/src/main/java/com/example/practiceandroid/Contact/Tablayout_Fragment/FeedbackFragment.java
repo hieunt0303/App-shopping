@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.practiceandroid.Contact.FeedBack_Comment;
 import com.example.practiceandroid.Contact.Tablayout_Fragment.adapter.adapter_Feedback;
+import com.example.practiceandroid.Contact.class_comment;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.shopping.FeedBacks_Products;
@@ -91,18 +93,21 @@ public class FeedbackFragment extends Fragment{
         rvItem.setLayoutManager(new LinearLayoutManager(FeedbackFragment.this.getContext()));
         rvItem.setHasFixedSize(true);
         DatabaseReference DATA = FirebaseDatabase.getInstance().getReference().child("Bought_FeedBacks"). child(Manhinh_Login.userlogin.getName_user());
-        DATA.keepSynced(true);
         FirebaseRecyclerOptions<FeedBacks_Products> options =
                 new FirebaseRecyclerOptions.Builder<FeedBacks_Products>()
                         .setQuery(DATA, FeedBacks_Products.class)
                         .build();
         adapter = new adapter_Feedback(options);
         rvItem.setAdapter(adapter);
-        adapter.setOnclickListener(new adapter_Feedback.onItemClickListener() {
-            @Override
-            public void onItemListener(DataSnapshot snapshot, int position) {
-
-            }
+        adapter.setOnclickListener((snapshot, position) -> {
+            FeedBacks_Products newProduct = snapshot.getValue(FeedBacks_Products.class);
+            Intent intent = new Intent(getContext().getApplicationContext(), FeedBack_Comment.class);
+            Toast.makeText(getContext(), newProduct.getProductName(), Toast.LENGTH_SHORT).show();
+            class_comment.productName = newProduct.getProductName();
+            class_comment.Categories = newProduct.getProductCategory();
+            class_comment.productID = newProduct.getProductID();
+            class_comment.userName = newProduct.getUserName();
+            startActivity(intent);
         });
 //            FeedBacks_Products item = documentSnapshot.
 //            Intent intent = new Intent(FeedbackFragment.this.getContext(), FeedBack_Comment.class);

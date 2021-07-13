@@ -18,16 +18,16 @@
 
     <TextView
         android:id="@+id/textView_Name_feedback"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="40dp"
         android:maxWidth="200dp"
         android:text="Apple iPhone 12"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView_Product_feedback"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,6 +51,7 @@
         android:layout_width="125sp"
         android:layout_height="35sp"
         android:layout_marginStart="176dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/button_submit"
         android:text="Comment"
         android:textAllCaps="false"
@@ -58,7 +59,5 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_Product_feedback"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/imageView_Product_feedback" />
 </androidx.constraintlayout.widget.ConstraintLayout>

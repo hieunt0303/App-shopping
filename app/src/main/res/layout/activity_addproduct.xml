@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:context=".AddProduct">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Add Products"
+            android:textColor="#808080"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/relativeLayout2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view">
+
+            <ImageButton
+                android:id="@+id/imagebutton_AddProduct_image1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@null"
+                android:src="@drawable/image_emty_picture" />
+
+            <TextView
+                android:id="@+id/textView_chooseImage1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imagebutton_AddProduct_image1"
+                android:layout_alignTop="@+id/imagebutton_AddProduct_image1"
+                android:layout_alignRight="@+id/imagebutton_AddProduct_image1"
+                android:layout_alignBottom="@+id/imagebutton_AddProduct_image1"
+                android:gravity="center"
+                android:text="Add Image"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="19sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/relativeLayout3"
+            app:layout_constraintStart_toEndOf="@+id/relativeLayout1"
+            app:layout_constraintTop_toBottomOf="@id/view">
+
+            <ImageButton
+                android:id="@+id/imagebutton_AddProduct_image2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@null"
+                android:src="@drawable/image_emty_picture" />
+
+            <TextView
+                android:id="@+id/textView_chooseImage2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imagebutton_AddProduct_image2"
+                android:layout_alignTop="@+id/imagebutton_AddProduct_image2"
+                android:layout_alignRight="@+id/imagebutton_AddProduct_image2"
+                android:layout_alignBottom="@+id/imagebutton_AddProduct_image2"
+                android:gravity="center"
+                android:text="Add Image"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="19sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/relativeLayout2"
+            app:layout_constraintTop_toBottomOf="@id/view">
+
+            <ImageButton
+                android:id="@+id/imagebutton_AddProduct_image3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@null"
+                android:src="@drawable/image_emty_picture" />
+
+            <TextView
+                android:id="@+id/textView_chooseImage3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imagebutton_AddProduct_image3"
+                android:layout_alignTop="@+id/imagebutton_AddProduct_image3"
+                android:layout_alignRight="@+id/imagebutton_AddProduct_image3"
+                android:layout_alignBottom="@+id/imagebutton_AddProduct_image3"
+                android:gravity="center"
+                android:text="Add Image"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="19sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view4">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name of Products"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="*"
+                android:textColor="#FF0000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView_Name_KeyCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="0/120"
+                android:textColor="#808080"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editText_Name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/image_emty_picture"
+            android:ems="10"
+            android:hint="Type name of product"
+            android:inputType="textPersonName"
+            android:maxLength="120"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/black"
+            android:textColorHint="#808080"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="*"
+                android:textColor="#FF0600"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView_Description_KeyCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="0/3000"
+                android:textColor="#808080"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editText_Description"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/image_emty_picture"
+            android:ems="10"
+            android:hint="Type Description of product"
+            android:inputType="textPersonName"
+            android:maxLength="120"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/black"
+            android:textColorHint="#808080"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout1" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_Name" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_Description" />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+
+        <FrameLayout
+            android:id="@+id/frame_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view8">
+            <TextView
+                android:id="@+id/Textview_Detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:text="Detail"
+                android:textColor="#000000"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/image_detailArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                android:src="@drawable/ic_arrow_right" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/Linear_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="44dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/button_AddProduct"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frame_detail">
+
+            <FrameLayout
+                android:id="@+id/framelayout_Categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="categories"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView_Categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleX="1.2"
+                    android:scaleY="2"
+                    android:text="right_arrow"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/framelayout_Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="price"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView_addPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="add"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:id="@+id/framelayout_Warehouse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="warehouse"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView_Warehouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="add"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/framelayout_Classification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginStart="30dp"
+                    android:text="classification"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView_Classify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_marginEnd="15dp"
+                    android:scaleX="1.2"
+                    android:scaleY="2"
+                    android:text="right_arrow"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/framelayout_Condittion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|top"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="condittion"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/textView_Condition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleX="1.2"
+                    android:scaleY="2"
+                    android:text="right_arrow"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/framelayout_Storage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Linear_detail">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|top"
+                android:layout_marginStart="30dp"
+                android:text="storage"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/textView_Stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|top"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="15dp"
+                android:text="add"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="23sp" />
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/button_AddProduct"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/button_submit"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

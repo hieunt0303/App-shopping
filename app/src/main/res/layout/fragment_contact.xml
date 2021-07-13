@@ -30,22 +30,20 @@
 
         <TextView
             android:id="@+id/Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Truong Lien"
             android:textColor="#79CEED"
-            android:textSize="27sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/profileImage"
             app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
         <Button
             android:id="@+id/edit_profile"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/button_border"
             android:paddingStart="10dp"
@@ -56,18 +54,17 @@
             android:textAllCaps="false"
             android:textColor="#79CEED"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/profileImage"
+            app:layout_constraintStart_toStartOf="@+id/Name"
             app:layout_constraintTop_toBottomOf="@+id/Name" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="5dp"
             android:src="@drawable/setting"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_profile"
             app:layout_constraintStart_toEndOf="@+id/edit_profile"
-            app:layout_constraintTop_toBottomOf="@+id/Name" />
+            app:layout_constraintTop_toTopOf="@+id/edit_profile" />
 
         <TextView
             android:id="@+id/textView"

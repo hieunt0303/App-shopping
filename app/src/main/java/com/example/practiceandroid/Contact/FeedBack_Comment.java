@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +25,7 @@ public class FeedBack_Comment extends AppCompatActivity {
     @BindView(R.id.button_Submit_cmt)
     Button bttSubmit;
     @BindView(R.id.editText_comment)
-    Button bttComment;
+    EditText edtComment;
     @BindView(R.id.imageview_Back)
     ImageView imBack;
 
@@ -46,20 +47,23 @@ public class FeedBack_Comment extends AppCompatActivity {
     @BindView(R.id.textView_rating_comment)
     TextView tvRatingStar;
 
-    class_comment newComment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed_back__comment);
         //Su dung BindView thay cho findViewbyID
         ButterKnife.bind(this);
-        GetData();
         SetData();
+        class_comment.Star = 5 +".0";
+        class_comment.Comment = "";
 
+
+
+        ImageFromStorage.setImage(class_comment.productName, 1, ivComment);
         bttSubmit.setOnClickListener(v -> {
-            if (!newComment.getStar().equals("0")){
-                newComment.setComment(bttComment.getText().toString());
-                UpploadData(newComment);
+            if (!class_comment.Star.equals("0")){
+                class_comment.Comment = (edtComment.getText().toString());
+                UpploadData();
                 Toast.makeText(FeedBack_Comment.this, "Thanks for purchase us", Toast.LENGTH_SHORT).show();
                 FeedBack_Comment.this.finish();
             }
@@ -73,14 +77,6 @@ public class FeedBack_Comment extends AppCompatActivity {
 
 
     }
-// Get data from firebase
-    private void GetData() {
-        newComment.setProductName(getIntent().getStringExtra("prName"));
-        newComment.setCategories(getIntent().getStringExtra("prCategories"));
-        newComment.setProductID(getIntent().getStringExtra("prID"));
-        newComment.setUserName(getIntent().getStringExtra("usID"));
-        ImageFromStorage.setImage(newComment.getProductName(), 1, ivComment);
-    }
 
     private void SetData() {
         star_up_1.setOnClickListener(v -> starCount(1));
@@ -91,12 +87,17 @@ public class FeedBack_Comment extends AppCompatActivity {
     }
 
     //Uppload data to database
-    private void UpploadData(class_comment comment) {
+    private void UpploadData() {
         FIREBASE.MDATA.child("Comment")
-                .child(newComment.Categories)
-                .child(newComment.productID)
+                .child(class_comment.Categories)
+                .child(class_comment.productID)
                 .push()
-                .setValue(newComment);
+                .setValue(new Class_dataComent(class_comment.Categories,
+                                                class_comment.Comment,
+                                                class_comment.userName,
+                                                class_comment.productID,
+                                                class_comment.productName,
+                                                class_comment.Star));
     }
 
 
@@ -145,13 +146,11 @@ public class FeedBack_Comment extends AppCompatActivity {
                 star_up_3.setImageResource(R.drawable.icon_star);
                 star_up_4.setImageResource(R.drawable.icon_star);
                 star_up_5.setImageResource(R.drawable.icon_star);
-
-
                 break;
 
         }
-        tvRatingStar.setText(position);
-        newComment.setStar(String.valueOf(position));
+        class_comment.Star = (position + ".0");
+        tvRatingStar.setText(class_comment.Star);
     }
 
 }
