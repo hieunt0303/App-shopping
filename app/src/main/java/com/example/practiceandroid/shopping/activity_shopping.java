@@ -143,7 +143,7 @@ public class activity_shopping extends AppCompatActivity {
                     name
             );
 
-            FIREBASE.MDATA.child("Bought_FeedBacks").child(Manhinh_Login.userlogin.getName_user()).setValue(FBOUGHT);
+            FIREBASE.MDATA.child("Bought_FeedBacks").child(Manhinh_Login.userlogin.getName_user()).push().setValue(FBOUGHT);
         }
     }
 }

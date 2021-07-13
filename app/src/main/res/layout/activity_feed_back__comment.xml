@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageview_Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
@@ -34,13 +34,13 @@
 
     <ImageView
         android:id="@+id/imageview_Comment"
-        android:layout_width="396dp"
-        android:layout_height="300dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageview_Back"
-        app:srcCompat="@drawable/airpod" />
+         />
 
     <ImageButton
         android:id="@+id/ivbutton_star1"

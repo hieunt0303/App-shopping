@@ -13,7 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:text="classification"
+        android:text="@string/classification"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="23sp"
