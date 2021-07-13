@@ -99,6 +99,7 @@ public class FeedbackFragment extends Fragment{
                         .build();
         adapter = new adapter_Feedback(options);
         rvItem.setAdapter(adapter);
+
         adapter.setOnclickListener((snapshot, position) -> {
             FeedBacks_Products newProduct = snapshot.getValue(FeedBacks_Products.class);
             Intent intent = new Intent(getContext().getApplicationContext(), FeedBack_Comment.class);
@@ -109,13 +110,7 @@ public class FeedbackFragment extends Fragment{
             class_comment.userName = newProduct.getUserName();
             startActivity(intent);
         });
-//            FeedBacks_Products item = documentSnapshot.
-//            Intent intent = new Intent(FeedbackFragment.this.getContext(), FeedBack_Comment.class);
-//            intent.putExtra("prName", item.getProductName());
-//            intent.putExtra("prCategories", item.getProductCategory());
-//            intent.putExtra("prID", item.getProductID());
-//            intent.putExtra("usID", item.getUserName());
-//            startActivity(intent);
+
 
         return view;
     }

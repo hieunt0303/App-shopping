@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_confirmbox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_shape">
+
+
+    <TextView
+        android:id="@+id/dialog_edt_AddTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Enter Price"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/dialog_edt"
+        android:layout_width="258dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/image_emty_picture"
+        android:hint="Set price here"
+        android:inputType="numberDecimal"
+        android:digits="0123456789.,"
+        android:textColor="@color/black"
+        android:paddingLeft="15dp"
+        android:maxLength="10"
+        android:textAllCaps="false"
+        android:textColorHint="#808080"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_edt_AddTitle"
+        app:layout_constraintStart_toStartOf="@+id/dialog_edt_AddTitle"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_edt_AddTitle" />
+
+    <Button
+        android:id="@+id/dialog_edt_Yes"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dialog_shape"
+        android:text="Yes"
+        android:textAllCaps="false"
+        android:textColor="#79CEED"
+        android:textSize="24sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dialog_edt_No"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_edt" />
+
+    <Button
+        android:id="@+id/dialog_edt_No"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dialog_shape"
+        android:text="No"
+        android:textAllCaps="false"
+        android:textColor="#79CEED"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialog_edt_Yes"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_edt" />
+</androidx.constraintlayout.widget.ConstraintLayout>
