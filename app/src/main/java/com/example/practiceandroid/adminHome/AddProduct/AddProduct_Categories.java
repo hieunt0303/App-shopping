@@ -63,7 +63,7 @@ public class AddProduct_Categories extends AppCompatActivity implements Categori
         list.add(new AddProduct_Component("Phones"));
         list.add(new AddProduct_Component("Shoes"));
         list.add(new AddProduct_Component("Watch"));
-        list.add(new AddProduct_Component("Women"));
+        list.add(new AddProduct_Component("Woman"));
         return list;
     }
 
