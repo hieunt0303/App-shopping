@@ -75,14 +75,14 @@ public class adapterComment extends BaseAdapter {
 
     public void setStar(String sumRatingbar){
         switch (sumRatingbar){
-            case "0":
+            case "0.0":
                 imgStar1.setImageResource(R.drawable.icon_star_none);
                 imgStar2.setImageResource(R.drawable.icon_star_none);
                 imgStar3.setImageResource(R.drawable.icon_star_none);
                 imgStar4.setImageResource(R.drawable.icon_star_none);
                 imgStar5.setImageResource(R.drawable.icon_star_none);
                 break;
-            case "1":
+            case "1.0":
                 imgStar1.setImageResource(R.drawable.icon_star);
                 imgStar2.setImageResource(R.drawable.icon_star_none);
                 imgStar3.setImageResource(R.drawable.icon_star_none);
@@ -96,7 +96,7 @@ public class adapterComment extends BaseAdapter {
                 imgStar4.setImageResource(R.drawable.icon_star_none);
                 imgStar5.setImageResource(R.drawable.icon_star_none);
                 break;
-            case "2":
+            case "2.0":
                 imgStar1.setImageResource(R.drawable.icon_star);
                 imgStar2.setImageResource(R.drawable.icon_star);
                 imgStar3.setImageResource(R.drawable.icon_star_none);
@@ -110,7 +110,7 @@ public class adapterComment extends BaseAdapter {
                 imgStar4.setImageResource(R.drawable.icon_star_none);
                 imgStar5.setImageResource(R.drawable.icon_star_none);
                 break;
-            case "3":
+            case "3.0":
                 imgStar1.setImageResource(R.drawable.icon_star);
                 imgStar2.setImageResource(R.drawable.icon_star);
                 imgStar3.setImageResource(R.drawable.icon_star);
@@ -124,7 +124,7 @@ public class adapterComment extends BaseAdapter {
                 imgStar4.setImageResource(R.drawable.icon_star_haft);
                 imgStar5.setImageResource(R.drawable.icon_star_none);
                 break;
-            case "4":
+            case "4.0":
                 imgStar1.setImageResource(R.drawable.icon_star);
                 imgStar2.setImageResource(R.drawable.icon_star);
                 imgStar3.setImageResource(R.drawable.icon_star);
@@ -138,7 +138,7 @@ public class adapterComment extends BaseAdapter {
                 imgStar4.setImageResource(R.drawable.icon_star);
                 imgStar5.setImageResource(R.drawable.icon_star_haft);
                 break;
-            case "5":
+            case "5.0":
                 imgStar1.setImageResource(R.drawable.icon_star);
                 imgStar2.setImageResource(R.drawable.icon_star);
                 imgStar3.setImageResource(R.drawable.icon_star);

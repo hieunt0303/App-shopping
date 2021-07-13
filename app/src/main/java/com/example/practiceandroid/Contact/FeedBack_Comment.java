@@ -11,9 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.ImageFromStorage;
+import com.example.practiceandroid.home.Comment.classComment;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -92,12 +94,12 @@ public class FeedBack_Comment extends AppCompatActivity {
                 .child(class_comment.Categories)
                 .child(class_comment.productID)
                 .push()
-                .setValue(new Class_dataComent(class_comment.Categories,
-                                                class_comment.Comment,
-                                                class_comment.userName,
-                                                class_comment.productID,
+                .setValue(new classComment(class_comment.productID,
+                                                class_comment.Categories,
                                                 class_comment.productName,
-                                                class_comment.Star));
+                        Manhinh_Login.userlogin.getName_user(),
+                                                class_comment.Star,
+                                                class_comment.Comment));
     }
 
 
