@@ -19,8 +19,9 @@ import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 
+import com.example.practiceandroid.Contact.Contact_Delivering_Feedback;
 import com.example.practiceandroid.Contact.Contact_Profile;
-import com.example.practiceandroid.Contact.Contact_Waiting_Shipping_Dellivering;
+
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.home.adapter_Information_product;
@@ -131,14 +132,9 @@ public class ContactFragment extends Fragment {
 //            startActivity(new Intent(getActivity(), Contact_Waiting_Shipping_Dellivering.class));
 //        });
 
-        ivDelivering.setOnClickListener(v ->{
-            Postion = 0;
-            startActivity(new Intent(getActivity(), Contact_Waiting_Shipping_Dellivering.class));
-        });
-
         ivFeedBack.setOnClickListener(v ->{
             Postion = 1;
-            startActivity(new Intent(getActivity(), Contact_Waiting_Shipping_Dellivering.class));
+            startActivity(new Intent(getActivity(), Contact_Delivering_Feedback.class));
         });
 
         // set adapter cho các sản phẩm

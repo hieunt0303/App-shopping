@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/classify_box"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:src="@drawable/classify_border" />
+
+        <TextView
+            android:id="@+id/textview_classify_title"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/classify_box"
+            android:layout_alignLeft="@+id/classify_box"
+            android:layout_alignTop="@+id/classify_box"
+            android:layout_alignEnd="@+id/classify_box"
+            android:layout_alignRight="@+id/classify_box"
+            android:layout_alignBottom="@+id/classify_box"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:text="White"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+</RelativeLayout>

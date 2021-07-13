@@ -1,32 +1,46 @@
 package com.example.practiceandroid.Contact.Tablayout_Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.example.practiceandroid.Contact.FeedBack_Comment;
+import com.example.practiceandroid.Contact.Tablayout_Fragment.adapter.adapter_Feedback;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.shopping.FeedBacks_Products;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FeedbackFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FeedbackFragment extends Fragment {
+public class FeedbackFragment extends Fragment{
+    Unbinder unbinder;
 
-    private RecyclerView rvItem;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    ImageView ivProduct;
-    Button bttComment;
-    TextView tvName, tvPrice;
+    @BindView(R.id.recyclerview_Data_Feedback)
+    RecyclerView rvItem;
+    List<FeedBacks_Products> products;
+    adapter_Feedback adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,11 +87,66 @@ public class FeedbackFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
+        unbinder = ButterKnife.bind(FeedbackFragment.this, view);
+        rvItem.setLayoutManager(new LinearLayoutManager(FeedbackFragment.this.getContext()));
+        rvItem.setHasFixedSize(true);
+        DatabaseReference DATA = FirebaseDatabase.getInstance().getReference().child("Bought_FeedBacks"). child(Manhinh_Login.userlogin.getName_user());
+        DATA.keepSynced(true);
+        FirebaseRecyclerOptions<FeedBacks_Products> options =
+                new FirebaseRecyclerOptions.Builder<FeedBacks_Products>()
+                        .setQuery(DATA, FeedBacks_Products.class)
+                        .build();
+        adapter = new adapter_Feedback(options);
+        rvItem.setAdapter(adapter);
+        adapter.setOnclickListener(new adapter_Feedback.onItemClickListener() {
+            @Override
+            public void onItemListener(DataSnapshot snapshot, int position) {
 
-
+            }
+        });
+//            FeedBacks_Products item = documentSnapshot.
+//            Intent intent = new Intent(FeedbackFragment.this.getContext(), FeedBack_Comment.class);
+//            intent.putExtra("prName", item.getProductName());
+//            intent.putExtra("prCategories", item.getProductCategory());
+//            intent.putExtra("prID", item.getProductID());
+//            intent.putExtra("usID", item.getUserName());
+//            startActivity(intent);
 
         return view;
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // unbind the view to free some memory
+        unbinder.unbind();
+    }
+
+
 }
+
+
+
+
+
+
+//        products.add(new FeedBacks_Products(
+//                snapshot.child("productID").getValue().toString(),
+//                snapshot.child("productName").getValue().toString(),
+//                snapshot.child("productCategory").getValue().toString(),
+//                snapshot.child("productPrice").getValue().toString(),
+//                snapshot.child("userName").getValue().toString()
+//        ));

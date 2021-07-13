@@ -33,9 +33,10 @@
         <activity android:name=".Manhinh_Home" />
         <activity android:name=".activity_slide_intro" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Contact.Contact_Waiting_Shipping_Dellivering" />
+        <activity android:name=".Contact.Contact_Delivering_Feedback" />
         <activity android:name=".Contact.Contact_Profile" />
         <activity android:name=".Contact.FeedBack_Comment" />
+        <activity android:name=".adminHome.AddProduct.AddProduct_Categories"/>
         <activity android:name=".AdminContent.AdminChat.Activity_AdminChat"/>
         <activity android:name=".AdminContent.AdminHome.Activity_Information_Product_admin"/>
         <activity android:name=".shopping.activity_shopping">

@@ -141,7 +141,7 @@ public class SearchFragment extends Fragment {
                     // add class
                     class_search_productArrayList_temp.add(new class_Information_Product(
                             snapshot.child("id_product").getValue().toString(),
-                            "Category :"+snapshot.child("categories").getValue().toString(),
+                            snapshot.child("categories").getValue().toString(),
                             snapshot.child("name_product").getValue().toString(),
                             snapshot.child("price_product_real").getValue().toString(),
                             snapshot.child("discount").getValue().toString(),

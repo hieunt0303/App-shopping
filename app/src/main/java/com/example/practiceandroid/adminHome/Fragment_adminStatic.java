@@ -172,9 +172,9 @@ public class Fragment_adminStatic extends Fragment {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 Toast.makeText(getActivity(), "Ngày: "
-                        + (h.getX()+1)
-                        + ", Doanh thu: "
-                        + e.getY()
+                                + (h.getX()+1)
+                                + ", Doanh thu: "
+                                + e.getY()
                         , Toast.LENGTH_SHORT).show();
             }
 

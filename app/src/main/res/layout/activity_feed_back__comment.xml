@@ -16,7 +16,7 @@
         android:layout_marginLeft="15dp"
         android:src="@drawable/icon_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textview_Title"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageview_Comment"
         android:layout_width="396dp"
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
@@ -53,7 +53,7 @@
         android:padding="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_Comment"
         app:srcCompat="@drawable/icon_starfill" />
 
     <ImageButton
@@ -67,7 +67,7 @@
         android:padding="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toEndOf="@+id/ivbutton_star4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_Comment"
         app:srcCompat="@drawable/icon_starfill" />
 
     <ImageButton
@@ -81,7 +81,7 @@
         android:padding="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toEndOf="@+id/ivbutton_star2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_Comment"
         app:srcCompat="@drawable/icon_starfill" />
 
     <ImageButton
@@ -95,7 +95,7 @@
         android:padding="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toEndOf="@+id/ivbutton_star3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_Comment"
         app:srcCompat="@drawable/icon_starfill" />
 
     <TextView
@@ -112,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toEndOf="@+id/ivbutton_star5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageview_Comment" />
 
     <ImageButton
         android:id="@+id/ivbutton_star2"
@@ -125,7 +125,7 @@
         android:padding="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toEndOf="@+id/ivbutton_star1"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_Comment"
         app:srcCompat="@drawable/icon_starfill" />
 
     <EditText

@@ -19,14 +19,11 @@ public class ImageFromStorage {
         try {
             final File localfile= File.createTempFile(ToLowerCase_Trim.set(name_product)+1,"png");
             mStorage.getFile(localfile)
-                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            //Toast.makeText(HomeFragment.this,"Đưa ảnh lên thành công !!!",Toast.LENGTH_SHORT).show();
-                            Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
-                            img.setImageBitmap(bitmap);
+                    .addOnSuccessListener(taskSnapshot -> {
+                        //Toast.makeText(HomeFragment.this,"Đưa ảnh lên thành công !!!",Toast.LENGTH_SHORT).show();
+                        Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
+                        img.setImageBitmap(bitmap);
 
-                        }
                     });
         } catch (IOException e) {
             e.printStackTrace();
