@@ -11,7 +11,7 @@
         android:id="@+id/edt_Warehouse_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select_warehouse"
+        android:text="@string/select_warehouse"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="30sp"

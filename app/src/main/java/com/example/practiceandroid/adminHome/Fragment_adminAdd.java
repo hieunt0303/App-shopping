@@ -7,11 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -27,6 +22,10 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practiceandroid.R;
 import com.example.practiceandroid.adminHome.AddProduct.Adapter.AddProduct_Component;
@@ -45,6 +44,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 import butterknife.BindView;
@@ -122,10 +122,10 @@ public class Fragment_adminAdd extends Fragment {
     @BindView(R.id.textView_addPrice)
     TextView tvAddPrice;
 
-//    @BindView(R.id.framelayout_Storage)
-//    FrameLayout frStorage;
-//    @BindView(R.id.textView_Stock)
-//    TextView tvStock;
+    @BindView(R.id.framelayout_Storage)
+    FrameLayout frStorage;
+    @BindView(R.id.textView_Stock)
+    TextView tvStock;
 
 
     @BindView(R.id.button_AddProduct)
@@ -221,7 +221,7 @@ public class Fragment_adminAdd extends Fragment {
         frWarehouse.setOnClickListener(v -> setupWarehouseDialog());
         frClassification.setOnClickListener(v -> setupClassifyDialog());
         frCondittion.setOnClickListener(v -> setupCondittionDialog());
-//        frStorage.setOnClickListener(v -> setupStorageDialog());
+        frStorage.setOnClickListener(v -> setupStorageDialog());
 
 
         //GET FIREBASE DATA HERE
@@ -245,7 +245,7 @@ public class Fragment_adminAdd extends Fragment {
                                     "0",
                                     sPrice,
                                     "0",
-                                    100,
+                                    Integer.parseInt(sStorage),
                                     40,
                                     false, false,
                                     "Made in Heaven",
@@ -321,7 +321,7 @@ public class Fragment_adminAdd extends Fragment {
     }
 
     private void setupWarehouseDialog() {
-        BottomSheetDialog dialog = new BottomSheetDialog(Fragment_adminAdd.this.getContext());
+        BottomSheetDialog dialog = new BottomSheetDialog(Objects.requireNonNull(Fragment_adminAdd.this.getContext()));
         dialog.setContentView(R.layout.dialog_warehouse);
         dialog.setCanceledOnTouchOutside(true);
 
@@ -359,7 +359,7 @@ public class Fragment_adminAdd extends Fragment {
     }
 
     private void setupClassifyDialog() {
-        BottomSheetDialog dialog = new BottomSheetDialog(Fragment_adminAdd.this.getContext());
+        BottomSheetDialog dialog = new BottomSheetDialog(Objects.requireNonNull(Fragment_adminAdd.this.getContext()));
         dialog.setContentView(R.layout.dialog_classify);
         dialog.setCanceledOnTouchOutside(true);
 
@@ -485,7 +485,7 @@ public class Fragment_adminAdd extends Fragment {
     }
 
     private void setupCondittionDialog() {
-        BottomSheetDialog dialog = new BottomSheetDialog(Fragment_adminAdd.this.getContext());
+        BottomSheetDialog dialog = new BottomSheetDialog(Objects.requireNonNull(Fragment_adminAdd.this.getContext()));
         dialog.setContentView(R.layout.dialog_condition);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -531,7 +531,7 @@ public class Fragment_adminAdd extends Fragment {
             if (string.isEmpty()) Toast.makeText(Fragment_adminAdd.this.getContext(), "Please enter ammount of products", Toast.LENGTH_SHORT).show();
             else {
                 sStorage = string;
-//                tvStock.setText(nf.format(Integer.parseInt(sStorage)));
+                tvStock.setText(nf.format(Integer.parseInt(sStorage)));
                 dialog.dismiss();
             }
         });

@@ -9,4 +9,14 @@
     <string name="contact">Contact</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="todo">TODO</string>
+    <string name="condittion">Condittion</string>
+    <string name="add">Add</string>
+    <string name="price">Price</string>
+    <string name="classification">Classification</string>
+    <string name="right_arrow"><![CDATA[>]]></string>
+    <string name="warehouse">Warehouse</string>
+    <string name="categories">Categories</string>
+    <string name="select_warehouse">Select Warehouse</string>
+    <string name="storage">Storage</string>
+
 </resources>
