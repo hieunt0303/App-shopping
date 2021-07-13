@@ -122,10 +122,10 @@ public class Fragment_adminAdd extends Fragment {
     @BindView(R.id.textView_addPrice)
     TextView tvAddPrice;
 
-//    @BindView(R.id.framelayout_Storage)
-//    FrameLayout frStorage;
-//    @BindView(R.id.textView_Stock)
-//    TextView tvStock;
+    @BindView(R.id.framelayout_Storage)
+    FrameLayout frStorage;
+    @BindView(R.id.textView_Stock)
+    TextView tvStock;
 
 
     @BindView(R.id.button_AddProduct)
@@ -221,7 +221,7 @@ public class Fragment_adminAdd extends Fragment {
         frWarehouse.setOnClickListener(v -> setupWarehouseDialog());
         frClassification.setOnClickListener(v -> setupClassifyDialog());
         frCondittion.setOnClickListener(v -> setupCondittionDialog());
-//        frStorage.setOnClickListener(v -> setupStorageDialog());
+        frStorage.setOnClickListener(v -> setupStorageDialog());
 
 
         //GET FIREBASE DATA HERE
@@ -531,7 +531,7 @@ public class Fragment_adminAdd extends Fragment {
             if (string.isEmpty()) Toast.makeText(Fragment_adminAdd.this.getContext(), "Please enter ammount of products", Toast.LENGTH_SHORT).show();
             else {
                 sStorage = string;
-//                tvStock.setText(nf.format(Integer.parseInt(sStorage)));
+                tvStock.setText(nf.format(Integer.parseInt(sStorage)));
                 dialog.dismiss();
             }
         });
