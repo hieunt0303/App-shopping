@@ -15,9 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.practiceandroid.Manhinh_Home;
+import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.admin_Home;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.getNumberCategories;
+import com.example.practiceandroid.home.Detail_Information_Product;
 import com.example.practiceandroid.home.adapter_Information_product;
 import com.example.practiceandroid.home.class_Information_Product;
 import com.google.firebase.database.ChildEventListener;
@@ -69,8 +72,10 @@ public class CategoryProduct extends AppCompatActivity {
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CategoryProduct.this, Manhinh_Home.class);
-                startActivity(intent);
+                if (Manhinh_Login.userlogin.getName_user().equals("admin"))
+                    startActivity(new Intent(CategoryProduct.this, admin_Home.class));
+                else
+                    startActivity(new Intent(CategoryProduct.this, Manhinh_Home.class));
             }
         });
         txtnameCategory.setText(nameCategory);

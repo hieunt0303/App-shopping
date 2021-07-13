@@ -25,6 +25,7 @@ import com.example.practiceandroid.Fragment.CartFragment;
 import com.example.practiceandroid.Manhinh_Home;
 import com.example.practiceandroid.Manhinh_Login;
 import com.example.practiceandroid.R;
+import com.example.practiceandroid.admin_Home;
 import com.example.practiceandroid.function.FIREBASE;
 import com.example.practiceandroid.function.getCurrent_Day_Time;
 import com.example.practiceandroid.function.getShowCartFragment;
@@ -71,19 +72,20 @@ public class Detail_Information_Product extends AppCompatActivity {
     Button btn_addtocart;
     Button btn_buynow;
 
-    DatabaseReference mData= FirebaseDatabase.getInstance().getReference();
+    DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail__information__product);
-        intent= getIntent();
+        intent = getIntent();
 
         // Anh xa
-        txt_nameProduct_detail= findViewById(R.id.name_product_detail);
+        txt_nameProduct_detail = findViewById(R.id.name_product_detail);
         txt_nameCategory_detail = findViewById(R.id.header_name_category_product);
         txt_numberBought_detail = findViewById(R.id.numberBought_product_detail);
-        txt_numberRatingbar_detail= findViewById(R.id.numberRatingbar_product_detail);
-        txt_Price_detail= findViewById(R.id.price_product_detail);
+        txt_numberRatingbar_detail = findViewById(R.id.numberRatingbar_product_detail);
+        txt_Price_detail = findViewById(R.id.price_product_detail);
 
 
         // Gan gia tri
@@ -97,19 +99,19 @@ public class Detail_Information_Product extends AppCompatActivity {
         setImgNgoi_sao();
 
         // COMMENT
-        arr_cmt= new ArrayList<>();
-        adapter_cmt= new adapterComment(this, R.layout.layout_item_comment,arr_cmt);
-        listView_cmt= findViewById(R.id.listview_comment);
+        arr_cmt = new ArrayList<>();
+        adapter_cmt = new adapterComment(this, R.layout.layout_item_comment, arr_cmt);
+        listView_cmt = findViewById(R.id.listview_comment);
         listView_cmt.setAdapter(adapter_cmt);
         setComment(arr_cmt);
 
-        btn_addtocart= findViewById(R.id.button_addtocart);
-        btn_buynow= findViewById(R.id.button_buynow);
+        btn_addtocart = findViewById(R.id.button_addtocart);
+        btn_buynow = findViewById(R.id.button_buynow);
 
         // check xem thử sản phẩm đã có trong CART chưa
         String checked = getChecked_ADD_TO_CART.get(
                 txt_nameCategory_detail.getText().toString()
-                ,intent.getStringExtra("Id_product")
+                , intent.getStringExtra("Id_product")
         );
         // Set clik cho button ADDTOCART , BUY NOW
         btn_buynow.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +121,7 @@ public class Detail_Information_Product extends AppCompatActivity {
                 // XÉT XEM THỬ ĐÃ TỒN TẠI TRONG CART CHƯA
                 // NẾU RỒI CHUYỂN QUA GIAO DIỆN CART
                 // NẾU CHƯA THÌ ADD VÀ CHUYỂN QUA GIAO DIỆN CART
-                if(checked.equals("false")){
+                if (checked.equals("false")) {
                     getChecked_ADD_TO_CART.set(
                             txt_nameCategory_detail.getText().toString(),
                             intent.getStringExtra("Id_product"),
@@ -128,9 +130,8 @@ public class Detail_Information_Product extends AppCompatActivity {
                     // CHUYEN QUA GIAO DIEN CART
                     getShowCartFragment.set("true");
                     startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
-                    
-                }
-                else{
+
+                } else {
                     getShowCartFragment.set("true");
                     startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
                 }
@@ -142,16 +143,15 @@ public class Detail_Information_Product extends AppCompatActivity {
                 // XÉT XEM THỬ ĐÃ TỒN TẠI TRONG CART CHƯA
                 // NẾU RỒI THÌ THÔNG BÁO ĐÃ CÓ RỒI VÀ K ADD ĐC
                 // NẾU CHƯA THÌ ADD VÀO VÀ THÔNG BÁO ĐÃ ADD
-                if(checked.equals("false")){
+                if (checked.equals("false")) {
                     getChecked_ADD_TO_CART.set(
                             txt_nameCategory_detail.getText().toString(),
                             intent.getStringExtra("Id_product"),
                             "true"
                     );
-                    Toast.makeText(Detail_Information_Product.this,"The product has been added to cart", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(Detail_Information_Product.this,"The product has been added to cart",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Detail_Information_Product.this, "The product has been added to cart", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Detail_Information_Product.this, "The product has been added to cart", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -161,20 +161,24 @@ public class Detail_Information_Product extends AppCompatActivity {
         //txt_nameProduct_detail.setText();
 
         initView();
-        ImageView button_back= findViewById(R.id.button_back);
+        ImageView button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if (Manhinh_Login.userlogin.getName_user().equals("admin"))
+                    startActivity(new Intent(Detail_Information_Product.this, admin_Home.class));
+                else
+                    startActivity(new Intent(Detail_Information_Product.this, Manhinh_Home.class));
             }
         });
     }
-    public void setComment(List<classComment>arr){
+
+    public void setComment(List<classComment> arr) {
         FIREBASE.MDATA.child("Comment").child(intent.getStringExtra("Category_product")).child(intent.getStringExtra("Id_product"))
                 .addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                        classComment cmt= snapshot.getValue(classComment.class);
+                        classComment cmt = snapshot.getValue(classComment.class);
                         arr.add(cmt);
                         adapter_cmt.notifyDataSetChanged();
                     }
@@ -200,21 +204,22 @@ public class Detail_Information_Product extends AppCompatActivity {
                     }
                 });
     }
+
     private void initView() {
-        mViewPager= findViewById(R.id.viewpager_detail_product);
+        mViewPager = findViewById(R.id.viewpager_detail_product);
         mViewPager.setAdapter(new adapter_tablayout_detailProduct(getSupportFragmentManager(),
                 intent.getStringExtra("detail"),
                 intent.getStringExtra("description"))
         );
 
         // HIỂN THỊ 3 CÁI ẢNH
-        TabLayout tabLayout= findViewById(R.id.tabLayout_detail_product);
+        TabLayout tabLayout = findViewById(R.id.tabLayout_detail_product);
         tabLayout.setupWithViewPager(mViewPager);
 
         // HIỂN THỊ DESCIPTION VÀ DETAIL
-        ViewPager viewPagerslideProduct= findViewById(R.id.viewpager_slideProduct);
+        ViewPager viewPagerslideProduct = findViewById(R.id.viewpager_slideProduct);
 
-        adapter_viewpager_slideproduct  adapterSlideproduct= new adapter_viewpager_slideproduct(
+        adapter_viewpager_slideproduct adapterSlideproduct = new adapter_viewpager_slideproduct(
                 this,
                 intent.getStringExtra("Name_product")
         );
@@ -224,16 +229,15 @@ public class Detail_Information_Product extends AppCompatActivity {
     }
 
 
-    public void setImgNgoi_sao(){
-        star_up_1= findViewById(R.id.icon_ngoisao1_detail);
-        star_up_2= findViewById(R.id.icon_ngoisao2_detail);
-        star_up_3= findViewById(R.id.icon_ngoisao3_detail);
-        star_up_4= findViewById(R.id.icon_ngoisao4_detail);
-        star_up_5= findViewById(R.id.icon_ngoisao5_detail);
+    public void setImgNgoi_sao() {
+        star_up_1 = findViewById(R.id.icon_ngoisao1_detail);
+        star_up_2 = findViewById(R.id.icon_ngoisao2_detail);
+        star_up_3 = findViewById(R.id.icon_ngoisao3_detail);
+        star_up_4 = findViewById(R.id.icon_ngoisao4_detail);
+        star_up_5 = findViewById(R.id.icon_ngoisao5_detail);
 
 
-
-        switch (intent.getStringExtra("Sum_Ratingbar")){
+        switch (intent.getStringExtra("Sum_Ratingbar")) {
             case "0":
                 star_up_1.setImageResource(R.drawable.icon_star_none);
                 star_up_2.setImageResource(R.drawable.icon_star_none);

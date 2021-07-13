@@ -92,7 +92,7 @@ public class FeedbackFragment extends Fragment{
         unbinder = ButterKnife.bind(FeedbackFragment.this, view);
         rvItem.setLayoutManager(new LinearLayoutManager(FeedbackFragment.this.getContext()));
         rvItem.setHasFixedSize(true);
-        DatabaseReference DATA = FirebaseDatabase.getInstance().getReference().child("Bought_FeedBacks"). child(Manhinh_Login.userlogin.getName_user());
+        DatabaseReference DATA = FirebaseDatabase.getInstance().getReference().child("Bought_FeedBacks").child(Manhinh_Login.userlogin.getName_user());
         FirebaseRecyclerOptions<FeedBacks_Products> options =
                 new FirebaseRecyclerOptions.Builder<FeedBacks_Products>()
                         .setQuery(DATA, FeedBacks_Products.class)

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_confirmbox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_shape">
+
+
+    <TextView
+        android:id="@+id/dialog_edt_AddTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Set type"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/dialog_edt_classify"
+        android:layout_width="258dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/image_emty_picture"
+        android:hint="Set type here"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:paddingLeft="15dp"
+        android:textAllCaps="false"
+        android:textColorHint="#808080"
+        android:textSize="18sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_edt_AddTitle"
+        app:layout_constraintStart_toStartOf="@+id/dialog_edt_AddTitle"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_edt_AddTitle" />
+
+    <Button
+        android:id="@+id/dialog_classify_OK"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dialog_shape"
+        android:text="OK"
+        android:textColor="#79CEED"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_edt_classify" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
